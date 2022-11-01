@@ -1,0 +1,59 @@
+version: '3'
+services:
+  spring-blue:
+    image: backend
+    build: ./backend
+    ports:
+      - ${BLUE_BACKEND_PORT}:${BLUE_BACKEND_PORT}
+    container_name: ${BLUE_BACKEND_NAME}
+    depends_on:
+      - db
+
+  react-blue:
+    image: frontend
+    build: ./frontend
+    depends_on:
+      - spring-blue
+    ports:
+      - ${BLUE_FRONTEND_PORT}:${BLUE_FRONTEND_PORT}
+    environment:
+       - WDS_SOCKET_HOST=0.0.0.0
+       - WDS_SOCKET_PORT=0
+    container_name: ${BLUE_FRONTEND_NAME}
+
+  nginx:
+    image: nginx:1
+    volumes:
+      - ./nginx:/etc/nginx
+    ports:
+      - 80:80
+    depends_on:
+      - react-blue
+      - spring-blue
+    container_name: nginx
+    environment:
+      - BLUE_BACKEND_NAME=${BLUE_BACKEND_NAME}
+      - BLUE_BACKEND_PORT=${BLUE_BACKEND_PORT}
+      - GREEN_BACKEND_NAME=${GREEN_BACKEND_NAME}
+      - GREEN_BACKEND_PORT=${GREEN_BACKEND_PORT}
+      - BLUE_FRONTEND_NAME=${BLUE_FRONTEND_NAME}
+      - BLUE_FRONTEND_PORT=${BLUE_FRONTEND_PORT}
+      - GREEN_FRONTEND_NAME=${GREEN_FRONTEND_NAME}
+      - GREEN_FRONTEND_PORT=${GREEN_FRONTEND_PORT}
+
+  db:
+    image: mariadb:10
+    container_name: db
+    expose:
+      - ${MYSQL_PORT}
+    volumes:
+      - ./db/conf.d:/etc/mysql/conf.d
+      - ./db/data:/var/lib/mysql
+    environment:
+      - MARIADB_USER=${MYSQL_USER}
+      - MARIADB_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MARIADB_DATABASE=${MYSQL_DATABASE}
+      - MARIADB_PORT=${MYSQL_PORT}
+      - MARIADB_HOST=${MYSQL_HOST}
+    restart: always
+

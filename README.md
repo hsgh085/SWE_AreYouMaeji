@@ -1,3 +1,4 @@
+
 <p align="center"><img src="https://i.esdrop.com/d/f/uVJApfFjHN/Z9voVrRkN3.png" width="50%" height="70%" title="px(픽셀) 크기 설정" alt="매지세요?"></p>
 
 
@@ -25,6 +26,7 @@
 
 - 연세대학교 미래캠퍼스에서 재학생의 편리한 학교생활을 위해 (심부름) 웹,앱을 만들어  서로에게 필요한 (정보)를 공유한다. 그 안에는 (심부름)의 메인 페이지 외에도 심부름 거래, 심부름 분류 등 다양한 웹 서비스를 포함한다. 
 
+
 ### 👉 기술적 내용
 
 - 
@@ -36,6 +38,7 @@
 |이재원|이민혁|배재익|강지호|유희선|고명석|
 |---|---|---|---|---|---|
 |[jwinvade](https://github.com/jwinvade)|[me4n](https://github.com/keyleeu)|[Jaeik Bae](https://github.com/0308bae)|[깃이름](깃주소)|[hsgh085](https://github.com/hsgh085)|[mgskko](https://github.com/mgskko)|
+
 |Web Frontend|Web Backend|Web Backend|Web Backend|Web Frontend|Web Frontend|
 
 
@@ -80,6 +83,7 @@
 ### 🏅 **등록 페이지**
 
 <img src="https://i.esdrop.com/d/f/uVJApfFjHN/takzPZjz5K.jpg" width="300" height="900">
+
 
 
 # 🌲 프로젝트 트리
@@ -133,4 +137,3 @@
     |-- util.py
     └-- utils.py
 ```
-

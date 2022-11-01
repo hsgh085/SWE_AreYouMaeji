@@ -1,0 +1,17 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	proxy_set_header host localhost;
+	server_name localhost;
+	location /api {
+		proxy_pass http://${BLUE_BACKEND_NAME}:${BLUE_BACKEND_PORT}/api;
+	}
+ 	location / {
+                proxy_pass http://${BLUE_FRONTEND_NAME}:${BLUE_FRONTEND_PORT}/;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+                proxy_set_header Host $host;
+        }
+}

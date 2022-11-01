@@ -1,0 +1,20 @@
+version: '3'
+services:
+  spring-blue:
+    image: backend
+    build: ./backend
+    ports:
+      - ${BLUE_BACKEND_PORT}:${BLUE_BACKEND_PORT}
+    container_name: ${BLUE_BACKEND_NAME}
+
+  react-blue:
+    image: frontend
+    build: ./frontend
+    depends_on:
+      - spring-blue
+    ports:
+      - ${BLUE_FRONTEND_PORT}:${BLUE_FRONTEND_PORT}
+    environment:
+       - WDS_SOCKET_HOST=0.0.0.0
+       - WDS_SOCKET_PORT=0
+    container_name: ${BLUE_FRONTEND_NAME}

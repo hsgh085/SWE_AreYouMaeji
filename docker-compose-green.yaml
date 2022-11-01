@@ -1,0 +1,20 @@
+version: '3'
+services:
+  spring-green:
+    image: backend
+    build: ./backend
+    ports:
+      - ${GREEN_BACKEND_PORT}:${GREEN_BACKEND_PORT}
+    container_name: ${GREEN_BACKEND_NAME}
+
+  react-green:
+    image: frontend
+    build: ./frontend
+    depends_on:
+      - spring-green
+    ports:
+      - ${GREEN_FRONTEND_PORT}:${GREEN_FRONTEND_PORT}
+    environment:
+       - WDS_SOCKET_HOST=0.0.0.0
+       - WDS_SOCKET_PORT=0
+    container_name: ${GREEN_FRONTEND_NAME}
