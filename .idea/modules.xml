@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ReactSpringboot.iml" filepath="$PROJECT_DIR$/.idea/ReactSpringboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aym.iml" filepath="$PROJECT_DIR$/.idea/modules/aym.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aym.main.iml" filepath="$PROJECT_DIR$/.idea/modules/aym.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aym.test.iml" filepath="$PROJECT_DIR$/.idea/modules/aym.test.iml" />
     </modules>
   </component>
 </project>
