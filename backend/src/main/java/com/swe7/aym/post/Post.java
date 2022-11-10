@@ -1,4 +1,4 @@
-package com.swe7.aym.my.board;
+package com.swe7.aym.post;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -10,12 +10,13 @@ import java.io.Serializable;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Board implements Serializable {
+public class Post implements Serializable {
+    //todo
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long boardId;
+    private Long postId;
 
     @Column(length = 100)
     private String title;
@@ -24,7 +25,7 @@ public class Board implements Serializable {
     private String contents;
 
     @Builder
-    public Board(String title, String contents) {
+    public Post(String title, String contents) {
         this.title = title;
         this.contents = contents;
     }

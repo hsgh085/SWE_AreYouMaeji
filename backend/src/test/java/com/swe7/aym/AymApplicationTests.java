@@ -1,7 +1,7 @@
 package com.swe7.aym;
 
-import com.swe7.aym.my.board.Board;
-import com.swe7.aym.my.board.BoardRepository;
+import com.swe7.aym.post.Post;
+import com.swe7.aym.post.PostRepository;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,11 +18,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AymApplicationTests {
 
     @Autowired
-    BoardRepository boardRepository;
+    PostRepository postRepository;
 
     @After
     public void cleanup(){
-        boardRepository.deleteAll();
+        postRepository.deleteAll();
     }
 
     @Test
@@ -30,15 +30,15 @@ public class AymApplicationTests {
         String title = "Title";
         String content = "Contest";
 
-        boardRepository.save(Board.builder()
+        postRepository.save(Post.builder()
                         .title(title)
                         .contents(content)
                         .build());
 
-        List<Board> boardList = boardRepository.findAll();
+        List<Post> postList = postRepository.findAll();
 
-        Board board = boardList.get(0);
-        assertThat(board.getTitle()).isEqualTo(title);
-        assertThat(board.getContents()).isEqualTo(content);
+        Post post = postList.get(0);
+        assertThat(post.getTitle()).isEqualTo(title);
+        assertThat(post.getContents()).isEqualTo(content);
     }
 }

@@ -1,8 +1,8 @@
 package com.swe7.aym.my;
 
-import com.swe7.aym.my.board.Board;
-import com.swe7.aym.my.board.BoardRepository;
-import com.swe7.aym.my.dto.BoardSaveDto;
+import com.swe7.aym.post.Post;
+import com.swe7.aym.post.PostRepository;
+import com.swe7.aym.post.dto.PostSaveDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,11 +29,11 @@ public class ApiControllerTest {
     private TestRestTemplate testRestTemplate;
 
     @Autowired
-    private BoardRepository boardRepository;
+    private PostRepository postRepository;
 
     @After
     public void tearDown() throws Exception {
-        boardRepository.deleteAll();
+        postRepository.deleteAll();
     }
 
     @Test
@@ -41,7 +41,7 @@ public class ApiControllerTest {
         String title = "Title";
         String content = "Contest";
 
-        BoardSaveDto reqDto = BoardSaveDto.builder()
+        PostSaveDto reqDto = PostSaveDto.builder()
                 .title(title)
                 .contents(content)
                 .build();
@@ -53,7 +53,7 @@ public class ApiControllerTest {
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
-        List<Board> all = boardRepository.findAll();
+        List<Post> all = postRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(title);
         assertThat(all.get(0).getContents()).isEqualTo(content);
     }

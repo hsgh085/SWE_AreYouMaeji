@@ -1,6 +1,6 @@
-package com.swe7.aym.my.dto;
+package com.swe7.aym.post.dto;
 
-import com.swe7.aym.my.board.Board;
+import com.swe7.aym.post.Post;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -8,18 +8,19 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class BoardSaveDto {
+public class PostSaveDto {
+    //todo
     private String title;
     private String contents;
 
     @Builder
-    public BoardSaveDto(String title, String contents) {
+    public PostSaveDto(String title, String contents) {
         this.title = title;
         this.contents = contents;
     }
 
-    public Board toEntity(){
-        return Board.builder()
+    public Post toEntity(){
+        return Post.builder()
                 .title(title)
                 .contents(contents)
                 .build();

@@ -1,4 +1,4 @@
-package com.swe7.aym.my.dto;
+package com.swe7.aym.post.dto;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -6,12 +6,13 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class BoardUpdateDto {
+public class PostUpdateDto {
+    //todo
     private String title;
     private String contents;
 
     @Builder
-    public BoardUpdateDto(String title, String contents) {
+    public PostUpdateDto(String title, String contents) {
         this.title = title;
         this.contents = contents;
     }
