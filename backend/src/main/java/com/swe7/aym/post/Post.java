@@ -11,8 +11,6 @@ import java.io.Serializable;
 @Getter
 @NoArgsConstructor
 public class Post implements Serializable {
-    //todo
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

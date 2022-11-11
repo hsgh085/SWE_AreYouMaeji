@@ -5,8 +5,6 @@ import lombok.Getter;
 
 @Getter
 public class PostDto {
-    //todo
-
     private Long postId;
     private String title;
     private String contents;
