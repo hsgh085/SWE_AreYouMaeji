@@ -22,7 +22,8 @@ public class UserService {
                 .orElseThrow(()->new IllegalArgumentException("업데이트 : 잘못된 회원 아이디"));
         user.update(
                 requestDto.getNickname(),
-                requestDto.getPhone_number()
+                requestDto.getPhone_number(),
+                user.getNo_report()
         );
         return id;
     }
@@ -38,4 +39,15 @@ public class UserService {
 //        int cnt = userRepository.getCntStar(id);
 //        return avg / cnt;
 //    }
+
+    public Long incNoRep(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("업데이트 : 잘못된 회원 아이디"));
+        user.update(
+                user.getNickname(),
+                user.getPhone_number(),
+                user.getNo_report() + 1
+        );
+        return id;
+    }
 }

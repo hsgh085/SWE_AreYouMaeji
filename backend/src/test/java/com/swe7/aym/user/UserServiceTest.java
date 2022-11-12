@@ -3,6 +3,7 @@ package com.swe7.aym.user;
 import com.swe7.aym.user.dto.UserSaveDto;
 import com.swe7.aym.user.dto.UserUpdateDto;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,12 @@ class UserServiceTest {
     @Autowired
     UserRepository userRepository;
 
+    UserSaveDto testDto;
+    String email = "test@test.com";
+    String nickname = "testNick";
+    String phone_number = "010-1111-1111";
+    int gender = 1; //1 = Male 2= Female 3 = Etc
+
     static final DockerComposeContainer composeContainer;
 
     static
@@ -36,22 +43,22 @@ class UserServiceTest {
         composeContainer.start();
     }
     @AfterEach
-    public void cleanup(){
+    void cleanup(){
         userRepository.deleteAll();
     }
 
-    @Test
-    void save() {
-        String email = "test@test.com";
-        String nickname = "testNick";
-        String phone_number = "010-1111-1111";
-        int gender = 1; //1 = Male 2= Female 3 = Etc
-        UserSaveDto testDto = UserSaveDto.builder()
+    @BeforeEach
+    public void makeEntity(){
+        testDto = UserSaveDto.builder()
                 .email(email)
                 .nickname(nickname)
                 .phone_number(phone_number)
                 .gender(gender)
                 .build();
+    }
+
+    @Test
+    void save() {
 
         Long resID = userService.save(testDto);
         User result = userRepository.findById(resID).get();
@@ -65,20 +72,8 @@ class UserServiceTest {
 
     @Test
     void update() {
-        String email = "test@test.com";
-        String nickname = "testNick";
-        String phone_number = "010-1111-1111";
-        int gender = 1; //1 = Male 2= Female 3 = Etc
-
         String new_nickname = "test1Nick";
         String new_phone_number = "010-1111-1112";
-
-        UserSaveDto testDto = UserSaveDto.builder()
-                .email(email)
-                .nickname(nickname)
-                .phone_number(phone_number)
-                .gender(gender)
-                .build();
 
         UserUpdateDto testDto1 = UserUpdateDto.builder()
                 .nickname(new_nickname)
@@ -95,33 +90,34 @@ class UserServiceTest {
 
     @Test
     void findById() {
-        String email = "test@test.com";
-        String nickname = "testNick";
-        String phone_number = "010-1111-1111";
-        int gender = 1; //1 = Male 2= Female 3 = Etc
-        UserSaveDto testDto = UserSaveDto.builder()
-                .email(email)
-                .nickname(nickname)
-                .phone_number(phone_number)
-                .gender(gender)
-                .build();
 
         Long resID = userService.save(testDto);
         Optional<User> result = userRepository.findById(resID);
 
         assertThat(result).isNotEmpty();
+
         if (result.isPresent()){
-
             assertThat(result.get().getUserId()).isEqualTo(resID);
-            assertThat(result.get().getEmail()).isEqualTo(email);
-            assertThat(result.get().getNickname()).isEqualTo(nickname);
-            assertThat(result.get().getPhone_number()).isEqualTo(phone_number);
-            assertThat(result.get().getGender()).isEqualTo(gender);
-
         }
     }
 
     @Test
     void getAvgStar() {
+    }
+
+    @Test
+    void incNoRep(){
+
+        Long resID = userService.save(testDto);
+        userService.incNoRep(resID);
+        User result = userRepository.findById(resID).get();
+        assertThat(result.getNo_report()).isEqualTo(1);
+
+        userService.incNoRep(resID);
+        userService.incNoRep(resID);
+        userService.incNoRep(resID);
+        result = userRepository.findById(resID).get();
+        assertThat(result.getNo_report()).isEqualTo(4);
+
     }
 }

@@ -38,8 +38,13 @@ public class User implements Serializable {
         this.no_report = no_report;
     }
 
-    public void update(String nickname, String phone_number) {
+    public void update(String nickname, String phone_number, int no_report) {
         this.nickname = nickname;
         this.phone_number = phone_number;
+        this.no_report = no_report;
+    }
+
+    public void increaseNoRep(){
+        this.no_report = this.no_report + 1;
     }
 }
