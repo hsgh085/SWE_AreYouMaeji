@@ -33,9 +33,9 @@ public class UserService {
         return new UserDto(entity);
     }
 
-    public float getAvgStar(Long id) {
-        float avg = userRepository.getSumStar(id);
-        int cnt = userRepository.getCntStar(id);
-        return avg / cnt;
-    }
+//    public float getAvgStar(Long id) {
+//        float avg = userRepository.getSumStar(id);
+//        int cnt = userRepository.getCntStar(id);
+//        return avg / cnt;
+//    }
 }

@@ -310,3 +310,4 @@ gradle-app.setting
 
 db/data/**
 application.properties
+application-test.properties
