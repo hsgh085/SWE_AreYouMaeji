@@ -2,6 +2,7 @@ package com.swe7.aym.user;
 
 import com.swe7.aym.user.dto.UserSaveDto;
 import com.swe7.aym.user.dto.UserUpdateDto;
+import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,19 +43,21 @@ class UserServiceTest {
         composeContainer = new DockerComposeContainer(new File("src/test/resources/docker-compose.yaml"));
         composeContainer.start();
     }
-    @AfterEach
-    void cleanup(){
-        userRepository.deleteAll();
-    }
 
     @BeforeEach
-    public void makeEntity(){
+    public void setUp(){
         testDto = UserSaveDto.builder()
                 .email(email)
                 .nickname(nickname)
                 .phone_number(phone_number)
                 .gender(gender)
                 .build();
+    }
+
+    @AfterEach
+    void tearDown(){
+        userRepository.deleteAll();
+        composeContainer.stop();
     }
 
     @Test

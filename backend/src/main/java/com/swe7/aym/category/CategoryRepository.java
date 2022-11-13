@@ -1,5 +1,6 @@
 package com.swe7.aym.category;
 
-public interface CategoryRepository {
-    //todo
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 }

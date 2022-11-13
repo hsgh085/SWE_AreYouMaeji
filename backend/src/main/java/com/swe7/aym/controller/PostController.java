@@ -2,6 +2,7 @@ package com.swe7.aym.controller;
 
 import com.swe7.aym.post.PostService;
 import com.swe7.aym.post.dto.PostDto;
+import com.swe7.aym.post.dto.PostEndDto;
 import com.swe7.aym.post.dto.PostSaveDto;
 import com.swe7.aym.post.dto.PostUpdateDto;
 import lombok.RequiredArgsConstructor;
@@ -20,24 +21,13 @@ public class PostController {
         return postService.save(requestDto);
     }
 
-    @DeleteMapping("/api/posts/{id}")
-    public Long delete(@PathVariable Long id) {
-        postService.delete(id);
-        return id;
+    @PutMapping("/api/posts/done/{id}")
+    public Long updateEnd(@PathVariable Long id, @RequestBody PostEndDto postEndDto) {
+        return postService.updateEnd(id, postEndDto);
     }
 
-    @PutMapping("/api/posts/{id}")
-    public Long update(@PathVariable Long id, @RequestBody PostUpdateDto requestDto) {
-        return postService.update(id, requestDto);
-    }
-
-    @GetMapping("/api/posts/{id}")
-    public PostDto findById(@PathVariable Long id) {
-        return postService.findById(id);
-    }
-
-    @GetMapping("/api/posts/list")
-    public List<PostDto> findAllDesc() {
-        return postService.findAllDesc();
+    @PutMapping("/api/posts/ongoing/{id}/{state}")
+    public Long updateState(@PathVariable Long id, @PathVariable int state) {
+        return postService.updateState(id, state);
     }
 }

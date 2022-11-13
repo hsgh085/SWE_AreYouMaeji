@@ -3,6 +3,7 @@ package com.swe7.aym.user;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,7 +26,7 @@ public class User implements Serializable {
     private String phone_number;
 
     private int gender;
-
+    @ColumnDefault("0")
     private int no_report;
 
     @Builder

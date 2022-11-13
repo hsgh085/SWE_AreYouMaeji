@@ -8,7 +8,6 @@ public class UserSaveDto {
     private String nickname;
     private String phone_number;
     private int gender;
-    private int no_report;
 
     @Builder
     public UserSaveDto(String email, String nickname, String phone_number, int gender){
@@ -16,7 +15,6 @@ public class UserSaveDto {
         this.nickname = nickname;
         this.phone_number = phone_number;
         this.gender = gender;
-        this.no_report = 0;
     }
     public User toEntity(){
         return User.builder()
