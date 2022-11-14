@@ -1,9 +1,11 @@
 package com.swe7.aym.category.dto;
 
 import com.swe7.aym.category.Category;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-
+@NoArgsConstructor
+@Getter
 public class CategoryDto {
     private Long id;
     private String context;

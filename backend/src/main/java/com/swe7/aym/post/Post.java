@@ -44,14 +44,14 @@ public class Post implements Serializable {
     private int helper_star;
     private int fee;
     private int cost;
-    private String create_time;
+    private String createTime;
     @ColumnDefault("0")
     private int state;
 
     @Builder
     public Post(User client, User helper, String contents,
                 Category category1, Category category2, int client_star, int helper_star,
-                int fee, int cost, String create_time, int state
+                int fee, int cost, String createTime, int state
                 ) {
         this.client = client;
         this.helper = helper;
@@ -62,7 +62,7 @@ public class Post implements Serializable {
         this.helper_star = helper_star;
         this.fee = fee;
         this.cost = cost;
-        this.create_time = create_time;
+        this.createTime = createTime;
         this.state = state;
     }
 

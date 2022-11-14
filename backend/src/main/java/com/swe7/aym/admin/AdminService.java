@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class AdminService {
     private final UserRepository userRepository;
 
-    public long findById(Long id){
+    public Long findById(Long id){
         User entity = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("관리자가 아닙니다."));
         return entity.getUserId();

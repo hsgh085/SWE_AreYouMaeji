@@ -21,16 +21,20 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'junit:junit:4.13.2'
+	implementation 'org.testng:testng:7.1.0'
+	testImplementation 'junit:junit:4.13.2'
     compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
-	testImplementation 'org.testcontainers:testcontainers:1.15.3'
-	testImplementation 'org.testcontainers:junit-jupiter:1.15.3'
-	testImplementation 'org.testcontainers:mariadb:1.15.3'
+	testImplementation 'org.testcontainers:testcontainers:1.17.4'
+	testImplementation 'org.testcontainers:junit-jupiter:1.17.4'
+	testImplementation 'org.testcontainers:mariadb:1.17.4'
+
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 }
 
 tasks.named('test') {

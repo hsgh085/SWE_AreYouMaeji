@@ -45,7 +45,7 @@ public class PostSaveDto {
                 .category2(category2)
                 .fee(fee)
                 .cost(cost)
-                .create_time(create_time)
+                .createTime(create_time)
                 .build();
     }
 

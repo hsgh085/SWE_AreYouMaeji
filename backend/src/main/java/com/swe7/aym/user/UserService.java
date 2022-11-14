@@ -34,11 +34,12 @@ public class UserService {
         return new UserDto(entity);
     }
 
-//    public float getAvgStar(Long id) {
-//        float avg = userRepository.getSumStar(id);
-//        int cnt = userRepository.getCntStar(id);
-//        return avg / cnt;
-//    }
+    public float getAvgStar(Long id) {
+        float client_sum = userRepository.getSumClientStar(id);
+        float helper_sum = userRepository.getSumHelperStar(id);
+        int cnt = userRepository.getCntStar(id);
+        return client_sum + helper_sum / cnt;
+    }
 
     public Long incNoRep(Long id) {
         User user = userRepository.findById(id)

@@ -4,12 +4,10 @@ import com.swe7.aym.category.Category;
 import com.swe7.aym.post.Post;
 import com.swe7.aym.user.User;
 import lombok.Getter;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class PostDto {
 
     private Long postId;
@@ -35,7 +33,7 @@ public class PostDto {
         this.helper_star = post.getHelper_star();
         this.fee = post.getFee();
         this.cost = post.getCost();
-        this.create_time = post.getCreate_time();
+        this.create_time = post.getCreateTime();
         this.state = post.getState();
     }
 

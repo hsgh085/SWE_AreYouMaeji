@@ -3,8 +3,8 @@ services:
   spring-blue:
     image: backend
     build: ./backend
-    expose:
-      - ${BLUE_BACKEND_PORT}
+    ports:
+      - "8080:8080"
     container_name: ${BLUE_BACKEND_NAME}
     depends_on:
       - db
@@ -26,7 +26,7 @@ services:
     volumes:
       - ./nginx:/etc/nginx
     ports:
-      - 80:80
+      - "80:80"
     depends_on:
       - react-blue
       - spring-blue

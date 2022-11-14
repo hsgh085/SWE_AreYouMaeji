@@ -2,8 +2,10 @@ package com.swe7.aym.user.dto;
 
 import com.swe7.aym.user.User;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class UserDto {
     private Long userId;
     private String email;

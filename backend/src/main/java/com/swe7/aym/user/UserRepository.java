@@ -5,10 +5,12 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-//    @Query("select sum(p.client_star) + sum(p.helper_star) " +
-//            "from Post p where p.client_id = id or p.helper_id = id")
-//    float getSumStar(Long id);
-//
-//    @Query("select count(p) from Post p where p.client_id = id or p.helper_id = id")
-//    int getCntStar(Long id);
+    @Query("select sum(p.helper_star)from Post p where p.helper.userId = ?1")
+    float getSumHelperStar(Long id);
+
+    @Query("select sum(p.client_star) from Post p where p.client.userId = ?1")
+    float getSumClientStar(Long id);
+
+    @Query("select count(p) from Post p where p.client.userId = ?1 or p.helper.userId = ?1")
+    int getCntStar(Long id);
 }
