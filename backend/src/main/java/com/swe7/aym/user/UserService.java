@@ -34,12 +34,21 @@ public class UserService {
         return new UserDto(entity);
     }
 
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     public float getAvgStar(Long id) {
-        float client_sum = userRepository.getSumClientStar(id);
-        float helper_sum = userRepository.getSumHelperStar(id);
-        int cnt = userRepository.getCntStar(id);
-        if (cnt == 0) return 0;
-        return client_sum + helper_sum / cnt;
+        try {
+            float client_sum = userRepository.getSumClientStar(id);
+            float helper_sum = userRepository.getSumHelperStar(id);
+            int cnt = userRepository.getCntStar(id);
+            return client_sum + helper_sum / cnt;
+        }
+        catch (Exception e) {
+            return 0;
+        }
     }
 
     public Long incNoRep(Long id) {

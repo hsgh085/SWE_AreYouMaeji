@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +27,20 @@ public class PostService {
     private final UserRepository userRepository;
 
     public Long save(PostSaveDto requestDto) {
-        return postRepository.save(requestDto.toEntity()).getPostId();
+        Post res = Post.builder()
+                .client(userRepository.findByEmail(requestDto.getClient_email()))
+                .helper(userRepository.findByEmail(requestDto.getHelper_email()))
+                .contents(requestDto.getContents())
+                .category1(categoryRepository.findByContextContaining(requestDto.getCategory1()))
+                .category2(categoryRepository.findByContextContaining(requestDto.getCategory2()))
+                .client_star(0)
+                .helper_star(0)
+                .fee(requestDto.getFee())
+                .cost(requestDto.getCost())
+                .createTime(ZonedDateTime.now(ZoneId.of("Asia/Seoul")).toString())
+                .state(0)
+                .build();
+        return postRepository.save(res).getPostId();
     }
 
     public Long updateEnd(Long id, PostEndDto postEndDto) {

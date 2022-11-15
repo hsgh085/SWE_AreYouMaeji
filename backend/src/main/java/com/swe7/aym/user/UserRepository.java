@@ -13,4 +13,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select count(p) from Post p where p.client.userId = ?1 or p.helper.userId = ?1")
     int getCntStar(Long id);
+
+    User findByEmail(String email);
 }

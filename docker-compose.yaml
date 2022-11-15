@@ -4,7 +4,7 @@ services:
     image: backend
     build: ./backend
     ports:
-      - "8080:8080"
+      - ${BLUE_BACKEND_PORT}:${BLUE_BACKEND_PORT}
     container_name: ${BLUE_BACKEND_NAME}
     depends_on:
       - db

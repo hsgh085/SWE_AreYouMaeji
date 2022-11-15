@@ -1,6 +1,5 @@
 package com.swe7.aym.category;
 
-import com.swe7.aym.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +20,8 @@ public class Category implements Serializable {
     private String context;
 
     @Builder
-    public Category(String context){
+    public Category(Long categoryId, String context){
+        this.categoryId = categoryId;
         this.context = context;
     }
 }

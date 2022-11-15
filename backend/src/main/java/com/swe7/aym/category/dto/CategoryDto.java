@@ -11,6 +11,7 @@ public class CategoryDto {
     private String context;
 
     public CategoryDto(Category category) {
+        this.id = category.getCategoryId();
         this.context = category.getContext();
     }
 }
