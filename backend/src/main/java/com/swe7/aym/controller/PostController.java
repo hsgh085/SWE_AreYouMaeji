@@ -26,28 +26,28 @@ public class PostController {
     public List<PostDto> findByRecent(){
         return postService.findByRecent();
     }
-    @GetMapping("/api/posts/search/state/{state}")
+    @GetMapping(value ="/api/posts/search/{state}", headers = "key=state")
     public List<PostDto> findByState(@PathVariable int state){
         return postService.findByState(state);
     }
-    @GetMapping("/api/posts/search/word/{keyword}")
+    @GetMapping(value ="/api/posts/search/{keyword}", headers = "key=word")
     public List<PostDto> findByKeyword(@PathVariable String keyword){
         return postService.findByKeyword(keyword);
     }
-    @GetMapping("/api/posts/search/id/{id}")
+    @GetMapping(value ="/api/posts/search/{id}", headers = "key=id")
     public List<PostDto> findByClientId(@PathVariable Long id){
         return postService.findByClientId(id);
     }
-    @GetMapping("/api/posts/search/cate/{category}")
+    @GetMapping(value ="/api/posts/search/{category}", headers = "key=cate")
     public List<PostDto> findByCategory(@PathVariable String category){
         return postService.findByCategory(category);
     }
-    @PutMapping("/api/posts/update/{id}")
+    @PutMapping("/api/posts/{id}")
     public Long updateEnd(@PathVariable Long id, @RequestBody PostEndDto postEndDto) {
         return postService.updateEnd(id, postEndDto);
     }
 
-    @PutMapping("/api/posts/update/{id}/{state}")
+    @PutMapping("/api/posts/{id}/{state}")
     public Long updateState(@PathVariable Long id, @PathVariable int state) {
         return postService.updateState(id, state);
     }

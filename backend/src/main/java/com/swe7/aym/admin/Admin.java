@@ -1,13 +1,11 @@
 package com.swe7.aym.admin;
 
+import com.swe7.aym.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -18,10 +16,12 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long adminId;
 
-    private Long userId;
+    @OneToOne
+    @JoinColumn(name = "userId")
+    private User user;
 
     @Builder
-    public Admin(Long userId) {
-        this.userId = userId;
+    public Admin(User user) {
+        this.user = user;
     }
 }

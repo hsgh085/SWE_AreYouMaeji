@@ -24,11 +24,11 @@ public class UserController {
     public UserDto findById(@PathVariable Long id){
         return userService.findById(id);
     }
-    @GetMapping("/api/user/stars/{id}")
+    @GetMapping("/api/user/{id}/stars")
     public float getAvgStar(@PathVariable Long id){
         return userService.getAvgStar(id);
     }
-    @GetMapping("/api/user/reported/{id}")
+    @GetMapping("/api/user/{id}/report")
     public float incNoRep(@PathVariable Long id){
         return userService.incNoRep(id);
     }

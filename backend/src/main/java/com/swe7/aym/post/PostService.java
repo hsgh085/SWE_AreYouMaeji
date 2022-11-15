@@ -1,13 +1,19 @@
 package com.swe7.aym.post;
 
+import com.swe7.aym.category.Category;
+import com.swe7.aym.category.CategoryRepository;
 import com.swe7.aym.post.dto.PostDto;
 import com.swe7.aym.post.dto.PostEndDto;
 import com.swe7.aym.post.dto.PostSaveDto;
+import com.swe7.aym.user.User;
+import com.swe7.aym.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -15,6 +21,8 @@ import java.util.stream.Collectors;
 @Transactional
 public class PostService {
     private final PostRepository postRepository;
+    private final CategoryRepository categoryRepository;
+    private final UserRepository userRepository;
 
     public Long save(PostSaveDto requestDto) {
         return postRepository.save(requestDto.toEntity()).getPostId();
@@ -62,13 +70,18 @@ public class PostService {
                 .collect(Collectors.toList());
     }
     public List<PostDto> findByClientId(Long id) {
-        return postRepository.findByClient(id)
-                .stream()
-                .map(PostDto::new)
-                .collect(Collectors.toList());
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            return postRepository.findByClient(user)
+                    .stream()
+                    .map(PostDto::new)
+                    .collect(Collectors.toList());
+        }
+        else return Collections.emptyList();
     }
     public List<PostDto> findByCategory(String category) {
-        return postRepository.findByCategory1OrCategory2(category, category)
+        Category res1 = categoryRepository.findByContextContaining(category);
+        return postRepository.findByCategory1OrCategory2(res1, res1)
                 .stream()
                 .map(PostDto::new)
                 .collect(Collectors.toList());
