@@ -1,6 +1,7 @@
 package com.swe7.aym.admin.dto;
 
 import com.swe7.aym.admin.Admin;
+import com.swe7.aym.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,10 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AdminDto {
     private Long adminId;
-    private Long userId;
+    private User user;
 
     public AdminDto(Admin admin){
         this.adminId = admin.getAdminId();
-        this.userId = admin.getUserId();
+        this.user = admin.getUser();
     }
 }

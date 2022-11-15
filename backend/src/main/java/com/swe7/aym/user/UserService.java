@@ -38,6 +38,7 @@ public class UserService {
         float client_sum = userRepository.getSumClientStar(id);
         float helper_sum = userRepository.getSumHelperStar(id);
         int cnt = userRepository.getCntStar(id);
+        if (cnt == 0) return 0;
         return client_sum + helper_sum / cnt;
     }
 

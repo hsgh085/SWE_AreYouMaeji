@@ -25,7 +25,7 @@ public class PostSaveDto {
     @Builder
     public PostSaveDto(User client, User helper, String contents,
                        Category category1, Category category2,
-                       int fee, int cost, String create_time) {
+                       int fee, int cost) {
         this.client = client;
         this.helper = helper;
         this.contents = contents;
@@ -45,7 +45,7 @@ public class PostSaveDto {
                 .category2(category2)
                 .fee(fee)
                 .cost(cost)
-                .createTime(create_time)
+                .createTime(LocalDateTime.now().toString())
                 .build();
     }
 

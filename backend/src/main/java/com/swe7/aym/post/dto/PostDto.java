@@ -24,6 +24,7 @@ public class PostDto {
     private int state;
 
     public PostDto(Post post) {
+        this.postId = post.getPostId();
         this.client = post.getClient();
         this.helper = post.getHelper();
         this.contents = post.getContents();
