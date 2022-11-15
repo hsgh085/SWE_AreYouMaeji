@@ -310,3 +310,6 @@ gradle-app.setting
 
 db/data/**
 application.properties
+blue.conf
+default.conf
+green.conf

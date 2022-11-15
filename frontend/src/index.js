@@ -9,7 +9,7 @@ class List extends React.Component{
         this.state = {
             posts: [],
         }
-        fetch("/api/posts/list")
+        fetch("/api/posts")
             .then(data => data.json())
             .then(res => {
                 this.setState({
