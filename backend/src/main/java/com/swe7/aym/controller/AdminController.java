@@ -15,7 +15,7 @@ public class AdminController {
         return adminService.findById(id);
     }
 
-    @PostMapping("/api/admin/")
+    @PostMapping("/api/admin")
     public Long save(@RequestBody AdminSaveDto requestDto) {
         return adminService.save(requestDto);
     }

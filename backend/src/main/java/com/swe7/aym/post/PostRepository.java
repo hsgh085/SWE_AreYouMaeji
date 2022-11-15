@@ -20,8 +20,4 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findByCategory1OrCategory2(Category category1, Category category2);
 
 
-
-
-
-
 }

@@ -11,9 +11,10 @@ function handleSaveSubmit(event) {
             'Content-Type': 'application/json'
         }
     };
-    fetch(`/api/posts`, model)
+    fetch(`ec2-3-38-226-253.ap-northeast-2.compute.amazonaws.com/api/posts`, model)
         .then((response) => response.json())
-        .then(() => window.location.reload());
+        .then(() => window.location.reload())
+        .then(() => console.log("asdf"));
 }
 
 function handleDeletePost(event) {
@@ -35,7 +36,7 @@ function Write() {
         <div className='Write'>
             <form onSubmit={handleSaveSubmit} method="post" id="formTable">
                 <div>
-                    <input type='text' id='title' name='title' placeholder='게시글 제목'/>
+                    <input type='text' id='title' name='title' placeholder='제목'/>
                 </div>
                 <div>
                     <input id='contents' name='contents' placeholder='게시글 내용'/>

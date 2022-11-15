@@ -3,8 +3,8 @@ services:
   spring-blue:
     image: backend
     build: ./backend
-    ports:
-      - ${BLUE_BACKEND_PORT}:${BLUE_BACKEND_PORT}
+    expose:
+      - ${BLUE_BACKEND_PORT}
     container_name: ${BLUE_BACKEND_NAME}
     depends_on:
       - db
