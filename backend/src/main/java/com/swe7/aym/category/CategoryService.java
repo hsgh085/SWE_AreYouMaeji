@@ -26,8 +26,4 @@ public class CategoryService {
                 .collect(Collectors.toList());
     }
 
-    public Category findByContext(String context){
-        return categoryRepository.findByContextContaining(context);
-    }
-
 }
