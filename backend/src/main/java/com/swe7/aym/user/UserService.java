@@ -74,6 +74,10 @@ public class UserService {
     }
 
     public Boolean isRegisterd(String email){
+<<<<<<< HEAD
         return userRepository.existsByEmail(email);
+=======
+        return userRepository.findByEmailExists(email);
+>>>>>>> dadf7260e5d6cbde6bc2ad7b5a7a99abf29c02d2
     }
 }
