@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 @Transactional
@@ -19,18 +22,28 @@ public class UserService {
     }
 
     public Long update(String email, UserUpdateDto requestDto){
-        User user = userRepository.findByEmail(email);
-        user.update(
-                requestDto.getNickname(),
-                requestDto.getPhone_number(),
-                user.getNo_report()
-        );
-        return user.getUserId();
+        Optional<User> user = userRepository.findByEmail(email);
+        if(user.isPresent()) {
+            user.get().update(
+                    requestDto.getNickname(),
+                    requestDto.getPhone_number(),
+                    user.get().getNo_report()
+            );
+            return user.get().getUserId();
+        }
+        else {
+            return 0L;
+        }
     }
 
     public UserDto findByEmail(String email) {
-        User entity = userRepository.findByEmail(email);
-        return new UserDto(entity);
+        Optional<User> entity = userRepository.findByEmail(email);
+        if(entity.isPresent()) {
+            return new UserDto(entity.get());
+        }
+        else {
+            return new UserDto();
+        }
     }
     public float getAvgStar(String email) {
         try {
@@ -45,12 +58,19 @@ public class UserService {
     }
 
     public Boolean incNoRep(String email) {
-        User user = userRepository.findByEmail(email);
-        user.update(
-                user.getNickname(),
-                user.getPhone_number(),
-                user.getNo_report() + 1
-        );
-        return true;
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isPresent()) {
+            user.get().update(
+                    user.get().getNickname(),
+                    user.get().getPhone_number(),
+                    user.get().getNo_report() + 1
+            );
+            return true;
+        }
+        else return false;
+    }
+
+    public List<User> findAll(){
+        return userRepository.findAll();
     }
 }

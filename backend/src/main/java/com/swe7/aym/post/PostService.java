@@ -27,9 +27,14 @@ public class PostService {
     private final UserRepository userRepository;
 
     public Long save(PostSaveDto requestDto) {
+        Optional<User> client = userRepository.findByEmail(requestDto.getClient_email());
+        Optional<User> helper = userRepository.findByEmail(requestDto.getClient_email());
+        if (!client.isPresent() || !helper.isPresent()){
+            return 0L;
+        }
         Post res = Post.builder()
-                .client(userRepository.findByEmail(requestDto.getClient_email()))
-                .helper(userRepository.findByEmail(requestDto.getHelper_email()))
+                .client(client.get())
+                .helper(helper.get())
                 .contents(requestDto.getContents())
                 .category1(categoryRepository.findByContextContaining(requestDto.getCategory1()))
                 .category2(categoryRepository.findByContextContaining(requestDto.getCategory2()))

@@ -1,11 +1,14 @@
 package com.swe7.aym.controller;
 
+import com.swe7.aym.user.User;
 import com.swe7.aym.user.UserService;
 import com.swe7.aym.user.dto.UserDto;
 import com.swe7.aym.user.dto.UserSaveDto;
 import com.swe7.aym.user.dto.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -31,6 +34,10 @@ public class UserController {
     @GetMapping("/api/user/{email}/report")
     public Boolean incNoRep(@PathVariable String email){
         return userService.incNoRep(email);
+    }
+    @GetMapping("/api/user/findAll")
+    public List<User> findAllUserForDev(){
+        return userService.findAll();
     }
 
 }
