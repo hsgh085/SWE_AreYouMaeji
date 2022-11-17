@@ -73,7 +73,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Boolean isRegisterd(String email){
+    public Boolean isRegistered(String email){
         return userRepository.existsByEmail(email);
     }
 }

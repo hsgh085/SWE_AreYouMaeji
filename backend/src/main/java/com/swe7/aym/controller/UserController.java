@@ -37,7 +37,7 @@ public class UserController {
     }
     @GetMapping("/api/user/{email}/kakao")
     public Boolean isRegistered(@PathVariable String email){
-        return userService.isRegisterd(email);
+        return userService.isRegistered(email);
     }
     @GetMapping("/api/user/findAll")
     public List<User> findAllUserForDev(){
