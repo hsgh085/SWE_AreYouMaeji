@@ -1,6 +1,5 @@
 package com.swe7.aym.user;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.swe7.aym.user.dto.UserDto;
 import com.swe7.aym.user.dto.UserSaveDto;
 import com.swe7.aym.user.dto.UserUpdateDto;
@@ -42,7 +41,7 @@ public class UserService {
             return new UserDto(entity.get());
         }
         else {
-            return new UserDto();
+            return null;
         }
     }
     public float getAvgStar(String email) {
@@ -72,5 +71,9 @@ public class UserService {
 
     public List<User> findAll(){
         return userRepository.findAll();
+    }
+
+    public Boolean isRegisterd(String email){
+        return userRepository.existsByEmail(email);
     }
 }
