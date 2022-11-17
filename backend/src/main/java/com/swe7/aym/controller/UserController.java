@@ -16,21 +16,21 @@ public class UserController {
     public Long save(@RequestBody UserSaveDto requestDto){
         return userService.save(requestDto);
     }
-    @PutMapping("/api/user/{id}")
-    public Long update(@PathVariable Long id, @RequestBody UserUpdateDto requestDto){
-        return userService.update(id, requestDto);
+    @PutMapping("/api/user/{email}")
+    public Long update(@PathVariable String email, @RequestBody UserUpdateDto requestDto){
+        return userService.update(email, requestDto);
     }
-    @GetMapping("/api/user/{id}")
-    public UserDto findById(@PathVariable Long id){
-        return userService.findById(id);
+    @GetMapping("/api/user/{email}")
+    public UserDto findByEmail(@PathVariable String email){
+        return userService.findByEmail(email);
     }
-    @GetMapping("/api/user/{id}/stars")
-    public float getAvgStar(@PathVariable Long id){
-        return userService.getAvgStar(id);
+    @GetMapping("/api/user/{email}/stars")
+    public float getAvgStar(@PathVariable String email){
+        return userService.getAvgStar(email);
     }
-    @GetMapping("/api/user/{id}/report")
-    public float incNoRep(@PathVariable Long id){
-        return userService.incNoRep(id);
+    @GetMapping("/api/user/{email}/report")
+    public Boolean incNoRep(@PathVariable String email){
+        return userService.incNoRep(email);
     }
 
 }

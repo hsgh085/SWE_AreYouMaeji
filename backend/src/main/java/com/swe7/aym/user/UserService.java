@@ -1,5 +1,6 @@
 package com.swe7.aym.user;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.swe7.aym.user.dto.UserDto;
 import com.swe7.aym.user.dto.UserSaveDto;
 import com.swe7.aym.user.dto.UserUpdateDto;
@@ -17,33 +18,25 @@ public class UserService {
         return userRepository.save(requestDto.toEntity()).getUserId();
     }
 
-    public Long update(Long id, UserUpdateDto requestDto){
-        User user = userRepository.findById(id)
-                .orElseThrow(()->new IllegalArgumentException("업데이트 : 잘못된 회원 아이디"));
+    public Long update(String email, UserUpdateDto requestDto){
+        User user = userRepository.findByEmail(email);
         user.update(
                 requestDto.getNickname(),
                 requestDto.getPhone_number(),
                 user.getNo_report()
         );
-        return id;
+        return user.getUserId();
     }
 
-    public UserDto findById(Long id) {
-        User entity = userRepository.findById(id)
-                .orElseThrow(()->new IllegalArgumentException("회원 조회 : 잘못된 회원 아이디"));
+    public UserDto findByEmail(String email) {
+        User entity = userRepository.findByEmail(email);
         return new UserDto(entity);
     }
-
-
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
-
-    public float getAvgStar(Long id) {
+    public float getAvgStar(String email) {
         try {
-            float client_sum = userRepository.getSumClientStar(id);
-            float helper_sum = userRepository.getSumHelperStar(id);
-            int cnt = userRepository.getCntStar(id);
+            float client_sum = userRepository.getSumClientStar(email);
+            float helper_sum = userRepository.getSumHelperStar(email);
+            int cnt = userRepository.getCntStar(email);
             return client_sum + helper_sum / cnt;
         }
         catch (Exception e) {
@@ -51,14 +44,13 @@ public class UserService {
         }
     }
 
-    public Long incNoRep(Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(()->new IllegalArgumentException("업데이트 : 잘못된 회원 아이디"));
+    public Boolean incNoRep(String email) {
+        User user = userRepository.findByEmail(email);
         user.update(
                 user.getNickname(),
                 user.getPhone_number(),
                 user.getNo_report() + 1
         );
-        return id;
+        return true;
     }
 }
