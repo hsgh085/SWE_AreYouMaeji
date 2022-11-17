@@ -42,7 +42,7 @@ public class UserService {
             return new UserDto(entity.get());
         }
         else {
-            return new UserDto();
+            return null;
         }
     }
     public float getAvgStar(String email) {
@@ -72,5 +72,9 @@ public class UserService {
 
     public List<User> findAll(){
         return userRepository.findAll();
+    }
+
+    public Boolean isRegisterd(String email){
+        return userRepository.findByEmailExists(email);
     }
 }
