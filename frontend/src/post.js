@@ -13,8 +13,7 @@ function handleSaveSubmit(event) {
     };
     fetch(`ec2-3-38-226-253.ap-northeast-2.compute.amazonaws.com/api/posts`, model)
         .then((response) => response.json())
-        .then(() => window.location.reload())
-        .then(() => console.log("asdf"));
+        .then(() => window.location.reload());
 }
 
 function handleDeletePost(event) {
@@ -53,6 +52,7 @@ function Write() {
                 </div>
                 <button type="submit">지우기</button>
             </form>
+            <a href="https://kauth.kakao.com/oauth/authorize?client_id=e1a79b41fcfcd1cdc53b674ddca7fe1f&redirect_uri=http://localhost:3000/oauth/callback/kakao&response_type=code">test</a>
         </div>
     );
 }

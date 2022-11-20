@@ -7,15 +7,16 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping(value = "/api/admin/*")
 public class AdminController {
     private final AdminService adminService;
 
-    @GetMapping("/api/admin/{id}")
+    @GetMapping("/{id}")
     public Long findById(@PathVariable Long id){
         return adminService.findById(id);
     }
 
-    @PostMapping("/api/admin")
+    @PostMapping("/")
     public Long save(@RequestBody AdminSaveDto requestDto) {
         return adminService.save(requestDto);
     }

@@ -12,36 +12,46 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping(value = "/api/user/*")
 public class UserController {
 
     private final UserService userService;
-    @PostMapping("/api/user")
+    @PostMapping("/")
     public Long save(@RequestBody UserSaveDto requestDto){
         return userService.save(requestDto);
     }
-    @PutMapping("/api/user/{email}")
+    @PutMapping("/{email}")
     public Long update(@PathVariable String email, @RequestBody UserUpdateDto requestDto){
         return userService.update(email, requestDto);
     }
-    @GetMapping("/api/user/{email}")
+    @GetMapping("/{email}")
     public UserDto findByEmail(@PathVariable String email){
         return userService.findByEmail(email);
     }
-    @GetMapping("/api/user/{email}/stars")
+    @GetMapping("/{email}/stars")
     public float getAvgStar(@PathVariable String email){
         return userService.getAvgStar(email);
     }
-    @GetMapping("/api/user/{email}/report")
+    @GetMapping("/{email}/report")
     public Boolean incNoRep(@PathVariable String email){
         return userService.incNoRep(email);
     }
-    @GetMapping("/api/user/{email}/kakao")
-    public Boolean isRegistered(@PathVariable String email){
-        return userService.isRegistered(email);
-    }
-    @GetMapping("/api/user/findAll")
+
+    @GetMapping("/findAll")
     public List<User> findAllUserForDev(){
         return userService.findAll();
+    }
+
+    @GetMapping(value="/kakao")
+    public UserDto kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
+
+        System.out.println(code);
+        String access_Token = userService.getAccessToken(code);
+
+        System.out.println(access_Token);
+        UserDto user = userService.getUserInfo(access_Token);
+
+        return user;
     }
 
 }

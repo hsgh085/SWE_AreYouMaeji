@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Write from "./post";
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import Auth from "./Auth";
 
 class List extends React.Component{
     constructor(props) {
@@ -33,13 +35,19 @@ class List extends React.Component{
                             )
                         })
                 }
-                <Write/>
+               <Write/>
             </div>
+
         )
     }
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <List/>
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Write/>}></Route>
+            <Route path="/oauth/callback/kakao" element = {<Auth />} />
+        </Routes>
+    </BrowserRouter>
 );
