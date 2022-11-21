@@ -1,11 +1,14 @@
-package com.swe7.aym.user;
+package com.swe7.aym.member;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.swe7.aym.user.dto.UserDto;
-import com.swe7.aym.user.dto.UserSaveDto;
-import com.swe7.aym.user.dto.UserUpdateDto;
+import com.swe7.aym.Config.Auth.AuthService;
+import com.swe7.aym.Config.Auth.Token.TokenDto;
+import com.swe7.aym.member.dto.MemberDto;
+import com.swe7.aym.member.dto.MemberResponseDto;
+import com.swe7.aym.member.dto.MemberSaveDto;
+import com.swe7.aym.member.dto.MemberUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,32 +22,37 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 @Transactional
-public class UserService {
-    private final UserRepository userRepository;
+public class MembersService {
+    private final MemberRepository memberRepository;
+    private final AuthService authService;
 
-    public Long save(UserSaveDto requestDto){
-        return userRepository.save(requestDto.toEntity()).getUserId();
+    public Long save(MemberSaveDto requestDto){
+        memberRepository.findByEmail(requestDto.getEmail()).ifPresent(m -> {
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
+        });
+        return memberRepository.save(requestDto.toEntity()).getMember_id();
     }
 
-    public Long update(String email, UserUpdateDto requestDto){
-        Optional<User> user = userRepository.findByEmail(email);
-        if(user.isPresent()) {
-            user.get().update(
+
+    public Long update(String email, MemberUpdateDto requestDto){
+        Optional<Member> member = memberRepository.findByEmail(email);
+        if(member.isPresent()) {
+            member.get().update(
                     requestDto.getNickname(),
                     requestDto.getPhone_number(),
-                    user.get().getNo_report()
+                    member.get().getNo_report()
             );
-            return user.get().getUserId();
+            return member.get().getMember_id();
         }
         else {
             return 0L;
         }
     }
 
-    public UserDto findByEmail(String email) {
-        Optional<User> entity = userRepository.findByEmail(email);
+    public MemberDto findByEmail(String email) {
+        Optional<Member> entity = memberRepository.findByEmail(email);
         if(entity.isPresent()) {
-            return new UserDto(entity.get());
+            return new MemberDto(entity.get());
         }
         else {
             return null;
@@ -52,9 +60,9 @@ public class UserService {
     }
     public float getAvgStar(String email) {
         try {
-            float client_sum = userRepository.getSumClientStar(email);
-            float helper_sum = userRepository.getSumHelperStar(email);
-            int cnt = userRepository.getCntStar(email);
+            float client_sum = memberRepository.getSumClientStar(email);
+            float helper_sum = memberRepository.getSumHelperStar(email);
+            int cnt = memberRepository.getCntStar(email);
             return client_sum + helper_sum / cnt;
         }
         catch (Exception e) {
@@ -63,20 +71,20 @@ public class UserService {
     }
 
     public Boolean incNoRep(String email) {
-        Optional<User> user = userRepository.findByEmail(email);
-        if (user.isPresent()) {
-            user.get().update(
-                    user.get().getNickname(),
-                    user.get().getPhone_number(),
-                    user.get().getNo_report() + 1
+        Optional<Member> member = memberRepository.findByEmail(email);
+        if (member.isPresent()) {
+            member.get().update(
+                    member.get().getNickname(),
+                    member.get().getPhone_number(),
+                    member.get().getNo_report() + 1
             );
             return true;
         }
         else return false;
     }
 
-    public List<User> findAll(){
-        return userRepository.findAll();
+    public List<Member> findAll(){
+        return memberRepository.findAll();
     }
 
     public String getAccessToken(String authorize_code) {
@@ -116,7 +124,7 @@ public class UserService {
         }
         return access_Token;
     }
-    public UserDto getUserInfo(String access_Token) {
+    public MemberResponseDto getMemberInfo(String access_Token) {
         String reqURL = "https://kapi.kakao.com/v2/user/me";
         try {
             URL url = new URL(reqURL);
@@ -135,17 +143,18 @@ public class UserService {
             JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
             String email = kakao_account.getAsJsonObject().get("email").getAsString();
 
-            Boolean isRegisteredUser = userRepository.existsByEmail(email);
-            if (isRegisteredUser){
-                return this.findByEmail(email);
+            Boolean isRegisteredMember = memberRepository.existsByEmail(email);
+            if (isRegisteredMember){
+                TokenDto tokenDto = authService.login(memberRepository.findByEmail(email).get());
+                return this.findByEmail(email).toResponse(tokenDto.getAccessToken());
             }
             else {
-                return new UserDto();
+                return new MemberResponseDto();
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new UserDto();
+        return new MemberResponseDto();
     }
 }

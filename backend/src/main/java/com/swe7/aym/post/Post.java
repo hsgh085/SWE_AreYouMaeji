@@ -1,7 +1,7 @@
 package com.swe7.aym.post;
 
 import com.swe7.aym.category.Category;
-import com.swe7.aym.user.User;
+import com.swe7.aym.member.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,11 +21,11 @@ public class Post implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "client_id")
-    private User client;
+    private Member client;
 
     @ManyToOne
     @JoinColumn(name = "helper_id")
-    private User helper;
+    private Member helper;
 
     @Column(length = 4000)
     private String contents;
@@ -49,7 +49,7 @@ public class Post implements Serializable {
     private int state;
 
     @Builder
-    public Post(User client, User helper, String contents,
+    public Post(Member client, Member helper, String contents,
                 Category category1, Category category2, int client_star, int helper_star,
                 int fee, int cost, String createTime, int state
                 ) {

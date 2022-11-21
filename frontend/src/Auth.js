@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import AuthenticationService from "./AuthenticationService";
 
-const Auth = () => {
+const getLoginOrReg = () => {
     const code = new URL(window.location.href).searchParams.get("code");
 
     const getToken = async () => {
@@ -9,14 +10,16 @@ const Auth = () => {
             fetch("http://localhost:8080/api/user/kakao?code=" + code)
                 .then((response) => response.json())
                 .then((res) => {
+                    console.log(res);
                     let email = res.email;
                     if (email == null){
                         console.log("null");
-                        window.location.replace("/");
+                        //회원가입으로 이동
                     }
                     else { //정상흐름
                         console.log("success!!!");
-                        window.location.replace("/");
+                        AuthenticationService.registerSuccessfulLoginForJwt(email, res.jwt);
+                        //메인페이지로 이동
                     }
                 });
         } catch (err) {
@@ -25,7 +28,7 @@ const Auth = () => {
     };
 
     useEffect(() => {
-        getToken();
+        getLoginOrReg();
     }, []);
 
     return null;

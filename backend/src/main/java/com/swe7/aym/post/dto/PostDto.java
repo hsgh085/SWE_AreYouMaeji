@@ -1,8 +1,8 @@
 package com.swe7.aym.post.dto;
 
 import com.swe7.aym.category.Category;
+import com.swe7.aym.member.Member;
 import com.swe7.aym.post.Post;
-import com.swe7.aym.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class PostDto {
 
     private Long postId;
-    private User client;
-    private User helper;
+    private Member client;
+    private Member helper;
     private String contents;
     private Category category1;
     private Category category2;

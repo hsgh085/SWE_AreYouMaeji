@@ -2,11 +2,11 @@ package com.swe7.aym.post;
 
 import com.swe7.aym.category.Category;
 import com.swe7.aym.category.CategoryRepository;
+import com.swe7.aym.member.Member;
 import com.swe7.aym.post.dto.PostDto;
 import com.swe7.aym.post.dto.PostEndDto;
 import com.swe7.aym.post.dto.PostSaveDto;
-import com.swe7.aym.user.User;
-import com.swe7.aym.user.UserRepository;
+import com.swe7.aym.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,11 +24,11 @@ import java.util.stream.Collectors;
 public class PostService {
     private final PostRepository postRepository;
     private final CategoryRepository categoryRepository;
-    private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
 
     public Long save(PostSaveDto requestDto) {
-        Optional<User> client = userRepository.findByEmail(requestDto.getClient_email());
-        Optional<User> helper = userRepository.findByEmail(requestDto.getClient_email());
+        Optional<Member> client = memberRepository.findByEmail(requestDto.getClient_email());
+        Optional<Member> helper = memberRepository.findByEmail(requestDto.getClient_email());
         if (!client.isPresent() || !helper.isPresent()){
             return 0L;
         }
@@ -90,9 +90,9 @@ public class PostService {
                 .collect(Collectors.toList());
     }
     public List<PostDto> findByClientId(Long id) {
-        Optional<User> user = userRepository.findById(id);
-        if (user.isPresent()) {
-            return postRepository.findByClient(user)
+        Optional<Member> member = memberRepository.findById(id);
+        if (member.isPresent()) {
+            return postRepository.findByClient(member.get())
                     .stream()
                     .map(PostDto::new)
                     .collect(Collectors.toList());

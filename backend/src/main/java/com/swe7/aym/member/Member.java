@@ -1,9 +1,10 @@
-package com.swe7.aym.user;
+package com.swe7.aym.member;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,10 +12,10 @@ import java.io.Serializable;
 @Entity
 @Getter
 @NoArgsConstructor
-public class User implements Serializable {
+public class Member implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long member_id;
 
     @Column(length = 50)
     private String email;
@@ -29,14 +30,19 @@ public class User implements Serializable {
     @ColumnDefault("0")
     private int no_report;
 
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
+
     @Builder
-    public User(String email, String nickname, String phone_number,
-                int gender, int no_report){
+    public Member(Long member_id, String email, String nickname, String phone_number,
+                int gender, int no_report, Authority authority){
+        this.member_id = member_id;
         this.email = email;
         this.nickname = nickname;
         this.phone_number = phone_number;
         this.gender = gender;
         this.no_report = no_report;
+        this.authority = authority;
     }
 
     public void update(String nickname, String phone_number, int no_report) {
@@ -45,7 +51,7 @@ public class User implements Serializable {
         this.no_report = no_report;
     }
 
-    public void increaseNoRep(){
-        this.no_report = this.no_report + 1;
+    public UsernamePasswordAuthenticationToken toAuthentication() {
+        return new UsernamePasswordAuthenticationToken(email, email);
     }
 }
