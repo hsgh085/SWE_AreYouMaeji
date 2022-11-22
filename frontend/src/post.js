@@ -11,7 +11,7 @@ function handleSaveSubmit(event) {
             'Content-Type': 'application/json'
         }
     };
-    fetch(`ec2-3-38-226-253.ap-northeast-2.compute.amazonaws.com/api/posts`, model)
+    fetch(`/api/posts`, model)
         .then((response) => response.json())
         .then(() => window.location.reload());
 }
@@ -33,7 +33,7 @@ function Write() {
                     <input type="reset"/>
                 </div>
             </form>
-           <a href="https://kauth.kakao.com/oauth/authorize?client_id=e1a79b41fcfcd1cdc53b674ddca7fe1f&redirect_uri=http://localhost:3000/oauth/callback/kakao&response_type=code">test</a>
+           <a href="https://kauth.kakao.com/oauth/authorize?client_id=e1a79b41fcfcd1cdc53b674ddca7fe1f&redirect_uri=http://localhost/oauth/callback/kakao&response_type=code">test</a>
         </div>
     );
 }

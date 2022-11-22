@@ -6,7 +6,7 @@ const Auth = () => {
     const getLoginOrReg = async () => {
         try {
             console.log(code);
-            fetch("http://localhost:8080/api/member/kakao?code=" + code)
+            fetch("/api/member/kakao?code=" + code)
                 .then((response) => response.json())
                 .then((res) => {
                     console.log(res);
