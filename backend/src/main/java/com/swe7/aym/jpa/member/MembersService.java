@@ -57,6 +57,7 @@ public class MembersService {
             return null;
         }
     }
+
     public float getAvgStar(String email) {
         try {
             float client_sum = memberRepository.getSumClientStar(email);
@@ -141,19 +142,17 @@ public class MembersService {
             JsonElement element = parser.parse(result);
             JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
             String email = kakao_account.getAsJsonObject().get("email").getAsString();
-            System.out.println(email);
-            System.out.println(access_Token);
-
-            Token token = Token.builder()
-                    .email(email)
-                    .accessToken(access_Token)
-                    .build();
-            tokenRepository.save(token);
-            System.out.println(tokenRepository.existsByEmail(email));
 
             Boolean isRegisteredMember = memberRepository.existsByEmail(email);
 
             if (isRegisteredMember){
+                Token token = Token.builder()
+                        .email(email)
+                        .accessToken(access_Token)
+                        .build();
+
+                if (!tokenRepository.existsByEmail(email))
+                    tokenRepository.save(token);
                 return this.findByEmail(email);
             }
             else {

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -17,6 +18,7 @@ public class Category implements Serializable {
     private Long categoryId;
 
     @Column(length = 100)
+    @NotNull
     private String context;
 
     @Builder

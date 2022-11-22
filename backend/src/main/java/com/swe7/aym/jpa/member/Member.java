@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -17,12 +18,15 @@ public class Member implements Serializable {
     private Long member_id;
 
     @Column(length = 50)
+    @NotNull
     private String email;
 
     @Column(length = 50)
+    @NotNull
     private String nickname;
 
     @Column(length = 20)
+    @NotNull
     private String phone_number;
 
     private int gender;
@@ -30,6 +34,7 @@ public class Member implements Serializable {
     private int no_report;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     private Authority authority;
 
     @Builder

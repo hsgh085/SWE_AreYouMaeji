@@ -4,13 +4,15 @@ import lombok.Builder;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 @Getter
-@RedisHash(timeToLive = 21600)
+@RedisHash(value = "members", timeToLive = 21600)
 public class Token{
 
     @Id
     Long id;
+    @Indexed
     String email;
     String accessToken;
 

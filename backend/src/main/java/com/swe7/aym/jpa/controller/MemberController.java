@@ -16,7 +16,7 @@ import java.util.List;
 public class MemberController {
 
     private final MembersService memberService;
-    @PostMapping("/")
+    @PostMapping("")
     public Long save(@RequestBody MemberSaveDto requestDto){
         return memberService.save(requestDto);
     }

@@ -17,6 +17,7 @@ const Auth = () => {
                     }
                     else { //정상흐름
                         console.log("success!!!");
+                        localStorage.setItem("email", email);
                         console.log(email);
                         //메인페이지로 이동
                     }

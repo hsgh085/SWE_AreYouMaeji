@@ -15,7 +15,7 @@ import java.util.List;
 public class PostController {
     private final PostService postService;
 
-    @PostMapping("/")
+    @PostMapping("")
     public Long save(@RequestBody PostSaveDto requestDto) {
         return postService.save(requestDto);
     }
@@ -23,9 +23,9 @@ public class PostController {
     public PostDto findById(@PathVariable Long id){
         return postService.findById(id);
     }
-    @GetMapping("/")
-    public List<PostDto> findByRecent(){
-        return postService.findByRecent();
+    @GetMapping("")
+    public List<PostDto> findByRecentWithEmail(@RequestBody String email){
+        return postService.findByRecentWithEmail(email);
     }
     @GetMapping(value ="/search/{state}", headers = "key=state")
     public List<PostDto> findByState(@PathVariable int state){
@@ -34,10 +34,6 @@ public class PostController {
     @GetMapping(value ="/search/{keyword}", headers = "key=word")
     public List<PostDto> findByKeyword(@PathVariable String keyword){
         return postService.findByKeyword(keyword);
-    }
-    @GetMapping(value ="/search/{id}", headers = "key=id")
-    public List<PostDto> findByClientId(@PathVariable Long id){
-        return postService.findByClientId(id);
     }
     @GetMapping(value ="/search/{category}", headers = "key=cate")
     public List<PostDto> findByCategory(@PathVariable String category){

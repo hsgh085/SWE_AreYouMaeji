@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -21,17 +22,21 @@ public class Post implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "client_id")
+    @NotNull
     private Member client;
 
     @ManyToOne
     @JoinColumn(name = "helper_id")
+    @NotNull
     private Member helper;
 
     @Column(length = 4000)
+    @NotNull
     private String contents;
 
     @ManyToOne
     @JoinColumn(name = "category")
+    @NotNull
     private Category category;
 
     @ColumnDefault("0")
@@ -40,6 +45,7 @@ public class Post implements Serializable {
     private int helper_star;
     private int fee;
     private int cost;
+    @NotNull
     private String createTime;
     @ColumnDefault("0")
     private int state;
