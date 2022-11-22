@@ -1,13 +1,12 @@
 import { useEffect } from "react";
-import AuthenticationService from "./AuthenticationService";
 
-const getLoginOrReg = () => {
+const Auth = () => {
     const code = new URL(window.location.href).searchParams.get("code");
 
-    const getToken = async () => {
+    const getLoginOrReg = async () => {
         try {
             console.log(code);
-            fetch("http://localhost:8080/api/user/kakao?code=" + code)
+            fetch("http://localhost:8080/api/member/kakao?code=" + code)
                 .then((response) => response.json())
                 .then((res) => {
                     console.log(res);
@@ -18,7 +17,7 @@ const getLoginOrReg = () => {
                     }
                     else { //정상흐름
                         console.log("success!!!");
-                        AuthenticationService.registerSuccessfulLoginForJwt(email, res.jwt);
+                        console.log(email);
                         //메인페이지로 이동
                     }
                 });

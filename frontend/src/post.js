@@ -16,18 +16,6 @@ function handleSaveSubmit(event) {
         .then(() => window.location.reload());
 }
 
-function handleDeletePost(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    const value = Object.fromEntries(data.entries());
-    const id = value.id;
-    let model = {
-        method: 'DELETE'
-    };
-    fetch(`/api/posts/` + id, model)
-        .then((response) => response.json())
-        .then(() => window.location.reload());
-}
 
 function Write() {
 
@@ -45,14 +33,7 @@ function Write() {
                     <input type="reset"/>
                 </div>
             </form>
-
-            <form onSubmit={handleDeletePost} method="post" id="formTable">
-                <div>
-                    <input type='text' id='id' name='id' placeholder='ID'/>
-                </div>
-                <button type="submit">지우기</button>
-            </form>
-            <a href="https://kauth.kakao.com/oauth/authorize?client_id=e1a79b41fcfcd1cdc53b674ddca7fe1f&redirect_uri=http://localhost:3000/oauth/callback/kakao&response_type=code">test</a>
+           <a href="https://kauth.kakao.com/oauth/authorize?client_id=e1a79b41fcfcd1cdc53b674ddca7fe1f&redirect_uri=http://localhost:3000/oauth/callback/kakao&response_type=code">test</a>
         </div>
     );
 }

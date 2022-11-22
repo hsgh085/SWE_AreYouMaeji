@@ -17,8 +17,8 @@ services:
     ports:
       - ${BLUE_FRONTEND_PORT}:${BLUE_FRONTEND_PORT}
     environment:
-       - WDS_SOCKET_HOST=0.0.0.0
-       - WDS_SOCKET_PORT=0
+      - WDS_SOCKET_HOST=0.0.0.0
+      - WDS_SOCKET_PORT=0
     container_name: ${BLUE_FRONTEND_NAME}
 
   nginx:
@@ -57,3 +57,12 @@ services:
       - MARIADB_HOST=${MYSQL_HOST}
     restart: always
 
+  redis:
+    image: redis:alpine
+    container_name: redis
+    hostname: redis
+    labels:
+      - "name=redis"
+      - "mode=standalone"
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
