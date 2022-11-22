@@ -33,7 +33,7 @@ function Write() {
                     <input type="reset"/>
                 </div>
             </form>
-           <a href="https://kauth.kakao.com/oauth/authorize?client_id=e1a79b41fcfcd1cdc53b674ddca7fe1f&redirect_uri=http://ec2-3-38-226-253.ap-northeast-2.compute.amazonaws.com//oauth/callback/kakao&response_type=code">test</a>
+           <a href="https://kauth.kakao.com/oauth/authorize?client_id=e1a79b41fcfcd1cdc53b674ddca7fe1f&redirect_uri=http://ec2-3-38-226-253.ap-northeast-2.compute.amazonaws.com/oauth/callback/kakao&response_type=code">test</a>
         </div>
     );
 }
