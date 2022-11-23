@@ -1,12 +1,14 @@
 package com.swe7.aym.jpa.controller;
 
+import com.swe7.aym.jpa.UserDetails.UserDetailsImpl;
 import com.swe7.aym.jpa.member.Member;
+import com.swe7.aym.jpa.member.MembersService;
 import com.swe7.aym.jpa.member.dto.MemberDto;
 import com.swe7.aym.jpa.member.dto.MemberSaveDto;
 import com.swe7.aym.jpa.member.dto.MemberUpdateDto;
-import com.swe7.aym.jpa.member.MembersService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Role;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,7 +41,14 @@ public class MemberController {
     }
 
     @GetMapping("/findAll")
-    public List<Member> findAllMemberForDev(){
+    public List<Member> findAllMemberForDev(@AuthenticationPrincipal UserDetailsImpl userDetails, Model model){
+        if (userDetails != null) {
+            Member user = userDetails.getUser();
+            model.addAttribute("user", user);
+        } else {
+            model.addAttribute("user", "");
+        }
+        System.out.println(userDetails.getUser().getEmail());
         return memberService.findAll();
     }
 

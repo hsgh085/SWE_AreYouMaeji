@@ -6,24 +6,29 @@ import com.google.gson.JsonParser;
 import com.swe7.aym.jpa.member.dto.MemberDto;
 import com.swe7.aym.jpa.member.dto.MemberSaveDto;
 import com.swe7.aym.jpa.member.dto.MemberUpdateDto;
-import com.swe7.aym.redis.token.Token;
-import com.swe7.aym.redis.token.TokenRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 @Transactional
-public class MembersService {
+public class MembersService implements UserDetailsService {
     private final MemberRepository memberRepository;
-    private final TokenRepository tokenRepository;
+    private final UserDetailsService userDetailsService;
 
     public Long save(MemberSaveDto requestDto){
         memberRepository.findByEmail(requestDto.getEmail()).ifPresent(m -> {
@@ -101,7 +106,7 @@ public class MembersService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=e1a79b41fcfcd1cdc53b674ddca7fe1f");
-            sb.append("&redirect_uri=http://ec2-3-38-226-253.ap-northeast-2.compute.amazonaws.com/oauth/callback/kakao");
+            sb.append("&redirect_uri=http://localhost/oauth/callback/kakao");
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
@@ -144,15 +149,8 @@ public class MembersService {
             String email = kakao_account.getAsJsonObject().get("email").getAsString();
 
             Boolean isRegisteredMember = memberRepository.existsByEmail(email);
-
             if (isRegisteredMember){
-                Token token = Token.builder()
-                        .email(email)
-                        .accessToken(access_Token)
-                        .build();
 
-                if (!tokenRepository.existsByEmail(email))
-                    tokenRepository.save(token);
                 return this.findByEmail(email);
             }
             else {
@@ -164,4 +162,17 @@ public class MembersService {
         }
         return new MemberDto();
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Member member = this.findByEmail(username).toEntity();
+        List<GrantedAuthority> authorityList = new ArrayList<>();
+        authorityList.add(new SimpleGrantedAuthority(member.getAuthority().toString()));
+        return User.builder()
+                .username(member.getEmail())
+                .password(member.getEmail())
+                .authorities(authorityList)
+                .build();
+    }
+
 }

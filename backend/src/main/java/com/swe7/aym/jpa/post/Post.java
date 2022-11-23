@@ -27,7 +27,6 @@ public class Post implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "helper_id")
-    @NotNull
     private Member helper;
 
     @Column(length = 4000)
