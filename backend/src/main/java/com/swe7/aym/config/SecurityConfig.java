@@ -1,38 +1,36 @@
 package com.swe7.aym.config;
 
-import org.springframework.context.annotation.Bean;
+import com.swe7.aym.jpa.UserDetails.CustomOAuth2UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+@RequiredArgsConstructor
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    public WebSecurityCustomizer configure() {
-        return (web) -> web.ignoring().mvcMatchers(
-                "/swagger-ui/**",
-                "/v3/api-docs",
-                "/swagger-resources/**",
-                "/webjars/**",
-                "/"
-        );
-    }
+    private final CustomOAuth2UserService customOAuth2UserService;
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authorizeRequests()
-                .antMatchers("/api/member/kakao").permitAll()
-                .antMatchers("/api/member/findAll").permitAll()
-                .anyRequest().hasRole("USER")
-                .and()
-                .httpBasic().disable()
-                .formLogin().disable()
-                .cors().disable()
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http
                 .csrf().disable()
-                .authorizeRequests().and().build();
+                .httpBasic().disable()
+                .headers().frameOptions().disable()
+                .and().authorizeRequests()
+                .antMatchers("/swagger-ui/**", "/v3/api-docs",
+                        "/swagger-resources/**", "/webjars/**", "/").permitAll()
+                .antMatchers("/api/member/kakao").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .logout().logoutSuccessUrl("/")
+                .and()
+                .oauth2Login()
+                .userInfoEndpoint()
+                .userService(customOAuth2UserService);
+
     }
 }

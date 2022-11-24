@@ -1,21 +1,18 @@
 package com.swe7.aym.jpa.controller;
 
-import com.swe7.aym.jpa.UserDetails.UserDetailsImpl;
 import com.swe7.aym.jpa.member.Member;
 import com.swe7.aym.jpa.member.MembersService;
 import com.swe7.aym.jpa.member.dto.MemberDto;
 import com.swe7.aym.jpa.member.dto.MemberSaveDto;
 import com.swe7.aym.jpa.member.dto.MemberUpdateDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/api/member/*")
+@RequestMapping(value = "/api/member")
 public class MemberController {
 
     private final MembersService memberService;
@@ -40,25 +37,17 @@ public class MemberController {
         return memberService.incNoRep(email);
     }
 
-    @GetMapping("/findAll")
-    public List<Member> findAllMemberForDev(@AuthenticationPrincipal UserDetailsImpl userDetails, Model model){
-        if (userDetails != null) {
-            Member user = userDetails.getUser();
-            model.addAttribute("user", user);
-        } else {
-            model.addAttribute("user", "");
-        }
-        System.out.println(userDetails.getUser().getEmail());
+    @GetMapping(path = "/findAll")
+    public List<Member> findAllMemberForDev(){
         return memberService.findAll();
     }
 
     @GetMapping(value="/kakao")
-    public MemberDto kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
+    public MemberDto kakaoLogin(@RequestParam(value = "code", required = false) String code) {
 
         String access_Token = memberService.getAccessToken(code);
         MemberDto memberDto = memberService.getMemberInfo(access_Token);
 
         return memberDto;
     }
-
 }

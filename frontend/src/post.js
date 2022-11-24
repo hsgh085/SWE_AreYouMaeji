@@ -16,6 +16,12 @@ function handleSaveSubmit(event) {
         .then(() => window.location.reload());
 }
 
+function handleTest(event) {
+    event.preventDefault();
+    fetch(`/api/member/findAll`)
+      .then((response) => response.json())
+      .then((res) => console.log(res));
+}
 
 function Write() {
 
@@ -33,7 +39,7 @@ function Write() {
                     <input type="reset"/>
                 </div>
             </form>
-           <a href="https://kauth.kakao.com/oauth/authorize?client_id=e1a79b41fcfcd1cdc53b674ddca7fe1f&redirect_uri=http://localhost/oauth/callback/kakao&response_type=code">test</a>
+            <button onClick={handleTest}>testForAuth</button>
         </div>
     );
 }

@@ -72,7 +72,7 @@ public class Post implements Serializable {
         this.state = state;
     }
 
-    public void updateState(int state) {
-        this.state = state;
+    public void updateHelper(Member helper) {
+        this.helper = helper;
     }
 }

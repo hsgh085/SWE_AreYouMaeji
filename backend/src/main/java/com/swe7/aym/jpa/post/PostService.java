@@ -2,10 +2,12 @@ package com.swe7.aym.jpa.post;
 
 import com.swe7.aym.jpa.category.Category;
 import com.swe7.aym.jpa.category.CategoryRepository;
+import com.swe7.aym.jpa.member.Member;
 import com.swe7.aym.jpa.member.MembersService;
 import com.swe7.aym.jpa.member.dto.MemberDto;
 import com.swe7.aym.jpa.post.dto.PostDto;
 import com.swe7.aym.jpa.post.dto.PostEndDto;
+import com.swe7.aym.jpa.post.dto.PostMatchDto;
 import com.swe7.aym.jpa.post.dto.PostSaveDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -54,10 +56,11 @@ public class PostService {
         return id;
     }
 
-    public Long updateState(Long id, int state) {
+    public Long updateHelper(Long id, PostMatchDto postMatchDto) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다!"));
-        post.updateState(state);
+        Member helper = membersService.findByEmail(postMatchDto.getHelper_email()).toEntity();
+        post.updateHelper(helper);
         return id;
     }
 

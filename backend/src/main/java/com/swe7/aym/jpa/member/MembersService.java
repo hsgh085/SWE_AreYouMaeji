@@ -28,7 +28,6 @@ import java.util.Optional;
 @Transactional
 public class MembersService implements UserDetailsService {
     private final MemberRepository memberRepository;
-    private final UserDetailsService userDetailsService;
 
     public Long save(MemberSaveDto requestDto){
         memberRepository.findByEmail(requestDto.getEmail()).ifPresent(m -> {
