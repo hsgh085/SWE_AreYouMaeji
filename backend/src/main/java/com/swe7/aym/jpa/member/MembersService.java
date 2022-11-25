@@ -6,28 +6,24 @@ import com.google.gson.JsonParser;
 import com.swe7.aym.jpa.member.dto.MemberDto;
 import com.swe7.aym.jpa.member.dto.MemberSaveDto;
 import com.swe7.aym.jpa.member.dto.MemberUpdateDto;
+import com.swe7.aym.redis.token.Token;
+import com.swe7.aym.redis.token.TokenRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 @Transactional
-public class MembersService implements UserDetailsService {
+public class MembersService{
     private final MemberRepository memberRepository;
+    private final TokenRepository tokenRepository;
 
     public Long save(MemberSaveDto requestDto){
         memberRepository.findByEmail(requestDto.getEmail()).ifPresent(m -> {
@@ -92,7 +88,6 @@ public class MembersService implements UserDetailsService {
     }
 
     public String getAccessToken(String authorize_code) {
-
         String access_Token = "";
         String reqURL = "https://kauth.kakao.com/oauth/token";
         try {
@@ -148,8 +143,12 @@ public class MembersService implements UserDetailsService {
             String email = kakao_account.getAsJsonObject().get("email").getAsString();
 
             Boolean isRegisteredMember = memberRepository.existsByEmail(email);
+            Token token = Token.builder()
+                    .email(email)
+                    .accessToken(access_Token)
+                    .build();
+            tokenRepository.save(token);
             if (isRegisteredMember){
-
                 return this.findByEmail(email);
             }
             else {
@@ -162,16 +161,8 @@ public class MembersService implements UserDetailsService {
         return new MemberDto();
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Member member = this.findByEmail(username).toEntity();
-        List<GrantedAuthority> authorityList = new ArrayList<>();
-        authorityList.add(new SimpleGrantedAuthority(member.getAuthority().toString()));
-        return User.builder()
-                .username(member.getEmail())
-                .password(member.getEmail())
-                .authorities(authorityList)
-                .build();
-    }
+    public void logout(String email) {
+        String token = tokenRepository.findTokenByEmail(email).get().getAccessToken();
 
+    }
 }

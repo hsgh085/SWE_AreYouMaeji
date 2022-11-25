@@ -7,8 +7,8 @@ import com.swe7.aym.jpa.member.MembersService;
 import com.swe7.aym.jpa.member.dto.MemberDto;
 import com.swe7.aym.jpa.post.dto.PostDto;
 import com.swe7.aym.jpa.post.dto.PostEndDto;
-import com.swe7.aym.jpa.post.dto.PostMatchDto;
 import com.swe7.aym.jpa.post.dto.PostSaveDto;
+import com.swe7.aym.jpa.post.dto.PostSimpleDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +33,7 @@ public class PostService {
         Post res = Post.builder()
                 .client(client.toEntity())
                 .helper(helper.toEntity())
+                .product(requestDto.getProduct())
                 .contents(requestDto.getContents())
                 .category(categoryRepository.findByContextContaining(requestDto.getCategory()))
                 .client_star(0)
@@ -56,10 +57,10 @@ public class PostService {
         return id;
     }
 
-    public Long updateHelper(Long id, PostMatchDto postMatchDto) {
+    public Long updateHelper(Long id, String email) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다!"));
-        Member helper = membersService.findByEmail(postMatchDto.getHelper_email()).toEntity();
+        Member helper = membersService.findByEmail(email).toEntity();
         post.updateHelper(helper);
         return id;
     }
@@ -77,17 +78,17 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
-    public List<PostDto> findByRecentWithEmail(String email) {
+    public List<PostSimpleDto> findByRecentWithEmail(String email) {
         int state = 0; // 등록되서 매칭안된 것만
         MemberDto client = membersService.findByEmail(email);
-        List<PostDto> res = postRepository.findByClient(client.toEntity())
+        List<PostSimpleDto> res = postRepository.findByClient(client.toEntity())
                 .stream()
-                .map(PostDto::new)
+                .map(PostSimpleDto::new)
                 .collect(Collectors.toList());
 
         res.addAll(postRepository.findByStateOrderByCreateTime(state)
                 .stream()
-                .map(PostDto::new)
+                .map(PostSimpleDto::new)
                 .collect(Collectors.toList()));
         return res;
     }

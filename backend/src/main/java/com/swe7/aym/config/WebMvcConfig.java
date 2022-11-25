@@ -2,6 +2,7 @@ package com.swe7.aym.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -20,5 +21,17 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .allowCredentials(true)
                 .maxAge(MAX_AGE_SECS);
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry){
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/api/member/kakao")
+                .excludePathPatterns("/swagger-ui/**")
+                .excludePathPatterns("/api/v2/**")
+                .excludePathPatterns("/v3/api-docs")
+                .excludePathPatterns("/webjars/**")
+                .excludePathPatterns("/swagger-resources/**");
     }
 }

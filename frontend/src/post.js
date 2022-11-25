@@ -1,4 +1,5 @@
 import React from "react";
+import Home from "./Home";
 
 function handleSaveSubmit(event) {
     event.preventDefault();
@@ -18,28 +19,24 @@ function handleSaveSubmit(event) {
 
 function handleTest(event) {
     event.preventDefault();
-    fetch(`/api/member/findAll`)
+    let model = {
+        method: 'GET',
+        headers: {
+            Authorization : localStorage.getItem("email")
+        }
+    };
+    fetch(`/api/member/findAll`, model)
       .then((response) => response.json())
       .then((res) => console.log(res));
 }
+
 
 function Write() {
 
     return (
         <div className='Write'>
-            <form onSubmit={handleSaveSubmit} method="post" id="formTable">
-                <div>
-                    <input type='text' id='title' name='title' placeholder='제목'/>
-                </div>
-                <div>
-                    <input id='contents' name='contents' placeholder='게시글 내용'/>
-                </div>
-                <div id="submit_btn">
-                    <button type="submit">등록하기</button>
-                    <input type="reset"/>
-                </div>
-            </form>
             <button onClick={handleTest}>testForAuth</button>
+            <a href="https://kauth.kakao.com/oauth/authorize?client_id=e1a79b41fcfcd1cdc53b674ddca7fe1f&redirect_uri=http://localhost/oauth/callback/kakao&response_type=code">test</a>
         </div>
     );
 }

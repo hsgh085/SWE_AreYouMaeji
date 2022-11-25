@@ -8,15 +8,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PostSaveDto {
     private String client_email;
+
+    private String product;
     private String contents;
     private String category;
     private int fee;
     private int cost;
 
     @Builder
-    public PostSaveDto(String client, String contents,
+    public PostSaveDto(String client, String product, String contents,
                        String category, int fee, int cost) {
         this.client_email = client;
+        this.product = product;
         this.contents = contents;
         this.category = category;
         this.fee = fee;

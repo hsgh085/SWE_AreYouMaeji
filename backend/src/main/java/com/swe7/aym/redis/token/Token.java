@@ -6,9 +6,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
+import java.io.Serializable;
+
 @Getter
 @RedisHash(value = "members", timeToLive = 21600)
-public class Token{
+public class Token implements Serializable {
 
     @Id
     Long id;

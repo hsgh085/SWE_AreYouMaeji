@@ -29,6 +29,10 @@ public class Post implements Serializable {
     @JoinColumn(name = "helper_id")
     private Member helper;
 
+    @Column(length = 200)
+    @NotNull
+    private String product;
+
     @Column(length = 4000)
     @NotNull
     private String contents;
@@ -50,12 +54,13 @@ public class Post implements Serializable {
     private int state;
 
     @Builder
-    public Post(Member client, Member helper, String contents,
+    public Post(Member client, Member helper, String product, String contents,
                 Category category, int client_star, int helper_star,
                 int fee, int cost, String createTime, int state
                 ) {
         this.client = client;
         this.helper = helper;
+        this.product = product;
         this.contents = contents;
         this.category = category;
         this.client_star = client_star;
