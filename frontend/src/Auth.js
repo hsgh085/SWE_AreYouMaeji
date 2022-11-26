@@ -12,14 +12,13 @@ const Auth = () => {
                     console.log(res);
                     let email = res.email;
                     if (email == null){
-                        console.log("null");
-                        //회원가입으로 이동
+                      window.alert("카카오 로그인 실패");
+                      window.location.replace("/");
                     }
                     else { //정상흐름
-                        console.log("success!!!");
+                      window.alert("카카오 로그인 성공");
                         localStorage.setItem("email", email);
-                        console.log(email);
-                        //메인페이지로 이동
+                        window.location.replace("/main");
                     }
                 });
         } catch (err) {

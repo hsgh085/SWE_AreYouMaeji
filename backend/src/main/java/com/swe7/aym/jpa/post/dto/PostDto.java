@@ -14,6 +14,7 @@ public class PostDto {
     private Member client;
     private Member helper;
     private String contents;
+    private String destination;
     private Category category;
     private int client_star;
     private int helper_star;
@@ -27,6 +28,7 @@ public class PostDto {
         this.client = post.getClient();
         this.helper = post.getHelper();
         this.contents = post.getContents();
+        this.destination = post.getDestination();
         this.category = post.getCategory();
         this.client_star = post.getClient_star();
         this.helper_star = post.getHelper_star();

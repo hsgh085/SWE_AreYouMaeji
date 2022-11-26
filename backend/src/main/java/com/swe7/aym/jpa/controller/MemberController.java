@@ -5,9 +5,7 @@ import com.swe7.aym.jpa.member.MembersService;
 import com.swe7.aym.jpa.member.dto.MemberDto;
 import com.swe7.aym.jpa.member.dto.MemberSaveDto;
 import com.swe7.aym.jpa.member.dto.MemberUpdateDto;
-import com.swe7.aym.redis.token.TokenRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +17,6 @@ import java.util.List;
 public class MemberController {
 
     private final MembersService memberService;
-    private final TokenRepository tokenRepository;
-    private final RedisTemplate<String, Object> redisTemplate;
     @PostMapping("")
     public Long save(@RequestBody MemberSaveDto requestDto){
         return memberService.save(requestDto);
@@ -44,6 +40,8 @@ public class MemberController {
 
     @GetMapping(path = "/findAll")
     public List<Member> findAllMemberForDev(@RequestHeader(value="Authorization") String email) {
+        System.out.println(email);
+        System.out.println(memberService.findAll());
         return memberService.findAll();
     }
 

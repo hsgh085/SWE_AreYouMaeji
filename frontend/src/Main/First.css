@@ -1,0 +1,14 @@
+.first_sign-in {
+    display: flex;
+    justify-content: center;
+    height: 280px;
+    position: relative;
+    top: -50 px;
+}
+
+.first_kakao_logo {
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    width: 400px;
+}

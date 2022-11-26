@@ -8,6 +8,7 @@ services:
     container_name: ${BLUE_BACKEND_NAME}
     depends_on:
       - db
+      - redis
 
   react-blue:
     image: frontend

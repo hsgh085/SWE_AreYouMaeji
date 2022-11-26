@@ -1,14 +1,18 @@
 package com.swe7.aym.config;
 
+import com.swe7.aym.redis.token.TokenRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
+@RequiredArgsConstructor
 public class WebMvcConfig implements WebMvcConfigurer {
 
     private final long MAX_AGE_SECS = 3600;
+    private final TokenRepository tokenRepository;
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -22,10 +26,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .allowCredentials(true)
                 .maxAge(MAX_AGE_SECS);
     }
-
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(new LoginInterceptor())
+        registry.addInterceptor(new LoginInterceptor(tokenRepository))
                 .addPathPatterns("/**")
                 .excludePathPatterns("/api/member/kakao")
                 .excludePathPatterns("/swagger-ui/**")

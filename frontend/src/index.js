@@ -1,53 +1,22 @@
+/*안써도 되는 페이지, 17번째 줄만 Post,App,Test으로 변경 */
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
-import Write from "./post";
-import {BrowserRouter, Routes, Route} from "react-router-dom"
-import Auth from "./Auth";
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { StateProvider } from "./StateProvider";
+import reducer, { initialState } from "./Reducer";
+import * as ReactDOM from 'react-dom/client';
 
-class List extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            posts: [],
-        }
-        fetch('/api/posts')
-            .then(data => data.json())
-            .then(res => {
-                this.setState({
-                    posts: res,
-                })
-            })
-    }
-
-    render() {
-        return (
-            <div>
-                {
-                    this.state.posts.map(
-                        post => {
-                            return (
-                                <div key={post.boardId} className="outerBox">
-                                    <div> {post.boardId} </div>
-                                    <div> {post.title} </div>
-                                    <div> {post.contents} </div>
-                                </div>
-                            )
-                        })
-                }
-               <Write/>
-            </div>
-
-        )
-    }
-}
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<Write/>}></Route>
-            <Route path="/oauth/callback/kakao" element = {<Auth />} />
-        </Routes>
-    </BrowserRouter>
+    <StateProvider initialState={initialState} reducer={reducer}>
+
+      <App />
+
+    </StateProvider>
 );
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
