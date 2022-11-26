@@ -151,9 +151,9 @@ public class MembersService{
             if (isRegisteredMember){
                 return this.findByEmail(email);
             }
-            else {
-                return new MemberDto();
-            }
+            return new MemberDto(Member.builder()
+                    .email(email)
+                    .build());
 
         } catch (IOException e) {
             e.printStackTrace();

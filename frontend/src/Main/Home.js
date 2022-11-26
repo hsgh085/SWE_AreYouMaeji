@@ -12,9 +12,6 @@ function Home() {
     return (
 
         <div>
-            <button onClick={() => window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=e1a79b41fcfcd1cdc53b674ddca7fe1f&redirect_uri=http://localhost/oauth/callback/kakao&response_type=code")}>
-                login
-            </button>
             <Product />
             <Link to="/make">
                 <nav class="nav">
