@@ -82,7 +82,7 @@ public class PostService {
     public List<PostSimpleDto> findByRecentWithEmail(String email) {
         int state = 0; // 등록되서 매칭안된 것만
         MemberDto client = membersService.findByEmail(email);
-        List<PostSimpleDto> res = postRepository.findByClient(client.toEntity())
+        List<PostSimpleDto> res = postRepository.findByClientAndState(client.toEntity(), state)
                 .stream()
                 .map(PostSimpleDto::new)
                 .collect(Collectors.toList());
