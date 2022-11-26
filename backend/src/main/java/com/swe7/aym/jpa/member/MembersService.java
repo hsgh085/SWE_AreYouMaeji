@@ -100,7 +100,7 @@ public class MembersService{
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=e1a79b41fcfcd1cdc53b674ddca7fe1f");
-            sb.append("&redirect_uri=http://localhost/oauth/callback/kakao");
+            sb.append("&redirect_uri=http://ec2-3-38-226-253.ap-northeast-2.compute.amazonaws.com/oauth/callback/kakao");
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
