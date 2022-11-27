@@ -1,0 +1,65 @@
+.form-errand {
+    color: #003876;
+    padding: 10px 20px 5px;
+    border-top: 0.5px solid #003876;
+    position: relative;
+}
+
+.form-errand:hover:before {
+    border-top: 15px solid #003876;
+    box-shadow: 5px 5px 10px -1px #003876;
+}
+
+.form-errand:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top: 30px solid #003876;
+    border-left: 30px solid rgba(0, 0, 0, 0);
+    width: 0;
+    box-shadow: 5px 5px 10px -1px #003876;
+}
+
+.form-errand_name {
+    color: #003876;
+    font-size: 30px;
+    margin: 10px 10px;
+}
+
+.form-errand_detail {
+    color: #003876;
+    font-size: 18px;
+    margin: 20px 10px;
+}
+
+.person_phone_info_name {
+    font-size: large;
+}
+
+.person_phone_info {
+    margin: 10px 50px;
+    padding: 10px 5px;
+}
+
+.person_phonenumber {
+    margin: 10px 0px;
+    padding: 1px 1px;
+}
+
+.person_info {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 79px;
+}
+
+.person_info_full {
+    float: left;
+    height: 50%;
+    margin-bottom: -10px;
+}
+
+.person_call {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
