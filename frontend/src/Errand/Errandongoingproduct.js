@@ -1,54 +1,70 @@
 import React from 'react';
 import './Errandongoingproduct.css'
-import { useStateValue } from "./../StateProvider";
-import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import {useStateValue} from "./../StateProvider";
+import {Link} from "react-router-dom";
+import {useNavigate} from 'react-router-dom';
+
+function Errandongoingproduct(
+  {postId, client_phone, client_nick, category, fee, cost, destination, contents, product}
+) {
 
 
-
-
-function Errandongoingproduct({ title, price, errand_price }) {
-    const [{ product }, dispatch] = useStateValue();
-
-    const navigate = useNavigate();
-
-    const navigateToPurchase = () => {
-
-        navigate("/main");
-        window.location.reload();
+  function handlePostMatched(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const value = Object.fromEntries(data.entries());
+    let model = {
+      method: 'PUT',
+      headers: {
+        Authorization: localStorage.getItem("email"),
+        'Content-Type': 'application/json'
+      }
     };
+    fetch(`/api/posts/` + data.get("id")+ `/matched`, model)
+      .then((res) => res.json())
+      .then((res) => {
+          window.alert("!!!!");//????????????????
+          window.location.replace("/main");//????????????????
+      })
+  }
 
-    return (
-        <div className='Errandmake'>
-            <form>
-
-                <div class="container">
-                    <h3 class="main">상품명</h3>
-                    <div class="main">{title}</div>
-                </div>
-                <div class="container">
-                    <h3 class="main">상품 비용</h3>
-                    <div class="main">{price} 원</div>
-                </div>
-                <div class="container">
-                    <h3 class="main">심부름 비용</h3>
-                    <div class="main">{errand_price} 원</div>
-                </div>
-                <div class="container">
-                    <h3 class="main">심부름 내용</h3>
-                    <div class="main"> 자바스크립트와 웹 개발에 대한 지식을 전부 학습하고 난 다음 React 학습을 시작 하는 건 아주 이상적인 학습법입니다. 하지만 불행하게도 우리는 이상적인 세상에 살고 있지 않습니다. 자바스크립트를 모두 소화하고 난 다음 React를 시작하겠다고 마음먹으면 오히려 내상을 입을 수 있습니다. </div>
-                </div>
-                <div class="container">
-                    <h3 class="main">고객</h3>
-                    <div class="person_phonenumber"><i class="main"></i>  전화번호 ( 안심번호 ) : +8210-8765-4321</div>
-                </div>
-                <input type="button" class="button" value="취소" onClick={navigateToPurchase}></input>
-
-                <input type="button" class="button" value="접수" onClick={navigateToPurchase}></input>
-
-            </form >
-        </div >
-    );
+  return (
+    <div className='Errandmake'>
+      <form onSubmit={handlePostMatched}>
+        <input type="text" name="id" value={postId} hidden/>
+        <div class="container">
+          <h3 class="main">상품명</h3>
+          <div class="main">{product}</div>
+        </div>
+        <div className="container">
+          <h3 className="main">상품 판매처</h3>
+          <div className="main">{category}</div>
+        </div>
+        <div class="container">
+          <h3 class="main">상품 비용</h3>
+          <div class="main">{cost} 원</div>
+        </div>
+        <div class="container">
+          <h3 class="main">심부름 비용</h3>
+          <div class="main">{fee} 원</div>
+        </div>
+        <div class="container">
+          <h3 class="main">심부름 내용</h3>
+          <div class="main">{contents}</div>
+        </div>
+        <div class="container">
+          <h3 class="main">거래 장소</h3>
+          <div class="main">{destination}</div>
+        </div>
+        <div class="container">
+          <h3 class="main">고객 : {client_nick}</h3>
+          <div class="person_phonenumber"><i class="main"></i> 전화번호 ( 안심번호 ) : {client_phone}</div>
+        </div>
+        <input type="button" class="button" value="취소" onClick={() => window.location.replace("/main")}></input>
+        <input type="submit" class="button" value="접수"></input>
+      </form>
+    </div>
+  );
 }
 
 export default Errandongoingproduct;

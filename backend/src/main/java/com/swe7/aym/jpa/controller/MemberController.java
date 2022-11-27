@@ -40,8 +40,6 @@ public class MemberController {
 
     @GetMapping(path = "/findAll")
     public List<Member> findAllMemberForDev(@RequestHeader(value="Authorization") String email) {
-        System.out.println(email);
-        System.out.println(memberService.findAll());
         return memberService.findAll();
     }
 

@@ -18,7 +18,7 @@ public class PostController {
         return postService.save(requestDto);
     }
     @GetMapping("/{id}")
-    public PostDto findById(@PathVariable Long id){
+    public PostResponseDto findById(@PathVariable Long id){
         return postService.findById(id);
     }
     @GetMapping("")

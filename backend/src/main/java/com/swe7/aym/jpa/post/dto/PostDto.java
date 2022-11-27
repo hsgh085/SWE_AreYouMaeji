@@ -23,6 +23,8 @@ public class PostDto {
     private String create_time;
     private int state;
 
+    private String product;
+
     public PostDto(Post post) {
         this.postId = post.getPostId();
         this.client = post.getClient();
@@ -36,6 +38,7 @@ public class PostDto {
         this.cost = post.getCost();
         this.create_time = post.getCreateTime();
         this.state = post.getState();
+        this.product = post.getProduct();
     }
 
 }

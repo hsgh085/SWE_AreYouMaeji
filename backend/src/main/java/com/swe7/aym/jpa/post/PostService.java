@@ -5,10 +5,7 @@ import com.swe7.aym.jpa.category.CategoryRepository;
 import com.swe7.aym.jpa.member.Member;
 import com.swe7.aym.jpa.member.MembersService;
 import com.swe7.aym.jpa.member.dto.MemberDto;
-import com.swe7.aym.jpa.post.dto.PostDto;
-import com.swe7.aym.jpa.post.dto.PostEndDto;
-import com.swe7.aym.jpa.post.dto.PostSaveDto;
-import com.swe7.aym.jpa.post.dto.PostSimpleDto;
+import com.swe7.aym.jpa.post.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,10 +63,10 @@ public class PostService {
         return id;
     }
 
-    public PostDto findById(Long target_id) {
+    public PostResponseDto findById(Long target_id) {
         Post entity = postRepository.findById(target_id)
                 .orElseThrow(() -> new IllegalArgumentException("게시글 조회 : 잘못된 아이디"));
-        return new PostDto(entity);
+        return new PostResponseDto(entity);
     }
 
     public List<PostDto> findByState(int target_state) {

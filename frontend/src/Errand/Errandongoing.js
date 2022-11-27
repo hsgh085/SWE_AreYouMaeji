@@ -1,27 +1,46 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Errandongoing.css'
-import { Link } from "react-router-dom";
-import { useStateValue } from "./../StateProvider";
 import Errandongoingproduct from "./Errandongoingproduct";
+import {useParams} from "react-router-dom";
 
-function Errandongoing({ title, price, errand_price }) {
+function Errandongoing() {
 
-    const [{ product }, dispatch] = useStateValue();
+  const [post, setPost] = useState([]);
+  let {id} = useParams();
 
-    return (
+  useEffect(() => {
+    let model = {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem("email")
+      }
+    };
+    console.log(id)
+    fetch(`/api/posts/` + id, model)
+      .then((res) => res.json())
+      .then((res) => setPost(res));
+  }, []);
 
-        <header class="form-errand">
+  return (
+    <header class="form-errand">
+      {
+          <Errandongoingproduct
+            postId = {post.postId}
+            client_phone = {post.client_phone}
+            client_nick = {post.client_nick}
+            helper_phone = {post.helper_phone}
+            helper_nick = {post.helper_nick}
+            contents = {post.contents}
+            destination = {post.destination}
+            category = {post.category}
+            product = {post.product}
+            fee = {post.fee}
+            cost = {post.cost}
+          />
+      }
+    </header>
 
-            {product.map(item => (
-                <Errandongoingproduct
-                    title={item.title}
-                    price={item.price}
-                    errand_price={item.errand_price}
-                />
-            ))}
-        </header>
-
-    );
+  );
 
 }
 

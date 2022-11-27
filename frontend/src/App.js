@@ -28,7 +28,7 @@ function App() {
           <Route path="/Signup" element={<Signup />} />
           <Route path="/main" element={[<Headersearch />, <Home />]} />
           <Route path="/make" element={[<Header />, <Errandmake />]} />
-          <Route path="/Errandongoing" element={[<Header_do />, <Errandongoing />]} />
+          <Route path="/Errandongoing/:id" element={[<Header_do />, <Errandongoing />]} />
           <Route path="/Termsofagree" element={<Termsofagree />} />
           <Route path="/Category" element={[<Header />, <Category />]} />
           <Route path="/MyPage" element={<MyPage />} />

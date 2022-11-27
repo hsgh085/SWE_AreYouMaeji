@@ -83,5 +83,6 @@ public class Post implements Serializable {
 
     public void updateHelper(Member helper) {
         this.helper = helper;
+        this.state = 1;
     }
 }

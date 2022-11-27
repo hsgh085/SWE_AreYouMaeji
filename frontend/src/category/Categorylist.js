@@ -1,8 +1,10 @@
 import React from 'react';
-function Categorylist({ Icon, location }) {
+import {IoIosAddCircle} from "react-icons/io";
+function Categorylist({ Key, location }) {
 
     return (
-        <div ><p>{Icon} {location}</p>
+        <div key={Key}>
+            <p><IoIosAddCircle /> {location}</p>
         </div >
 
     );
