@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStateValue } from "../StateProvider";
 import { Link } from "react-router-dom";
 import './Termsofagree.css'
 

@@ -1,0 +1,60 @@
+.container {
+    padding: 0px;
+}
+
+input{
+    font: 8px/8px 'Muli', sans-serif;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+:focus {
+    outline: none;
+}
+
+.col-3 {
+    padding-top: -15px;
+    width: auto;
+    margin: 20px;
+    margin-top: 5px;
+    position: relative;
+}
+
+input[type="text"] {
+    font: 15px/24px "Lato", Arial, sans-serif;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+.effect-1 {
+    width: 280px;
+    padding: 7px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.effect-1~.focusBorder {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #282b58;
+    transition: 0.4s;
+}
+
+.effect-1:focus~.focusBorder {
+    width: 100%;
+    transition: 0.4s;
+}
+
+.title {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}

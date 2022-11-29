@@ -9,31 +9,6 @@
     font-size: 40px;
 }
 
-.button {
-    width: 180px;
-    height: 40px;
-    margin-left: 15px;
-    margin-top: 0px;
-    color: #fff;
-    background: #182b58;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
-    transition: 0.3s;
-    position: relative;
-    left: -5px;
-}
-
-.button:focus {
-    outline: 0;
-}
-
-.button:hover {
-    background: rgba(0, 79, 255, 0.9);
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 79, 255, 0.6);
-}
 
 .kakao_logo {
     width: 400px;
@@ -49,6 +24,7 @@
     bottom: 21px;
     left: 15px;
     margin: 2px;
+
 }
 
 .form_signup {
@@ -98,4 +74,85 @@
     font-size: 12px;
     top: -8px;
     font-weight: 300;
+}
+
+.wrapper {
+    padding: 3px;
+    position: relative;
+    bottom: 21px;
+    left: 25px;
+    margin: 2px;
+
+    place-items: center;
+    display: flex;
+}
+
+.wrapper .option {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 10px;
+    border: 2px solid lightgrey;
+    transition: all 0.3s ease;
+}
+
+.wrapper .option .dot {
+    height: 20px;
+    width: 20px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    position: relative;
+}
+
+.wrapper .option .dot::before {
+    position: absolute;
+    content: "";
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    background: #182b58;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1.5);
+    transition: all 0.3s ease;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#option-1:checked:checked~.option-1,
+#option-2:checked:checked~.option-2,
+#option-3:checked:checked~.option-3 {
+    border-color: #182b58;
+    background: #182b58;
+}
+
+#option-1:checked:checked~.option-1 .dot,
+#option-2:checked:checked~.option-2 .dot,
+#option-3:checked:checked~.option-3 .dot {
+    background: #fff;
+}
+
+#option-1:checked:checked~.option-1 .dot::before,
+#option-2:checked:checked~.option-2 .dot::before,
+#option-3:checked:checked~.option-3 .dot::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.wrapper .option span {
+    font-size: 20px;
+    color: #808080;
+}
+
+#option-1:checked:checked~.option-1 span,
+#option-2:checked:checked~.option-2 span,
+#option-3:checked:checked~.option-3 span {
+    color: #fff;
 }

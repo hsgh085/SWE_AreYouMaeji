@@ -49,9 +49,10 @@ public class Member implements Serializable {
         this.authority = authority;
     }
 
-    public void update(String nickname, String phone_number, int no_report) {
+    public void update(String nickname, String phone_number, int gender, int no_report) {
         this.nickname = nickname;
         this.phone_number = phone_number;
         this.no_report = no_report;
+        this.gender= gender;
     }
 }

@@ -1,0 +1,16 @@
+.btn {
+    width:50%;
+    height: 30px;
+    color:white;
+    background: var(--color-blue);
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--color-light-blue);
+    cursor: pointer;
+    box-shadow: 0 2px 4px var(--color-light-blue);
+}

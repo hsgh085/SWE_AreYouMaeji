@@ -38,8 +38,8 @@ public class PostController {
         return postService.findByCategory(category);
     }
     @PutMapping("/{id}/end")
-    public Long updateEnd(@PathVariable Long id, @RequestBody PostEndDto postEndDto) {
-        return postService.updateEnd(id, postEndDto);
+    public Long updateEnd(@PathVariable Long id, @RequestBody PostEndDto postEndDto, @RequestHeader(value="Authorization") String email) {
+        return postService.updateEnd(id, postEndDto, email);
     }
     @PutMapping("/{id}/matched")
     public Long updateMatched(@PathVariable Long id, @RequestHeader(value="Authorization") String email) {

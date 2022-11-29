@@ -11,14 +11,14 @@ import Header from './component/Header/Header';
 import Signup from './Sign/Signup';
 import Termsofagree from './Sign/Termsofagree';
 import First from './Main/First';
-import MyPage from './Mypage/MyPage';
-import Ask from './Mypage/Ask';
 import CancelledErrand from './Mypage/CancelledErrand';
 import ErrandDist from './Mypage/ErrandDist';
-import ProfileSetting from './Mypage/ProfileSetting';
-import TermsOfService from './Mypage/TermsOfService';
 import Auth from "./Auth";
 import React from "react";
+import Rate from "./component/Rate/Rate";
+import MyPageMain from "./Mypage/MyPageMain/MyPageMain";
+import ProfileSetting from "./Mypage/ProfileSetting/ProfileSetting";
+import TermsOfService from "./Mypage/TermsOfService/TermsOfService";
 function App() {
   return (
     <Router>
@@ -31,13 +31,15 @@ function App() {
           <Route path="/Errandongoing/:id" element={[<Header_do />, <Errandongoing />]} />
           <Route path="/Termsofagree" element={<Termsofagree />} />
           <Route path="/Category" element={[<Header />, <Category />]} />
-          <Route path="/MyPage" element={<MyPage />} />
           <Route path="/Ask" element={[<Header />, <Ask />]} />
           <Route path="/CancelledErrand" element={[<Header />, <CancelledErrand />]} />
           <Route path="/ErrandDist" element={[<Header />, <ErrandDist />]} />
           <Route path="/ProfileSetting" element={[<Header />, <ProfileSetting />]} />
           <Route path="/TermsOfService" element={[<Header />, <TermsOfService />]} />
           <Route path="/oauth/callback/kakao" element = {<Auth />} />
+          <Route path="/test" element = {<Rate />} />
+          <Route path="/test1" element = {<MyPageMain />} />
+          <Route path="/test2" element = {<ProfileSetting />} />
         </Routes>
       </div>
     </Router>

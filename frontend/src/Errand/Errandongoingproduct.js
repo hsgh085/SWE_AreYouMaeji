@@ -1,8 +1,5 @@
 import React from 'react';
 import './Errandongoingproduct.css'
-import {useStateValue} from "./../StateProvider";
-import {Link} from "react-router-dom";
-import {useNavigate} from 'react-router-dom';
 
 function Errandongoingproduct(
   {postId, client_phone, client_nick, category, fee, cost, destination, contents, product}

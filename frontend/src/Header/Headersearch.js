@@ -1,12 +1,10 @@
 import React from 'react';
 import './Headersearch.css'
 import { Link } from "react-router-dom";
-import { useStateValue } from "../StateProvider";
 import { TiEquals } from "react-icons/ti";
 import { SlUser } from "react-icons/sl";
 
 function Header() {
-    const [{ product }, dispatch] = useStateValue();
     return (
         <div className='header'>
             <Link to="/main" >

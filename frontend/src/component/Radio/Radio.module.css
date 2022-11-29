@@ -1,0 +1,29 @@
+.box{
+    display:flex;
+    margin:1rem;
+}
+.radio{
+    appearance:none;
+    display:none;
+}
+.label{
+    width:100px;
+    text-align:center;
+    border-radius:10px;
+    line-height:200%;
+    transition-duration:.5s;
+    transition-property:transform, color, box-shadow;
+    transform:none;
+    background: var(--color-grey);
+}
+.label:hover{
+    background:var(--color-yellow);
+    box-shadow:0 0 4px var(--color-grey),0 2px 4px var(--color-grey);
+    transform:translateY(-2px);
+    cursor: pointer;
+}
+.radio:checked+.label{
+    background:var(--color-yellow);
+    box-shadow:0 0 4px rgba(0,0,0,.5),0 2px 4px rgba(0,0,0,.5);
+    transform:translateY(-2px);
+}

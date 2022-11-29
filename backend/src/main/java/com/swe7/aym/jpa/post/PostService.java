@@ -44,14 +44,18 @@ public class PostService {
         return postRepository.save(res).getPostId();
     }
 
-    public Long updateEnd(Long id, PostEndDto postEndDto) {
+    public Long updateEnd(Long id, PostEndDto postEndDto, String email) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다!"));
-        post.updateEnd(
-                postEndDto.getClient_star(),
-                postEndDto.getHelper_star(),
-                postEndDto.getState()
-        );
+        int client_star = 0;
+        int helper_star = 0;
+        if (post.getClient().getEmail().equals(email)){
+            client_star = postEndDto.getStar();
+        }
+        if (post.getHelper().getEmail().equals(email)){
+            helper_star = postEndDto.getStar();
+        }
+        post.updateEnd( client_star, helper_star, 2);
         return id;
     }
 
