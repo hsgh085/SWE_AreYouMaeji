@@ -16,6 +16,8 @@ export default function ProfileSetting() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
+    console.log(form.gender)
+    data.append("gender", form.gender);
     const value = Object.fromEntries(data.entries());
     let model = {
       method: 'PUT',

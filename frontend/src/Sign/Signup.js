@@ -37,39 +37,35 @@ function Signup() {
                 <div class="containersign">
                     <h2 className="form_signup">전화번호</h2>
                     <div class="input-area">
-                        <input name="phone_number" type="text"/>
-                        <label for="input" class="placeholder">전화번호를 입력해주세요</label>
+                        <input name="phone_number" type="text" required/>
+                        <span htmlFor="input" className="placeholder">전화번호를 입력해주세요</span>
                     </div>
                 </div>
                 <div class="containersign">
                     <h2 className="form_signup">닉네임</h2>
                     <div class="input-area">
-                        <input name="nickname" type="text"/>
-                        <label for="input" class="placeholder">닉네임을 입력해주세요</label>
+                        <input name="nickname" type="text" required/>
+                        <span htmlFor="input" className="placeholder">닉네임을 입력해주세요</span>
                     </div>
                 </div>
                 <div className="containersign">
                     <h2 className="form_signup">성별</h2>
                     <div className="wrapper">
-
-                        <input type="radio" name="gender" id="option-1" value="1" checked></input>
+                        <input type="radio" name="gender" id="option-1" value="1" defaultChecked></input>
                         <input type="radio" name="gender" id="option-2" value="2"></input>
-                        <input type="radio" name="gender" id="option-3" value="3"></input>
                         <label htmlFor="option-1" className="option option-1">
-
                             <span>남자</span>
                         </label>
                         <label htmlFor="option-2" className="option option-2">
-
                             <span>여자</span>
-                        </label>
-                        <label htmlFor="option-3" className="option option-3">
-
-                            <span>미제공</span>
                         </label>
                     </div>
                 </div>
             </div>
+            <input type="image"
+                   className="kakao_logo"
+                   src="https://i.esdrop.com/d/f/uVJApfFjHN/9Lm456HH7s.png" alt=""
+            />
         </form>
     );
 }

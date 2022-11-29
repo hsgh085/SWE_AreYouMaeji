@@ -23,7 +23,7 @@ export default function MyPageMain() {
         <ul>
           <li>
             <p>성별</p>
-            <p>{user.gender ? "여자" : "남자"}</p>
+            <p>{user.gender == 1 ? "남자" : "여자"}</p>
           </li>
           <li>
             <p>전화번호</p>

@@ -31,7 +31,6 @@ function App() {
           <Route path="/Errandongoing/:id" element={[<Header_do />, <Errandongoing />]} />
           <Route path="/Termsofagree" element={<Termsofagree />} />
           <Route path="/Category" element={[<Header />, <Category />]} />
-          <Route path="/Ask" element={[<Header />, <Ask />]} />
           <Route path="/CancelledErrand" element={[<Header />, <CancelledErrand />]} />
           <Route path="/ErrandDist" element={[<Header />, <ErrandDist />]} />
           <Route path="/ProfileSetting" element={[<Header />, <ProfileSetting />]} />

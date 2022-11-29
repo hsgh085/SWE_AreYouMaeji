@@ -69,11 +69,13 @@
     caret-color: var(—main-color);
 }
 
-.input-area input[type="text"]:focus+.placeholder {
+.input-area input[type="text"]:focus+.placeholder,
+input:not(:focus):valid+.placeholder{
     color: var(—main-color);
     font-size: 12px;
     top: -8px;
     font-weight: 300;
+    pointer-events: none;
 }
 
 .wrapper {

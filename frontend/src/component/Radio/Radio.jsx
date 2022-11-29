@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import RadioContext from "../../../../../../Downloads/project-heeseon/project-heeseon/src/context/RadioContext";
 import styles from "./Radio.module.css";
+import RadioContext from "../../context/RadioContext";
 
 export default function Radio({ children, value, name, defaultChecked }) {
   const group = useContext(RadioContext);
