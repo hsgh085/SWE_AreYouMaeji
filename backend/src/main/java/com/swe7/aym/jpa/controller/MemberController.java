@@ -33,9 +33,9 @@ public class MemberController {
     public float getAvgStar(@RequestHeader(value="Authorization") String email){
         return memberService.getAvgStar(email);
     }
-    @GetMapping("/report")
-    public Boolean incNoRep(@RequestHeader(value="Authorization") String email){
-        return memberService.incNoRep(email);
+    @PutMapping("/report/{id}")
+    public Boolean incNoRep(@PathVariable Long id, @RequestHeader(value="Authorization") String email){
+        return memberService.incNoRep(id, email);
     }
 
     @GetMapping(path = "/findAll")

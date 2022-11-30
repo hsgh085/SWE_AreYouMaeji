@@ -62,7 +62,6 @@ export default function Rate() {
 
     return (
         <>
-            <button onClick={handleStarSubmit}>test</button>
             <Stars>
                 {ARRAY.map((el, idx) => {
                     return (

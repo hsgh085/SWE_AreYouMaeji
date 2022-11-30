@@ -6,6 +6,8 @@ import com.google.gson.JsonParser;
 import com.swe7.aym.jpa.member.dto.MemberDto;
 import com.swe7.aym.jpa.member.dto.MemberSaveDto;
 import com.swe7.aym.jpa.member.dto.MemberUpdateDto;
+import com.swe7.aym.jpa.post.Post;
+import com.swe7.aym.jpa.post.PostRepository;
 import com.swe7.aym.redis.token.Token;
 import com.swe7.aym.redis.token.TokenRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.Optional;
 public class MembersService{
     private final MemberRepository memberRepository;
     private final TokenRepository tokenRepository;
+    private final PostRepository postRepository;
 
     public Long save(MemberSaveDto requestDto){
         memberRepository.findByEmail(requestDto.getEmail()).ifPresent(m -> {
@@ -71,18 +74,15 @@ public class MembersService{
         }
     }
 
-    public Boolean incNoRep(String email) {
-        Optional<Member> member = memberRepository.findByEmail(email);
-        if (member.isPresent()) {
-            member.get().update(
-                    member.get().getNickname(),
-                    member.get().getPhone_number(),
-                    member.get().getGender(),
-                    member.get().getNo_report() + 1
-            );
-            return true;
+    public Boolean incNoRep(Long id, String email) {
+        Post post = postRepository.findById(id).get();
+        if(post.getClient().getEmail().equals(email)){
+            post.getHelper().updateReport();
         }
-        else return false;
+        else {
+            post.getClient().updateReport();
+        }
+        return true;
     }
 
     public List<Member> findAll(){

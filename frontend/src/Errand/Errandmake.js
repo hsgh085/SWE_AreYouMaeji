@@ -21,6 +21,7 @@ function Errandmake() {
         const data = new FormData(event.target);
         data.append("client_email", localStorage.getItem("email"));
         const value = Object.fromEntries(data.entries());
+        console.log(value);
         let model = {
             method: 'POST',
             body: JSON.stringify(value),
@@ -55,7 +56,7 @@ function Errandmake() {
                           category.map(
                             t => {
                                 return (
-                                  <option value={t.id}>{t.context}</option>
+                                  <option value={t.context}>{t.context}</option>
                                 )
                             }
                           )

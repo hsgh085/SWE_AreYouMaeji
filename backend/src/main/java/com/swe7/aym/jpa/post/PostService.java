@@ -55,7 +55,7 @@ public class PostService {
         if (post.getHelper().getEmail().equals(email)){
             helper_star = postEndDto.getStar();
         }
-        post.updateEnd( client_star, helper_star, 2);
+        post.updateEnd( client_star, helper_star);
         return id;
     }
 
@@ -108,5 +108,11 @@ public class PostService {
                 .stream()
                 .map(PostDto::new)
                 .collect(Collectors.toList());
+    }
+
+    public Long updateCancel(Long id) {
+        Post post = postRepository.findById(id).get();
+        post.updateCancel();
+        return post.getPostId();
     }
 }

@@ -45,6 +45,8 @@ public class PostController {
     public Long updateMatched(@PathVariable Long id, @RequestHeader(value="Authorization") String email) {
         return postService.updateHelper(id, email);
     }
-
-
+    @PutMapping("/{id}/cancelled")
+    public Long updateCancel(@PathVariable Long id) {
+        return postService.updateCancel(id);
+    }
 }
