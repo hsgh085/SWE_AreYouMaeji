@@ -15,7 +15,10 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findByContentsContaining(String target_keyword);
 
     List<Post> findByClientAndState(Member member, int state);
+    List<Post> findByHelperAndState(Member member, int state);
 
     List<Post> findByCategory(Category category);
+
+    List<Post> findByClientAndHelper(Member client, Member helper);
 
 }

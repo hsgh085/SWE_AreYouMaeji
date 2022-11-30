@@ -115,4 +115,24 @@ public class PostService {
         post.updateCancel();
         return post.getPostId();
     }
+
+    public List<PostSimpleDto> findByEmail(String email) {
+        Member member =  membersService.findByEmail(email).toEntity();
+        return postRepository.findByClientAndHelper(member, member).stream()
+                .map(PostSimpleDto::new)
+                .collect(Collectors.toList());
+    }
+
+    public List<PostSimpleDto> findByEmailAndCancelled(String email) {
+        Member member =  membersService.findByEmail(email).toEntity();
+        List<PostSimpleDto> res = postRepository.findByClientAndState(member, 3)
+                .stream()
+                .map(PostSimpleDto::new)
+                .collect(Collectors.toList());
+        res.addAll(postRepository.findByHelperAndState(member, 3)
+                .stream()
+                .map(PostSimpleDto::new)
+                .collect(Collectors.toList()));
+        return res;
+    }
 }
