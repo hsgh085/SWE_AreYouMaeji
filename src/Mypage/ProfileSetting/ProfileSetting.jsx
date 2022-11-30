@@ -50,6 +50,7 @@ export default function ProfileSetting() {
             <label className={styles.title} htmlFor="phone_number">
               전화번호
             </label>
+
             <div className={styles.col - 3}>
               <input
                 className={styles.inputText}
@@ -66,11 +67,12 @@ export default function ProfileSetting() {
             <label className={styles.title} htmlFor="gender">
               성별
             </label>
+            
             <RadioGroup value={form.gender} onChange={handleChange}>
-              <Radio name="gender" value="남자">
+              <Radio name="gender" value='1' checked>
                 남자
               </Radio>
-              <Radio name="gender" value="여자">
+              <Radio name="gender" value="2" checked>
                 여자
               </Radio>
             </RadioGroup>

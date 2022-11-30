@@ -11,7 +11,7 @@ import styles from "./MyPageMain.module.css";
 import Rate from "../../component/Rate/Rate";
 
 export default function MyPageMain() {
-  const [loading, error, user] = useUser();
+  const [loading, error, user] = useUser(); //사용자 정보 받아오는 훅, 별점 받아오는 훅도 있어야함.
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -31,7 +31,6 @@ export default function MyPageMain() {
           </li>
           <li>
             <p>평점</p>
-            <Rate />
           </li>
         </ul>
       </div>

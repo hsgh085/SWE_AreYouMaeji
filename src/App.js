@@ -18,6 +18,9 @@ import ErrandDist from './Mypage/ErrandDist';
 import ProfileSetting from './Mypage/ProfileSetting/ProfileSetting';
 import TermsOfService from './Mypage/TermsOfService/TermsOfService';
 import Product from './Product/Product';
+import Rating from './Errand/Rating/Rating';
+
+
 function App() {
   return (
     <Router>
@@ -60,6 +63,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/TermsOfService" element={[<TermsOfService />]} />
+        </Routes>
+        <Routes>
+          <Route path="/Rating" element={<Rating />} />
         </Routes>
       </div>
     </Router>
