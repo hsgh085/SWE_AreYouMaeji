@@ -5,7 +5,7 @@ import Rate from "../../component/Rate/Rate";
 import styles from "./Rating.module.css";
 
 export default function Rating() {
-  const [rate, setRate] = useState();
+  const [rate, setRate] = useState(1);
 
   const sendRate = () => {
     console.log(rate);
@@ -17,7 +17,7 @@ export default function Rating() {
       }),
     });
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     //업데이트 제대로 되었는지 확인용

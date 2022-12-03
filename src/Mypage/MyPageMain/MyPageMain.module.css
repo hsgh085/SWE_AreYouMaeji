@@ -2,7 +2,7 @@
     background-color: white;
     margin: 1.3rem 0;
     padding: 1.2em;
-    box-shadow:0 0 4px var(--color-grey),0 2px 4px var(--color-grey);
+    box-shadow:0 0 5px var(--color-dark-grey),0 2px 5px var(--color-dark-grey);
 }
 .profile .name{
     font-weight: bold;
@@ -29,7 +29,7 @@
     margin: 0.5rem 0;
     background-color: white;
     padding: 1rem;
-    box-shadow:0 0 4px var(--color-grey),0 2px 4px var(--color-grey);
+    box-shadow:0 0 5px var(--color-dark-grey),0 2px 5px var(--color-dark-grey);
 }
 
 .list:hover{

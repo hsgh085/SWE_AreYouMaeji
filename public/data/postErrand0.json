@@ -1,0 +1,13 @@
+{
+    "category": "string",
+  "client_nick": "이연세",
+  "client_phone": "string",
+  "contents": "string",
+  "cost": 0,
+  "destination": "string",
+  "fee": 0,
+  "helper_nick": "홍길동",
+  "helper_phone": "string",
+  "postId": 0,
+  "product": "string"
+}

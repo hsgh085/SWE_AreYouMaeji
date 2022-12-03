@@ -8,13 +8,24 @@ import { RiQuestionnaireLine } from "react-icons/ri";
 import { IoIosArrowForward } from "react-icons/io";
 import useUser from "../../hooks/use-user";
 import styles from "./MyPageMain.module.css";
-import Rate from "../../component/Rate/Rate";
+import { BsStarFill } from "react-icons/bs";
 
 export default function MyPageMain() {
-  const [loading, error, user] = useUser(); //사용자 정보 받아오는 훅, 별점 받아오는 훅도 있어야함.
+  const user = useUser();
+  //const [rate, setRate]=useRate();
+  // useEffect(() => {
+  //   fetch("")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("별점 데이터 받아옴");
+  //       setRate(data);
+  //     });
+  //   return () => {
+  //     console.log("별점 데이터 청소");
+  //   };
+  // }, []);
+  const rate = 4;
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
   return (
     <>
       <Header />
@@ -31,6 +42,18 @@ export default function MyPageMain() {
           </li>
           <li>
             <p>평점</p>
+            <div className={styles.star}>
+              {Array(rate)
+                .fill(0)
+                .map((el, i) => (
+                  <BsStarFill key={i} size="25" color="#EFC45C" />
+                ))}
+              {Array(5 - rate)
+                .fill(0)
+                .map((el, i) => (
+                  <BsStarFill key={i} size="25" color="#0A1931" />
+                ))}
+            </div>
           </li>
         </ul>
       </div>

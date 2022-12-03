@@ -13,13 +13,11 @@ import Termsofagree from './Sign/Termsofagree';
 import First from './Main/First';
 import MyPage from './Mypage/MyPageMain/MyPageMain';
 import Ask from './Mypage/Ask/Ask';
-import CancelledErrand from './Mypage/CancelledErrand';
-import ErrandDist from './Mypage/ErrandDist';
+import CancelledErrand from './Mypage/CancelledErrand/CancelledErrand';
+import ErrandDist from './Mypage/ErrandList/ErrandList';
 import ProfileSetting from './Mypage/ProfileSetting/ProfileSetting';
 import TermsOfService from './Mypage/TermsOfService/TermsOfService';
-import Product from './Product/Product';
 import Rating from './Errand/Rating/Rating';
-
 
 function App() {
   return (
