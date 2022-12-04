@@ -1,104 +1,103 @@
 .form-errand {
-    color: #003876;
-    padding: 10px 20px 5px;
-    position: relative;
+  color: #003876;
+  padding: 10px 20px 5px;
+  position: relative;
 }
 
 .form-errand:hover:before {
-    border-top: 15px solid #003876;
-    box-shadow: 5px 5px 10px -1px #003876;
+  border-top: 15px solid #003876;
+  box-shadow: 5px 5px 10px -1px #003876;
 }
 
 .form-errand:before {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-top: 30px solid #003876;
-    border-left: 30px solid rgba(0, 0, 0, 0);
-    width: 0;
-    box-shadow: 5px 5px 10px -1px #003876;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 30px solid #003876;
+  border-left: 30px solid rgba(0, 0, 0, 0);
+  width: 0;
+  box-shadow: 5px 5px 10px -1px #003876;
 }
 
 .form-errand_name {
-    color: #003876;
-    font-size: 30px;
-    margin: 10px 10px;
+  color: #003876;
+  font-size: 30px;
+  margin: 10px 10px;
 }
 
 .form-errand_detail {
-    color: #003876;
-    font-size: 18px;
-    margin: 20px 10px;
+  color: #003876;
+  font-size: 18px;
+  margin: 20px 10px;
 }
 
 .person_phone_info_name {
-    font-size: large;
+  font-size: large;
 }
 
 .person_phone_info {
-    margin: 10px 50px;
-    padding: 10px 5px;
+  margin: 10px 50px;
+  padding: 10px 5px;
 }
 
 .person_phonenumber {
-    margin: 10px 0px;
-    padding: 1px 1px;
+  margin: 10px 0px;
+  padding: 1px 1px;
 }
 
 .person_info {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 79px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 79px;
 }
 
 .person_info_full {
-    float: left;
-    height: 50%;
-    margin-bottom: -10px;
+  float: left;
+  height: 50%;
+  margin-bottom: -10px;
 }
 
 .person_call {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
 }
 
-.button_row{
-    display: flex;
-    justify-content: center;
+.button_row {
+  display: flex;
+  justify-content: center;
 }
 
 .button {
-    float: left;
-    margin-right: 10px;
-    justify-content: center;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    width: 150px;
-    margin-top: 10px;
-    color: #fff;
-    background: #182b58;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
-    transition: 0.3s;
+  float: left;
+  margin-right: 10px;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 150px;
+  margin-top: 10px;
+  color: #fff;
+  background: #182b58;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
+  transition: 0.3s;
 }
 
 .button:focus {
-    outline: 0;
+  outline: 0;
 }
 
 .button:hover {
-    background: rgba(0, 79, 255, 0.9);
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 79, 255, 0.6);
+  background: rgba(0, 79, 255, 0.9);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 79, 255, 0.6);
 }
 
 .footer {
-    margin-top: 50px;
-    height: 70px;
-    display: flex;
-    justify-content: center;
+  position: relative;
+  bottom: -600px;
+  width: 100%;
 }

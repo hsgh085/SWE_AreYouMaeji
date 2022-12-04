@@ -6,48 +6,33 @@ import Header_do from "../components/Header/Header_do";
 import { Link } from "react-router-dom";
 
 function E_start() {
-  const [post, setPost] = useState([]);
   let { id } = useParams();
 
-  useEffect(() => {
+  function handlePostMatched(event) {
     let model = {
-      method: "GET",
+      method: "PUT",
       headers: {
         Authorization: localStorage.getItem("email"),
+        "Content-Type": "application/json",
       },
     };
-    //console.log(id);
-    fetch(`/api/posts/` + id, model)
-      .then((res) => res.json())
-      .then((res) => setPost(res));
-  }, []);
+    fetch(`/api/posts/` + id + `/matched`, model).then((res) => {
+      window.alert("심부름이 수락되었습니다.");
+    });
+  }
 
   return (
     <div>
       <Header_do />
-      <header className="form-errand">
-        {
-          <E_product
-          // postId={post.postId}
-          // client_phone={post.client_phone}
-          // client_nick={post.client_nick}
-          // helper_phone={post.helper_phone}
-          // helper_nick={post.helper_nick}
-          // contents={post.contents}
-          // destination={post.destination}
-          // category={post.category}
-          // product={post.product}
-          // fee={post.fee}
-          // cost={post.cost}
-          />
-        }
-      </header>
+      <header className="form-errand">{<E_product />}</header>
       <div className="button_row">
-        <Link to = "/home">
+        <Link to="/home">
           <div className="button">취소</div>
         </Link>
-        <Link to = "/E_first">
-          <div className="button">수락</div>
+        <Link to={"/E_first/" + id}>
+          <div className="button" onClick={handlePostMatched}>
+            수락
+          </div>
         </Link>
       </div>
       <div className="footer">&copy;{new Date().getFullYear()} Errand App</div>

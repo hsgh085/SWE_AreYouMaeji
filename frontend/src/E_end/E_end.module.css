@@ -1,19 +1,19 @@
-.container{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 5rem;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem;
 }
 
 .footer {
-    margin-top: 50px;
-    height: 70px;
-    display: flex;
-    justify-content: center;
+  margin-top: 50px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
 }
 
-.button_row{
-    margin-top: 40px;
-    margin-bottom: 40px;
+.button_row {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./M_cancel.module.css";
-import Header from "../components/Header/Header"
+import Header from "../components/Header/Header";
 import Report from "./Report";
 import useUser from "../components/hooks/use-user";
 
@@ -47,7 +47,9 @@ export default function CancelledErrand() {
           </li>
         ))}
       </ul>
-      <div className={styles.footer}>&copy;{new Date().getFullYear()} Errand App</div>
+      <div className={styles.footer}>
+        &copy;{new Date().getFullYear()} Errand App
+      </div>
     </>
   );
 }

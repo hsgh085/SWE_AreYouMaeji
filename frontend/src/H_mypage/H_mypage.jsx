@@ -7,7 +7,6 @@ import { RiQuestionnaireLine } from "react-icons/ri";
 import { IoIosArrowForward } from "react-icons/io";
 import styles from "./H_mypage.module.css";
 import Header from "../components/Header/Header";
-import Rate from "../components/Rate/Rate";
 import useUser from "../components/hooks/use-user";
 import { BsStarFill } from "react-icons/bs";
 
@@ -26,7 +25,6 @@ export default function H_mypage() {
   //   };
   // }, []);
   const rate = 4;
-  // if (error) return <p>{error}</p>; => 해당 함수 적용 시 error페이지 나옴
   return (
     <>
       <Header />
@@ -35,7 +33,7 @@ export default function H_mypage() {
         <ul>
           <li>
             <p>성별</p>
-            <p>{user.gender ? "여자" : "남자"}</p>
+            <p>{user.gender == 1 ? "남자" : "여자"}</p>
           </li>
           <li>
             <p>전화번호</p>
@@ -43,6 +41,9 @@ export default function H_mypage() {
           </li>
           <li>
             <p>평점</p>
+            {/*todo*/}
+            {/*희선님이 만든 Rate 이용?*/}
+            {/*아마 희선님꺼 통합되면 해결?*/}
             <div className={styles.star}>
               {Array(rate)
                 .fill(0)
@@ -99,7 +100,9 @@ export default function H_mypage() {
           </li>
         </Link>
       </ul>
-      <div className={styles.footer}>&copy;{new Date().getFullYear()} Errand App</div>
+      <div className={styles.footer}>
+        &copy;{new Date().getFullYear()} Errand App
+      </div>
     </>
   );
 }

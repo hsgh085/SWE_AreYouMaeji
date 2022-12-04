@@ -30,7 +30,6 @@
 }
 
 .input textarea {
-  resize: none;
   padding: 1rem;
   color: #666666;
   border-radius: 10px;
@@ -64,8 +63,5 @@
 }
 
 .footer {
-  margin-top: 50px;
-  height: 70px;
-  display: flex;
-  justify-content: center;
+  margin: 447px 200px 0px 46%;
 }

@@ -2,7 +2,7 @@
   height: 100px;
   display: flex;
   align-items: center;
-  background-color: rgba(234, 237, 237, 0.9);
+  background-color: rgba(234, 237, 237, 1);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   z-index: 300;
-  background-color: rgba(234, 237, 237, 0.9);
+  background-color: rgba(234, 237, 237, 1);
 }
 
 .header_logo {

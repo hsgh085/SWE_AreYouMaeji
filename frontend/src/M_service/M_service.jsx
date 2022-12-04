@@ -27,7 +27,9 @@ export default function M_service() {
           <span className={styles.text}>감사합니다.</span>
         </article>
       </div>
-      <div className={styles.footer}>&copy;{new Date().getFullYear()} Errand App</div>
+      <div className={styles.footer}>
+        &copy;{new Date().getFullYear()} Errand App
+      </div>
       {/*footer css는 mypage 참조 */}
     </>
   );

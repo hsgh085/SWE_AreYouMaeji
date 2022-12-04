@@ -1,28 +1,28 @@
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top:10px;
-    font-size: 14px;
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
-.text{
-    display: flex;
-    align-items: center;
+.text {
+  display: flex;
+  align-items: center;
 }
 
-.role{
-    background: var(--color-light-blue);
-    padding: 5px;
-    border-radius: 5px;
-    margin-right: 5px;
-    color: white;
+.role {
+  background: var(--color-light-blue);
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+  color: white;
 }
 
-.rate{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    font-weight: bold;
+.rate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
 }

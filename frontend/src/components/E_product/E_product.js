@@ -32,9 +32,9 @@ function E_product({
   }
 
   return (
-    <div className="Errandmake">
+    <div className="E_product">
       <form onSubmit={handlePostMatched}>
-        {/* <input type="text" name="id" value={postId} hidden />
+        <input type="text" name="id" value={postId} hidden />
         <div class="container">
           <h3 class="main">상품명</h3>
           <div class="main">{product}</div>
@@ -64,8 +64,8 @@ function E_product({
           <div class="person_phonenumber">
             <i class="main"></i> 전화번호 ( 안심번호 ) : {client_phone}
           </div>
-        </div> */}
-        <input type="text" name="id" value="1" hidden />
+        </div>
+        {/* <input type="text" name="id" value="1" hidden />
         <div class="container">
           <h3 class="main">상품명</h3>
           <div class="main">커피</div>
@@ -95,7 +95,7 @@ function E_product({
           <div class="person_phonenumber">
             <i class="main"></i> 전화번호 ( 안심번호 ) : 01027745931
           </div>
-        </div>
+        </div>*/}
       </form>
     </div>
   );

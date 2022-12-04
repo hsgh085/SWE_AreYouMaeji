@@ -1,23 +1,28 @@
 [
-    {"cost": 1000,
+  {
+    "cost": 1000,
     "destination": "창조관 중실",
     "fee": 1000,
     "postId": 0,
     "product": "도시락",
     "star": 4
-    },
+  },
 
-    {"cost": 2000,
+  {
+    "cost": 2000,
     "destination": "연플",
     "fee": 1000,
     "postId": 1,
     "product": "콜라",
-    "star": 1},
+    "star": 1
+  },
 
-    {"cost": 3000,
+  {
+    "cost": 3000,
     "destination": "컨버전스홀",
     "fee": 1000,
     "postId": 2,
     "product": "아샷추",
-    "star": 5}
+    "star": 5
+  }
 ]

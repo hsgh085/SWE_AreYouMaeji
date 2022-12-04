@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from "react";
-export default function useUser(){
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(undefined);
-    const [user, setUser] = useState({});
+export default function useUser() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(undefined);
+  const [user, setUser] = useState({});
 
-    useEffect(() => {
-        let model = {
-            method: 'GET',
-            headers: {
-                Authorization: localStorage.getItem("email")
-            }
-        };
-        fetch(`/api/member`, model)
-            .then((res) => res.json())
-            .then((res) => setUser(res))
-        .catch((e) => setError("Error"))
-        .finally(() => setLoading(false));
-        return () => {
-          console.log("데이터 청소");
-        };
-      }, []);
+  useEffect(() => {
+    let model = {
+      method: "GET",
+      headers: {
+        Authorization: localStorage.getItem("email"),
+      },
+    };
+    fetch(
+      `ec2-3-38-226-253.ap-northeast-2.compute.amazonaws.com/api/member`,
+      model
+    )
+      .then((res) => res.json())
+      .then((res) => setUser(res))
+      .catch((e) => setError("Error"))
+      .finally(() => setLoading(false));
+    return () => {
+      console.log("데이터 청소");
+    };
+  }, []);
 
-      return [loading, error, user];
+  return [loading, error, user];
 }

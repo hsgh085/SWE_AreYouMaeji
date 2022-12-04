@@ -9,7 +9,7 @@ import {
   DialogContentText,
   DialogActions,
 } from "@material-ui/core";
-import Rate from "../components/Rate/Rate"
+import Rate from "../components/Rate/Rate";
 
 export default function Star({ postId, star }) {
   const [errand, setErrand] = useState({});
