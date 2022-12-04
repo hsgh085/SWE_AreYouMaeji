@@ -1,0 +1,14 @@
+.header_do {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(234, 237, 237, 0.7);
+  top: 0;
+  z-index: 100;
+  justify-content: center;
+}
+
+.status-bar__column_ {
+  color: black;
+  font-size: 18px;
+}
