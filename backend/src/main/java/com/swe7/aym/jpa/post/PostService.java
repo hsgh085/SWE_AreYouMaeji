@@ -116,11 +116,12 @@ public class PostService {
         return post.getPostId();
     }
 
-    public List<PostSimpleDto> findByEmail(String email) {
+    public List<PostHistDto> findByEmail(String email) {
         Member member =  membersService.findByEmail(email).toEntity();
-        return postRepository.findByClientAndHelper(member, member).stream()
-                .map(PostSimpleDto::new)
+        List<PostHistDto> res = postRepository.findByClientAndHelper(member, member).stream()
+                .map(PostHistDto::new)
                 .collect(Collectors.toList());
+        return res;
     }
 
     public List<PostSimpleDto> findByEmailAndCancelled(String email) {

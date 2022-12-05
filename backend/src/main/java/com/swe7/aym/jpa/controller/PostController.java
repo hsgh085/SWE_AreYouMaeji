@@ -26,7 +26,7 @@ public class PostController {
         return postService.findByEmailAndCancelled(email);
     }
     @GetMapping("/my")
-    public List<PostSimpleDto> findMy(@RequestHeader(value="Authorization") String email){
+    public List<PostHistDto> findMy(@RequestHeader(value="Authorization") String email){
         return postService.findByEmail(email);
     }
     @GetMapping("")
