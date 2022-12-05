@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./M_cancel.module.css";
-import Header from "../components/Header/Header"
+import Header_nothing from "../components/Header/Header_nothing"
 import Report from "./Report";
 import useUser from "../components/hooks/use-user";
 
@@ -25,7 +25,7 @@ export default function CancelledErrand() {
 
   return (
     <>
-      <Header />
+      <Header_nothing />
       <p className={styles.title}>취소된 심부름</p>
       <ul>
         {cancelLists.map((list) => (
@@ -50,7 +50,6 @@ export default function CancelledErrand() {
           </li>
         ))}
       </ul>
-      <div className={styles.footer}>&copy;{new Date().getFullYear()} Errand App</div>
     </>
   );
 }

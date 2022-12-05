@@ -1,13 +1,13 @@
 .product {
-  position: relative;
   margin: 30px;
-  padding: 80px;
+  padding: 20px;
   background-color: white;
-  overflow: hidden;
-  z-index: 1;
   border-radius: 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .product:hover {
@@ -33,31 +33,24 @@
   top: -20px;
 }
 
-.product_info {
-  height: 10px;
-  margin-bottom: 10px;
-  position: relative;
-  top: -25px;
-}
-
 .product_title {
-  font-size: 35px;
-  font-weight: bold;
   position: relative;
   top: 0px;
-  text-align: center;
+  left: 47%;
+  font-size: 20px;
+  font-weight: bolder;
 }
 
 .price_box {
   background-color: #182b58;
   border-radius: 5px;
   color: #f3f3f3;
-  width: 150px;
+  width: 100px;
   height: 40px;
-  font-size: 25px;
+  font-size: 15px;
   position: relative;
-  top: 20px;
-  left: -15px;
+  top: 10px;
+  left: 10px;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -81,9 +74,9 @@
   text-align: center;
   width: 150px;
   height: 40px;
-  font-size: 25px;
+  font-size: 15px;
   position: relative;
-  top: 20px;
+  top: 10px;
   left: -15px;
   align-items: center;
   display: flex;

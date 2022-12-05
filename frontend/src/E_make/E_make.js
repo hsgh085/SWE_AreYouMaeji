@@ -45,18 +45,18 @@ function E_make() {
 
     return (
         <div>
-            <div className='Errandmake'>
+            <div className="Errandmake_">
                 <form onSubmit={handleSavePost} onChange={testFunc} ref={form}>
-                    <div class="container">
-                        <h3 class="main">상품명</h3>
-                        <div class="col-3">
-                            <input class="effect-1" type="text" placeholder="  Placeholder Text" name="product" />
-                            <span class="focus-border"></span>
+                    <div className="container_">
+                        <h3 className="main_">상품명</h3>
+                        <div className="col-4_">
+                            <input className="effect-1" type="text" placeholder="  상품명을 입력하세요." name="product" />
+                            <span className="focus-border"></span>
                         </div>
                     </div>
-                    <div class="container">
-                        <h3 class="main">카테고리</h3>
-                        <select class="selectbox" name="category">
+                    <div className="container_">
+                        <h3 className="main_">카테고리</h3>
+                        <select className="selectbox_" name="category">
                             {
                             category.map(
                                 t => {
@@ -68,30 +68,30 @@ function E_make() {
                             }
                         </select>
                     </div>
-                    <div class="container">
-                        <h3 class="main">상품 비용</h3>
-                        <div class="col-3">
-                            <input class="effect-1" type="text" placeholder="  Placeholder Text" name="cost" />
-                            <span class="focus-border"></span>
+                    <div className="container_">
+                        <h3 className="main_">상품 비용</h3>
+                        <div className="col-3_">
+                            <input className="effect-1" type="text" placeholder="  상품 비용을 입력하세요." name="cost" />
+                            <span className="focus-border"></span>
                         </div>
                     </div>
-                    <div class="container">
-                        <h3 class="main">심부름 비용</h3>
-                        <div class="col-3">
-                            <input class="effect-1" type="text" placeholder="  Placeholder Text" name="fee" />
-                            <span class="focus-border"></span>
+                    <div className="container_">
+                        <h3 className="main_">심부름 비용</h3>
+                        <div className="col-3_">
+                            <input className="effect-1" type="text" placeholder="  심부름 비용을 입력하세요." name="fee" />
+                            <span className="focus-border"></span>
                         </div>
                     </div>
-                    <div class="container">
-                        <h3 class="main">심부름 내용</h3>
+                    <div className="container_">
+                        <h3 className="main_">심부름 내용</h3>
                         <div >
-                            <textarea class="textarea" placeholder="심부름 내용을 입력해주세요" name="contents"></textarea>
+                            <textarea className="textarea_" placeholder="심부름 내용을 입력해주세요." name="contents"></textarea>
                         </div>
                     </div>
-                    <div className="container">
-                        <h3 className="main">거래 장소</h3>
+                    <div className="container_">
+                        <h3 className="main_">거래 장소</h3>
                         <div>
-                            <textarea className="textarea" placeholder="거래할 장소를 입력해주세요" name="destination"></textarea>
+                            <textarea className="textarea_" placeholder="거래할 장소를 입력해주세요." name="destination"></textarea>
                         </div>
                     </div>
                 </form>

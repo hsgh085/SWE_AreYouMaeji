@@ -53,7 +53,7 @@ const H_product = (props) => {
                   </div>
                   <div className="product_price">
                     <div className="price_box">배달장소</div>
-                    <p className="location">{p.destination}</p>
+                    <p> className="location">{p.destination}</p>
                   </div>
                 </div>
               </div>

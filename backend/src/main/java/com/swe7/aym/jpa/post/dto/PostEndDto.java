@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class PostEndDto {
-    private String star;
+    private int star;
 
     @Builder
-    public PostEndDto(String star) {
+    public PostEndDto(int star) {
         this.star = star;
     }
 }

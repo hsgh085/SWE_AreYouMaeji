@@ -1,0 +1,38 @@
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:0 3rem;
+}
+.title{
+    margin: 1rem 0;
+    font-size: 20px;
+}
+article{
+    background: white;
+    padding:3rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow:0 0 4px var(--color-grey),0 2px 4px var(--color-grey);
+
+}
+
+.text{
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    animation: fadein 1s ease-in-out;
+}
+
+@keyframes fadein{
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+}

@@ -47,15 +47,15 @@ public class PostService {
     public Long updateEnd(Long id, PostEndDto postEndDto, String email) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다!"));
-        System.out.println(email);
-        System.out.println(post.getClient().getEmail());
-        System.out.println(post.getHelper().getEmail());
+        int client_star = 0;
+        int helper_star = 0;
         if (post.getClient().getEmail().equals(email)){
-            post.updateEnd("client", Integer.parseInt(postEndDto.getStar()));
+            client_star = postEndDto.getStar();
         }
         if (post.getHelper().getEmail().equals(email)){
-            post.updateEnd("helper", Integer.parseInt(postEndDto.getStar()));
+            helper_star = postEndDto.getStar();
         }
+        post.updateEnd( client_star, helper_star);
         return id;
     }
 
@@ -118,9 +118,10 @@ public class PostService {
 
     public List<PostHistDto> findByEmail(String email) {
         Member member =  membersService.findByEmail(email).toEntity();
-        return postRepository.findByClientAndHelper(member, member).stream()
+        List<PostHistDto> res = postRepository.findByClientAndHelper(member, member).stream()
                 .map(PostHistDto::new)
                 .collect(Collectors.toList());
+        return res;
     }
 
     public List<PostSimpleDto> findByEmailAndCancelled(String email) {

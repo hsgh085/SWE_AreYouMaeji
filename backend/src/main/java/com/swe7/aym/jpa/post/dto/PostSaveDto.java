@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PostSaveDto {
     private String client_email;
+
     private String product;
     private String contents;
     private String destination;

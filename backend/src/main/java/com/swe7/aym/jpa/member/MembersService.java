@@ -64,13 +64,11 @@ public class MembersService{
 
     public int getAvgStar(String email) {
         try {
-            int client_sum = memberRepository.getSumClientStar(email);
-            int helper_sum = memberRepository.getSumHelperStar(email);
+            float client_sum = memberRepository.getSumClientStar(email);
+            float helper_sum = memberRepository.getSumHelperStar(email);
             int cnt = memberRepository.getCntStar(email);
-            System.out.println(client_sum);
-            System.out.println(helper_sum);
-            System.out.println(cnt);
-            return Math.round((client_sum + helper_sum) / cnt);
+            int res = Math.round(client_sum + helper_sum / cnt);
+            return res > 5 ? 5 : res;
         }
         catch (Exception e) {
             return 0;

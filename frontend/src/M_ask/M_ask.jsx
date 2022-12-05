@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./M_ask.module.css";
-import Header from "../components/Header/Header";
+import Header_nothing from "../components/Header/Header_nothing"
 import { RiQuestionFill } from "react-icons/ri";
 import {
   Button,
@@ -30,7 +30,7 @@ export default function M_ask() {
   };
   return (
     <>
-      <Header />
+      <Header_nothing />
       <div className={styles.container}>
         <p>
           문의사항이 있으실 경우 문의양식을 작성 하시거나, 하단의 전화번호로

@@ -59,8 +59,24 @@
   font-weight: 100;
   z-index: 1;
 }
+.badge:hover {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
 
 .pencil {
   width: 50px;
   height: 50px;
+}
+.pencil {
+  font-size: 5em;
+  animation: motion 0.4s linear 0s infinite alternate;
+}
+@keyframes motion {
+  from {
+    margin-top: 0px;
+  }
+  to {
+    margin-top: 10px;
+  }
 }

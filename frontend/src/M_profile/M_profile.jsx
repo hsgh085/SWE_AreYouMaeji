@@ -6,7 +6,7 @@ import React, { useState } from "react";
 //import useUser from "../../hooks/use-user";
 import styles from "./M_profile.module.css";
 import BtnSubmit from "../components/Button/Button";
-import Header from "../components/Header/Header";
+import Header_nothing from "../components/Header/Header_nothing"
 import Radio from "../components/Radio/Radio";
 import RadioGroup from "../components/Radio/RadioGroup";
 import useUser from "../components/hooks/use-user";
@@ -51,14 +51,15 @@ export default function M_profile() {
   };
   return (
     <>
-      <Header />
+      <Header_nothing />
+      <p className={styles.p_title}>프로필 수정</p>
       <form onSubmit={handleSubmit}>
         <div className={styles.container}>
           <div className={styles.input}>
             <label className={styles.title} htmlFor="nickname">
               닉네임
             </label>
-            <div className={styles.col - 3}>
+            <div className={styles.col3}>
               <input
                 className={styles.inputText}
                 type="text"
@@ -74,7 +75,7 @@ export default function M_profile() {
             <label className={styles.title} htmlFor="phone_number">
               전화번호
             </label>
-            <div className={styles.col - 3}>
+            <div className={styles.col3}>
               <input
                 className={styles.inputText}
                 type="text"
@@ -105,8 +106,10 @@ export default function M_profile() {
         <Link to = "/H_mypage" onClick={handleSubmit}>
           <BtnSubmit>수정하기</BtnSubmit>
         </Link>
-        </div>
-      <footer>&copy;{new Date().getFullYear()} Errand App</footer>
+      </div>
+      <div className={styles.footer}>
+        &copy;{new Date().getFullYear()} Errand App
+      </div>
       {/*footer css는 mypage 참조 */}
     </>
   );

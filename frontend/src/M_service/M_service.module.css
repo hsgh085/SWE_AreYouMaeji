@@ -3,13 +3,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 3rem;
+  margin: 0 2rem;
 }
 .title {
-  margin: 70px 20px 30px 15px;
-  font-size: 30px;
+  margin: 40px 10px 30px 15px;
+  font-size: 24px;
   font-weight: bold;
-  margin-bottom: 85px;
+  margin-bottom: 40px;
 }
 article {
   background: white;
@@ -23,7 +23,7 @@ article {
 .text {
   top: -30px;
   margin: 23px;
-  font-size: 1.3rem;
+  font-size: 1rem;
   position: relative;
   overflow: hidden;
   animation: fadein 1s ease-in-out;
@@ -41,8 +41,8 @@ article {
 }
 
 .footer {
-  margin-top: 50px;
-  height: 70px;
+  margin-top: 180px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }

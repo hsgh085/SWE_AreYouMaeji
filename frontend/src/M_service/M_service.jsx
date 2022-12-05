@@ -1,12 +1,12 @@
 import React from "react";
 //import Header from "../../component/Header/Header";
 import styles from "./M_service.module.css";
-import Header from "../components/Header/Header";
+import Header_nothing from "../components/Header/Header_nothing"
 
 export default function M_service() {
   return (
     <>
-      <Header />
+      <Header_nothing />
       <div className={styles.container}>
         <p className={styles.title}>공지사항</p>
         <article>

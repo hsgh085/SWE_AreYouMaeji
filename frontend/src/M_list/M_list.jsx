@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./M_list.module.css";
-import Header from "../components/Header/Header"
+import Header_nothing from "../components/Header/Header_nothing"
 //import useUser from "../components/hooks/use-user"
 import Star from "./Star";
 
@@ -28,7 +28,7 @@ export default function ErrandList() {
 
   return (
     <>
-      <Header />
+      <Header_nothing />
       <p className={styles.title}>심부름 내역</p>
       <ul>
         {errandLists.map((list) => (
@@ -52,7 +52,6 @@ export default function ErrandList() {
           </li>
         ))}
       </ul>
-      <div className={styles.footer}>&copy;{new Date().getFullYear()} Errand App</div>
     </>
   );
 }

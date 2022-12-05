@@ -21,34 +21,34 @@ function E_product() {
     <div className="Errandmake">
       <input type="text" name="id" value={post.postId} hidden/>
       <div class="container">
-        <h3 class="main">상품명</h3>
-        <div class="main">{post.product}</div>
+        <span class="main">상품명 : </span>
+        <span class="main">{post.product}</span>
       </div>
       <div className="container">
-        <h3 className="main">상품 판매처</h3>
-        <div className="main">{post.category}</div>
+        <span className="main">상품 판매처 : </span>
+        <span className="main">{post.category}</span>
       </div>
       <div class="container">
-        <h3 class="main">상품 비용</h3>
-        <div class="main">{post.cost} 원</div>
+        <span class="main">상품 비용 : </span>
+        <span class="main">{post.cost} 원</span>
       </div>
       <div class="container">
-        <h3 class="main">심부름 비용</h3>
-        <div class="main">{post.fee} 원</div>
+        <span class="main">심부름 비용 : </span>
+        <span class="main">{post.fee} 원</span>
       </div>
       <div class="container">
-        <h3 class="main">심부름 내용</h3>
-        <div class="main">{post.contents}</div>
+        <span class="main">심부름 내용 : </span>
+        <span class="main">{post.contents}</span>
       </div>
       <div class="container">
-        <h3 class="main">거래 장소</h3>
-        <div class="main">{post.destination}</div>
+        <span class="main">거래 장소 : </span>
+        <span class="main">{post.destination}</span>
       </div>
       <div class="container">
-        <h3 class="main">고객 : {post.client_nick}</h3>
-        <div class="person_phonenumber">
-          <i class="main"></i> 전화번호 ( 안심번호 ) : {post.client_phone}
-        </div>
+        <span class="main">고객 : {post.client_nick}</span>
+      </div> 
+      <div class="container">
+        <span class="main"> 전화번호 ( 안심번호 ) : {post.client_phone}</span>
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ export default function E_end() {
           <BtnSubmit>완료</BtnSubmit>
         </Link>
       </div>
-      <div className="footer">&copy;{new Date().getFullYear()} Errand App</div>
+      <div className={styles.footer_}>&copy;{new Date().getFullYear()} Errand App</div>
     </>
   );
 }

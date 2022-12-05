@@ -20,10 +20,11 @@ function E_first() {
       .then((res) => setPost(res));
   }, []);
 
-  return (<div>
+  return (
+    <div>
       <Header_do/>
-      <div className="profile">
-        <p className="name">{post.client_nick}</p>
+      <div className="profile_">
+        <p className="name_">{post.client_nick}</p>
         <ul>
           <li>
             <p>전화번호</p>
@@ -35,8 +36,8 @@ function E_first() {
           </li>
         </ul>
       </div>
-      <div className="profile">
-        <p className="name">{post.helper_nick}</p>
+      <div className="profile_">
+        <p className="name_">{post.helper_nick}</p>
         <ul>
           <li>
             <p>전화번호</p>
