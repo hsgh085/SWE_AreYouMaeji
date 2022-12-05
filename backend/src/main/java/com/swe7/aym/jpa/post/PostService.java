@@ -33,7 +33,7 @@ public class PostService {
                 .product(requestDto.getProduct())
                 .contents(requestDto.getContents())
                 .destination(requestDto.getDestination())
-                .category(categoryRepository.findByContextContaining(requestDto.getCategory()))
+                .category(categoryRepository.findByCategoryId(requestDto.getCategory()))
                 .client_star(0)
                 .helper_star(0)
                 .fee(requestDto.getFee())
