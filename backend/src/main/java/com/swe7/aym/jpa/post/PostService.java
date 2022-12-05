@@ -33,7 +33,7 @@ public class PostService {
                 .product(requestDto.getProduct())
                 .contents(requestDto.getContents())
                 .destination(requestDto.getDestination())
-                .category(categoryRepository.findByContextContaining(requestDto.getCategory()))
+                .category(categoryRepository.findByCategoryId(requestDto.getCategory()))
                 .client_star(0)
                 .helper_star(0)
                 .fee(requestDto.getFee())
@@ -47,15 +47,15 @@ public class PostService {
     public Long updateEnd(Long id, PostEndDto postEndDto, String email) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다!"));
-        int client_star = 0;
-        int helper_star = 0;
+        System.out.println(email);
+        System.out.println(post.getClient().getEmail());
+        System.out.println(post.getHelper().getEmail());
         if (post.getClient().getEmail().equals(email)){
-            client_star = postEndDto.getStar();
+            post.updateEnd("client", Integer.parseInt(postEndDto.getStar()));
         }
         if (post.getHelper().getEmail().equals(email)){
-            helper_star = postEndDto.getStar();
+            post.updateEnd("helper", Integer.parseInt(postEndDto.getStar()));
         }
-        post.updateEnd( client_star, helper_star, 2);
         return id;
     }
 
@@ -108,5 +108,31 @@ public class PostService {
                 .stream()
                 .map(PostDto::new)
                 .collect(Collectors.toList());
+    }
+
+    public Long updateCancel(Long id) {
+        Post post = postRepository.findById(id).get();
+        post.updateCancel();
+        return post.getPostId();
+    }
+
+    public List<PostHistDto> findByEmail(String email) {
+        Member member =  membersService.findByEmail(email).toEntity();
+        return postRepository.findByClientAndHelper(member, member).stream()
+                .map(PostHistDto::new)
+                .collect(Collectors.toList());
+    }
+
+    public List<PostSimpleDto> findByEmailAndCancelled(String email) {
+        Member member =  membersService.findByEmail(email).toEntity();
+        List<PostSimpleDto> res = postRepository.findByClientAndState(member, 3)
+                .stream()
+                .map(PostSimpleDto::new)
+                .collect(Collectors.toList());
+        res.addAll(postRepository.findByHelperAndState(member, 3)
+                .stream()
+                .map(PostSimpleDto::new)
+                .collect(Collectors.toList()));
+        return res;
     }
 }

@@ -6,6 +6,8 @@ import com.google.gson.JsonParser;
 import com.swe7.aym.jpa.member.dto.MemberDto;
 import com.swe7.aym.jpa.member.dto.MemberSaveDto;
 import com.swe7.aym.jpa.member.dto.MemberUpdateDto;
+import com.swe7.aym.jpa.post.Post;
+import com.swe7.aym.jpa.post.PostRepository;
 import com.swe7.aym.redis.token.Token;
 import com.swe7.aym.redis.token.TokenRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.Optional;
 public class MembersService{
     private final MemberRepository memberRepository;
     private final TokenRepository tokenRepository;
+    private final PostRepository postRepository;
 
     public Long save(MemberSaveDto requestDto){
         memberRepository.findByEmail(requestDto.getEmail()).ifPresent(m -> {
@@ -59,30 +62,30 @@ public class MembersService{
         }
     }
 
-    public float getAvgStar(String email) {
+    public int getAvgStar(String email) {
         try {
-            float client_sum = memberRepository.getSumClientStar(email);
-            float helper_sum = memberRepository.getSumHelperStar(email);
+            int client_sum = memberRepository.getSumClientStar(email);
+            int helper_sum = memberRepository.getSumHelperStar(email);
             int cnt = memberRepository.getCntStar(email);
-            return client_sum + helper_sum / cnt;
+            System.out.println(client_sum);
+            System.out.println(helper_sum);
+            System.out.println(cnt);
+            return Math.round((client_sum + helper_sum) / cnt);
         }
         catch (Exception e) {
             return 0;
         }
     }
 
-    public Boolean incNoRep(String email) {
-        Optional<Member> member = memberRepository.findByEmail(email);
-        if (member.isPresent()) {
-            member.get().update(
-                    member.get().getNickname(),
-                    member.get().getPhone_number(),
-                    member.get().getGender(),
-                    member.get().getNo_report() + 1
-            );
-            return true;
+    public Boolean incNoRep(Long id, String email) {
+        Post post = postRepository.findById(id).get();
+        if(post.getClient().getEmail().equals(email)){
+            post.getHelper().updateReport();
         }
-        else return false;
+        else {
+            post.getClient().updateReport();
+        }
+        return true;
     }
 
     public List<Member> findAll(){

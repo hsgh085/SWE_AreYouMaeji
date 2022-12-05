@@ -75,14 +75,22 @@ public class Post implements Serializable {
         this.state = state;
     }
 
-    public void updateEnd(int client_star, int helper_star, int state) {
-        this.client_star = client_star;
-        this.helper_star = helper_star;
-        this.state = state;
+    public void updateEnd(String target, int star) {
+        if (target.equals("client")) {
+            this.client_star = star;
+        }
+        else if (target.equals("helper")){
+            this.helper_star = star;
+        }
+        this.state = 2;
     }
 
     public void updateHelper(Member helper) {
         this.helper = helper;
         this.state = 1;
+    }
+
+    public void updateCancel() {
+        this.state = 3;
     }
 }

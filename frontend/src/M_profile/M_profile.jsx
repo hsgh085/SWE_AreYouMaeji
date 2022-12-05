@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 //import BtnSubmit from "../../component/Button/BtnSubmit";
+//import Header from "../../component/Header/Header";
+//import Radio from "../../component/Radio/Radio";
+//import RadioGroup from "../../component/Radio/RadioGroup";
+//import useUser from "../../hooks/use-user";
 import styles from "./M_profile.module.css";
 import BtnSubmit from "../components/Button/Button";
 import Header from "../components/Header/Header";
@@ -9,19 +13,37 @@ import useUser from "../components/hooks/use-user";
 import { Link } from "react-router-dom";
 
 export default function M_profile() {
-  const user = useUser();
+  const [loading, error, user] = useUser();
   const [form, setForm] = useState({
     nickname: `${user.nickname}`,
     phone_number: `${user.phone_number}`,
     gender: user.gender,
   });
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    const data = new FormData();
+    data.append("gender", form.gender);
+    data.append("nickname", form.nickname);
+    data.append("phone_number", form.phone_number);
+    const value = Object.fromEntries(data.entries());
+    let model = {
+      method: "PUT",
+      body: JSON.stringify(value),
+      headers: {
+        Authorization: localStorage.getItem("email"),
+        "Content-Type": "application/json",
+      },
+    };
+    fetch(`/api/member`, model)
+      .then((res) => res.json())
+      .then((res) => {
+        window.alert("정보를 수정했습니다.");
+        window.location.replace("/H_mypage");
+      });
     //업데이트 제대로 되었는지 확인용
-    console.log(`
-    닉네임: ${form.nickname}
-    전화번호: ${form.phone_number}
-    성별: ${form.gender}로 수정완료`);
+    // console.log(`
+    // 닉네임: ${form.nickname}
+    // 전화번호: ${form.phone_number}
+    // 성별: ${form.gender}로 수정완료`);
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,14 +52,13 @@ export default function M_profile() {
   return (
     <>
       <Header />
-      <div className={styles.p_title}>프로필 수정</div>
       <form onSubmit={handleSubmit}>
         <div className={styles.container}>
           <div className={styles.input}>
             <label className={styles.title} htmlFor="nickname">
               닉네임
             </label>
-            <div className={styles.col3}>
+            <div className={styles.col - 3}>
               <input
                 className={styles.inputText}
                 type="text"
@@ -53,7 +74,7 @@ export default function M_profile() {
             <label className={styles.title} htmlFor="phone_number">
               전화번호
             </label>
-            <div className={styles.col3}>
+            <div className={styles.col - 3}>
               <input
                 className={styles.inputText}
                 type="text"
@@ -71,23 +92,21 @@ export default function M_profile() {
             </label>
             <RadioGroup value={form.gender} onChange={handleChange}>
               <Radio name="gender" value="1">
-                남자
+                남성
               </Radio>
               <Radio name="gender" value="2">
-                여자
+                여성
               </Radio>
             </RadioGroup>
           </div>
         </div>
       </form>
       <div className={styles.submit}>
-        <Link to="/H_mypage">
+        <Link to = "/H_mypage" onClick={handleSubmit}>
           <BtnSubmit>수정하기</BtnSubmit>
         </Link>
-      </div>
-      <div className={styles.footer}>
-        &copy;{new Date().getFullYear()} Errand App
-      </div>
+        </div>
+      <footer>&copy;{new Date().getFullYear()} Errand App</footer>
       {/*footer css는 mypage 참조 */}
     </>
   );

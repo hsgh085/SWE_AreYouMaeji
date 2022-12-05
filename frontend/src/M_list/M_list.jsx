@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import styles from "./M_list.module.css";
-import Header from "../components/Header/Header";
+import Header from "../components/Header/Header"
 //import useUser from "../components/hooks/use-user"
 import Star from "./Star";
 
 export default function ErrandList() {
   const [errandLists, setErrandLists] = useState([]);
   useEffect(() => {
-    fetch("data/errandList.json")
+    let model = {
+      method: "GET",
+      headers: {
+        Authorization: localStorage.getItem("email"),
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch("/api/posts/my", model)
       .then((res) => res.json())
       .then((data) => {
         console.log("심부름 내역 데이터 받아옴");
@@ -15,6 +22,7 @@ export default function ErrandList() {
       });
     return () => {
       console.log("심부름 내역 데이터 청소");
+      console.log(errandLists);
     };
   }, []);
 
@@ -44,9 +52,7 @@ export default function ErrandList() {
           </li>
         ))}
       </ul>
-      <div className={styles.footer}>
-        &copy;{new Date().getFullYear()} Errand App
-      </div>
+      <div className={styles.footer}>&copy;{new Date().getFullYear()} Errand App</div>
     </>
   );
 }

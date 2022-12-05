@@ -9,7 +9,7 @@ import {
   DialogContentText,
   DialogActions,
 } from "@material-ui/core";
-import Rate from "../components/Rate/Rate";
+import Rate from "../components/Rate/Rate"
 
 export default function Star({ postId, star }) {
   const [errand, setErrand] = useState({});
@@ -33,7 +33,14 @@ export default function Star({ postId, star }) {
     setOk(false);
   };
   useEffect(() => {
-    fetch(`data/postErrand${postId}.json`)
+    let model = {
+      method: "GET",
+      headers: {
+        Authorization: localStorage.getItem("email"),
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch(`/api/posts/` + postId, model)
       .then((res) => res.json())
       .then((data) => {
         console.log(`postId: ${postId} 데이터 받아옴`);

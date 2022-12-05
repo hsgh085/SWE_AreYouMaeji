@@ -1,25 +1,26 @@
 .sub-menu {
-  position: fixed;
-  width: 200px;
-  height: 100%;
-  transition: 0.5s;
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    transition: 0.5s;
 }
 .sub-menu ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
+
 }
-.sub-menu {
-  width: 0;
-  height: 100%;
-  overflow: hidden;
-  background: chartreuse;
-  transition-duration: 0.5s;
+.sub-menu{
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    background: chartreuse;
+    transition-duration: 0.5s;
 }
-.main-nav-left:hover > .sub-menu {
-  height: 100%;
-  width: 300px;
-  overflow: hidden;
+.main-nav-left:hover > .sub-menu{
+    height: 100%;
+    width: 300px;
+    overflow: hidden
 }
 .sub-menu-list li {
-  line-height: 3rem;
+    line-height: 3rem;
 }

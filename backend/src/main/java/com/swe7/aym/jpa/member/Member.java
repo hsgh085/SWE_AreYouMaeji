@@ -55,4 +55,7 @@ public class Member implements Serializable {
         this.no_report = no_report;
         this.gender= gender;
     }
+    public void updateReport(){
+        this.no_report = this.no_report + 1;
+    }
 }

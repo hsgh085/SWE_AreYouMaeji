@@ -1,0 +1,18 @@
+.header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #182b58;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.status-bar__column1 {
+    color: white;
+    justify-content: space-between;
+    font-size: 18px;
+    position: relative;
+    left: 25px;
+    text-align: center;
+}

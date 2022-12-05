@@ -3,8 +3,8 @@ import "./Header_do.css";
 
 function Header_do() {
   return (
-    <div className="header">
-      <div class="status-bar__column1">
+    <div className="header_do">
+      <div className="status-bar__column_">
         * 거래 중엔 다른 서비스를 사용할 수 없습니다 *
       </div>
     </div>

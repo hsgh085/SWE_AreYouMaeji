@@ -10,12 +10,13 @@ import {
   DialogContentText,
   DialogActions,
 } from "@material-ui/core";
-import BtnSubmit from "../components/Button/Button";
+import BtnSubmit from "../components/Button/Button"
 import { Link } from "react-router-dom";
 
 export default function M_ask() {
   const [ask, setAsk] = useState("");
   const [open, setOpen] = useState(false);
+
   const handleChange = (e) => {
     setAsk(e.target.value);
   };
@@ -48,10 +49,10 @@ export default function M_ask() {
             </div>
           </div>
         </form>
-        <div className={styles.asknumber}>
+        <footer className={styles.footer}>
           <RiQuestionFill />
           <span>문의 전화번호 : 010-1234-5678</span>
-        </div>
+        </footer>
       </div>
       <div>
         <Dialog
@@ -65,15 +66,13 @@ export default function M_ask() {
             문의가 정상적으로 접수되었습니다. 감사합니다.
           </DialogContent>
           <DialogActions>
-            <Link to="/H_mypage">
+            <Link to = "/H_mypage">
               <Button onClick={handleClose}>확인</Button>
             </Link>
           </DialogActions>
         </Dialog>
       </div>
-      <div className={styles.footer}>
-        &copy;{new Date().getFullYear()} Errand App
-      </div>
+      <div className={styles.footer}>&copy;{new Date().getFullYear()} Errand App</div>
     </>
   );
 }

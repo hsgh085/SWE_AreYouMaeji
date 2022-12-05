@@ -16,23 +16,26 @@ function E_start() {
         "Content-Type": "application/json",
       },
     };
-    fetch(`/api/posts/` + id + `/matched`, model).then((res) => {
-      window.alert("심부름이 수락되었습니다.");
-    });
+    fetch(`/api/posts/` + id + `/matched`, model)
+      .then((res) => {
+        window.alert("심부름이 수락되었습니다.");
+      });
   }
 
   return (
     <div>
       <Header_do />
-      <header className="form-errand">{<E_product />}</header>
+      <header className="form-errand">
+        {
+          <E_product/>
+        }
+      </header>
       <div className="button_row">
-        <Link to="/home">
+        <Link to = "/home">
           <div className="button">취소</div>
         </Link>
-        <Link to={"/E_first/" + id}>
-          <div className="button" onClick={handlePostMatched}>
-            수락
-          </div>
+        <Link to = {"/E_first/" + id}>
+          <div className="button" onClick={handlePostMatched}>수락</div>
         </Link>
       </div>
       <div className="footer">&copy;{new Date().getFullYear()} Errand App</div>

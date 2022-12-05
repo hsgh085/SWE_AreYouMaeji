@@ -21,6 +21,14 @@ public class PostController {
     public PostResponseDto findById(@PathVariable Long id){
         return postService.findById(id);
     }
+    @GetMapping("/cancel")
+    public List<PostSimpleDto> findCancelled(@RequestHeader(value="Authorization") String email){
+        return postService.findByEmailAndCancelled(email);
+    }
+    @GetMapping("/my")
+    public List<PostHistDto> findMy(@RequestHeader(value="Authorization") String email){
+        return postService.findByEmail(email);
+    }
     @GetMapping("")
     public List<PostSimpleDto> findByRecentWithEmail(@RequestHeader(value="Authorization") String email){
         return postService.findByRecentWithEmail(email);
@@ -45,6 +53,9 @@ public class PostController {
     public Long updateMatched(@PathVariable Long id, @RequestHeader(value="Authorization") String email) {
         return postService.updateHelper(id, email);
     }
-
+    @PutMapping("/{id}/cancelled")
+    public Long updateCancel(@PathVariable Long id) {
+        return postService.updateCancel(id);
+    }
 
 }

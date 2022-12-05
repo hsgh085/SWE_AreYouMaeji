@@ -82,7 +82,8 @@
 }
 
 .footer {
-  position: relative;
-  bottom: -336px;
-  width: 100%;
+  margin-top: 50px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
 }

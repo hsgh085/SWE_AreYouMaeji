@@ -26,6 +26,7 @@ function Signup() {
         window.location.replace("/main");
       });
   }
+
   return (
     <form onSubmit={handleSaveMember} method="post" id="formTable">
       <div className="back">

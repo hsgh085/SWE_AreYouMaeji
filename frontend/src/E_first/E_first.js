@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import "./E_first.css";
-import E_product from "../components/E_product/E_product";
-import Header_do from "../components/Header/Header_do";
-import { Link, useParams } from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import './E_first.css'
+import E_product from "../components/E_product/E_product"
+import Header_do from '../components/Header/Header_do';
+import {Link, useParams} from 'react-router-dom';
+
 
 function E_first() {
   const [post, setPost] = useState([]);
-  let { id } = useParams();
+  let {id} = useParams();
 
   useEffect(() => {
     let model = {
-      method: "GET",
-      headers: {
+      method: "GET", headers: {
         Authorization: localStorage.getItem("email"),
       },
     };
@@ -20,9 +20,8 @@ function E_first() {
       .then((res) => setPost(res));
   }, []);
 
-  return (
-    <div>
-      <Header_do />
+  return (<div>
+      <Header_do/>
       <div className="profile">
         <p className="name">{post.client_nick}</p>
         <ul>
@@ -50,7 +49,7 @@ function E_first() {
         </ul>
       </div>
       <div>
-        <E_product />
+        <E_product/>
       </div>
       <div className="button_row">
         <Link to="/home">
@@ -62,7 +61,10 @@ function E_first() {
       </div>
       <div className="footer">&copy;{new Date().getFullYear()} Errand App</div>
     </div>
+
   );
+
+
 }
 
 export default E_first;

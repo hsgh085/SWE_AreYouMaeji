@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import { BsFillPencilFill } from "react-icons/bs";
 import Header_search from "../components/Header/Header_search";
 import H_product from "../components/H_product/H_product";
 
 function Home() {
+  let { query } = useParams();
+
   return (
     <div>
       <Header_search />
-      <H_product />
+      <H_product query={query}/>
       <Link to="/E_make">
         <nav class="nav">
           <ul class="nav__list">
@@ -28,4 +30,3 @@ function Home() {
 }
 
 export default Home;
-//https://fontawesomeicons.com/pencil

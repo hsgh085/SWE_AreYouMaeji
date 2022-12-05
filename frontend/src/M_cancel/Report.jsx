@@ -32,7 +32,14 @@ export default function Report({ postId, userId }) {
   };
 
   useEffect(() => {
-    fetch(`data/postErrand${postId}.json`)
+    let model = {
+      method: "GET",
+      headers: {
+        Authorization: localStorage.getItem("email"),
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch(`/api/posts/` + postId, model)
       .then((res) => res.json())
       .then((data) => {
         console.log(`postId: ${postId} 데이터 받아옴`);

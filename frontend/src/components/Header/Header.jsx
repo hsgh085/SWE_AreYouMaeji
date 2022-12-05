@@ -17,7 +17,7 @@ function Header() {
         />
       </div>
       <div className="iconalign2">
-        <Link to="/home">
+        <Link to="/Home">
           <img className="header_logo_mypage" src="/assets/logo.png" />
         </Link>
       </div>

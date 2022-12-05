@@ -62,5 +62,8 @@
 }
 
 .footer {
-  margin: 320px 200px 0px 46%;
+  margin-top: 50px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
 }

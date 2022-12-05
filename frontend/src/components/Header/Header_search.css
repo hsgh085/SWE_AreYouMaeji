@@ -2,7 +2,7 @@
   height: 100px;
   display: flex;
   align-items: center;
-  background-color: rgba(234, 237, 237, 1);
+  background-color: rgba(234, 237, 237, 0.9);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   z-index: 300;
-  background-color: rgba(234, 237, 237, 1);
+  background-color: rgba(234, 237, 237, 0.9);
 }
 
 .header_logo {
@@ -27,6 +27,10 @@
   top: 20px;
   left: 47%;
 }
+.header_option:hover{
+  color: rgba(0 ,0 ,0 ,0.5);
+  background-color: #eaedede6;
+}
 
 .header_search {
   display: flex;
@@ -34,7 +38,12 @@
   align-items: center;
   border-color: #efc45c;
   position: relative;
-  right: 15px;
+  background-color: #dddddd;
+  border-radius: 5px;
+  margin-right:15px;
+}
+.header_searchIcon{
+  color: white;
 }
 
 .header_searchInput {
