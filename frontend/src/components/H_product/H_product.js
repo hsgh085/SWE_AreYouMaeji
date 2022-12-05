@@ -33,57 +33,34 @@ const H_product = (props) => {
   }, []);
 
   return (
-    // <div>
-    //   {
-    //     post.map(
-    //       p => {
-    //         return (
-    //           <div className="product" key={p.postId} onClick={() => {
-    //             navigate("/E_start/" + p.postId);
-    //           }}>
-    //             <div className="product_info">
-    //               <p className='product_title'>{p.product}</p>
-    //               <div className="product_price">
-    //                 <div className="price_box">상품비용</div>
-    //                 <div className="price"> &nbsp;{p.cost}원</div>
-    //               </div>
-    //               <div className="product_price">
-    //                 <div className="price_box">심부름 비용</div>
-    //                 <div className="price">&nbsp;{p.fee}원</div>
-    //               </div>
-    //               <div className="product_price">
-    //                 <div className="price_box">배달장소</div>
-    //                 <p className="location">{p.destination}</p>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         )
-    //       }
-    //     )
-    //   }
-    // </div>
-    <div
-      className="product"
-      key="1"
-      onClick={() => {
-        navigate("/E_start/1");
-      }}
-    >
-      <div className="product_info">
-        <p className="product_title">커피</p>
-        <div className="product_price">
-          <div className="price_box">상품 비용</div>
-          <div className="price"> 500원</div>
-        </div>
-        <div className="product_price">
-          <div className="price_box">심부름 비용</div>
-          <div className="price">500원</div>
-        </div>
-        <div className="product_price">
-          <div className="price_box">배달 장소</div>
-          <div className="price">창조관</div>
-        </div>
-      </div>
+    <div>
+      {
+        post.map(
+          p => {
+            return (
+              <div className="product" key={p.postId} onClick={() => {
+                navigate("/E_start/" + p.postId);
+              }}>
+                <div className="product_info">
+                  <p className='product_title'>{p.product}</p>
+                  <div className="product_price">
+                    <div className="price_box">상품비용</div>
+                    <div className="price"> &nbsp;{p.cost}원</div>
+                  </div>
+                  <div className="product_price">
+                    <div className="price_box">심부름 비용</div>
+                    <div className="price">&nbsp;{p.fee}원</div>
+                  </div>
+                  <div className="product_price">
+                    <div className="price_box">배달장소</div>
+                    <p className="location">{p.destination}</p>
+                  </div>
+                </div>
+              </div>
+            )
+          }
+        )
+      }
     </div>
   );
 };
