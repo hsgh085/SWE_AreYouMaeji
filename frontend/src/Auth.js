@@ -16,7 +16,7 @@ const Auth = () => {
           } else { //정상흐름
             window.alert("로그인 성공!");
             localStorage.setItem("email", email);
-            window.location.replace("/main");
+            window.location.replace("/Home");
           }
         });
     } catch (err) {
