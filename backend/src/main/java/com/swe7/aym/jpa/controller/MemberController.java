@@ -30,7 +30,7 @@ public class MemberController {
         return memberService.findByEmail(email);
     }
     @GetMapping("/stars")
-    public float getAvgStar(@RequestHeader(value="Authorization") String email){
+    public int getAvgStar(@RequestHeader(value="Authorization") String email){
         return memberService.getAvgStar(email);
     }
     @PutMapping("/report/{id}")
