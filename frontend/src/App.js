@@ -1,7 +1,7 @@
 /*각종 페이지 주소 */
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React from "react";
+import {BrowserRouter as Router, Routes, Route, useParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
 import First from "./First/First"
 import Signup from "./Signup/Signup"
 import S_agree from "./S_agree/S_agree"
@@ -19,8 +19,28 @@ import M_list from "./M_list/M_list"
 import M_profile from "./M_profile/M_profile"
 import M_service from "./M_service/M_service"
 import Auth from "./Auth";
+import InterChange from "./interChange";
 
 function App() {
+    const [state, setState] = useState([]);
+    let { id } = useParams();
+    useEffect(() => {
+        if (id) {
+            let model = {
+                method: "GET", headers: {
+                    Authorization: localStorage.getItem("email"),
+                },
+            };
+            fetch(`/api/posts/` + id, model)
+                .then((res) => res.json())
+                .then((res) => {
+                    setState(res.state);
+                    console.log(state);
+                    console.log(state == 0 ? "f" : "s");
+                });
+
+        }
+    }, []);
   return (
     <Router>
       <div className="App">
@@ -35,6 +55,7 @@ function App() {
           <Route path="/E_start/:id" element={<E_start />} />
           <Route path="/E_first/:id" element={<E_first />} />
           <Route path="/E_second/:id" element={<E_second />} />
+          <Route path="/E_test/:id" element={<InterChange/>} />
           <Route path="/E_end/:id" element={<E_end />} />
           <Route path="/H_mypage" element={<H_mypage />} />
           <Route path="/M_ask" element = {<M_ask />} />

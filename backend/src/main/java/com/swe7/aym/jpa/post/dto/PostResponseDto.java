@@ -20,6 +20,8 @@ public class PostResponseDto {
     private int cost;
     private String product;
 
+    private int state;
+
     public PostResponseDto(Post post) {
         this.postId = post.getPostId();
         this.client_phone = post.getClient().getPhone_number();
@@ -32,6 +34,7 @@ public class PostResponseDto {
         this.fee = post.getFee();
         this.cost = post.getCost();
         this.product = post.getProduct();
+        this.state = post.getState();
     }
 
 }
