@@ -16,13 +16,8 @@ export default function ErrandList() {
         fetch("/api/posts/my", model)
             .then((res) => res.json())
             .then((data) => {
-                console.log("심부름 내역 데이터 받아옴");
                 setErrandLists(data);
             });
-        return () => {
-            console.log("심부름 내역 데이터 청소");
-            console.log(errandLists);
-        };
     }, []);
 
     return (

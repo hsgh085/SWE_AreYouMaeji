@@ -147,7 +147,7 @@ public class PostService {
 
     public List<PostHistDto> findByEmail(String email) {
         Member member =  membersService.findByEmail(email).toEntity();
-        List<PostHistDto> res = postRepository.findByClientAndHelper(member, member).stream()
+        List<PostHistDto> res = postRepository.findByClientOrHelper(member, member).stream()
                 .map(PostHistDto::new)
                 .collect(Collectors.toList());
         return res;

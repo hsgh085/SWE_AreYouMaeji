@@ -19,6 +19,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     List<Post> findByCategory(Category category);
 
-    List<Post> findByClientAndHelper(Member client, Member helper);
+    List<Post> findByClientOrHelper(Member client, Member helper);
 
 }
