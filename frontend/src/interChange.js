@@ -15,11 +15,14 @@ function InterChange() {
         const loop = setInterval(() => {
             const curr = state
             getState()
-            console.log("test")
+            if (state == 8) {
+                window.location.replace("/Home")
+            }
+            else if (state == 9) {
+                window.location.replace("/Home")
+            }
             if (curr != state){
-                if (window.alert("testtt")){
-                    window.location.reload()
-                }
+                window.location.reload()
             }
             if (state >= 6){
                 clearInterval(Number(localStorage.getItem("loop")))

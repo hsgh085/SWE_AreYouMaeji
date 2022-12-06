@@ -35,6 +35,16 @@ function E_second() {
 
     }
 
+    function handleCancel(){
+        let model = {
+            method: "PUT",
+            headers: {
+                Authorization: localStorage.getItem("email"),
+            },
+        };
+        fetch(`/api/posts/` + id + '/cancelled', model);
+    }
+
     return (
         <div>
             <Header_do/>
@@ -68,7 +78,7 @@ function E_second() {
                 <E_product/>
             </div>
             <div className="button_row">
-                <Link to="/home">
+                <Link to="/Home" onClick={handleCancel}>
                     <div className="button">취소</div>
                 </Link>
                 {
