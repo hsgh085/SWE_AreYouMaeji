@@ -1,28 +1,24 @@
-.profile {
+.profile_ {
   background-color: white;
-  margin: 1.3rem 0;
-  padding: 1.2em;
   box-shadow: 0 0 4px var(--color-grey), 0 2px 4px var(--color-grey);
+  padding: 24px;
+  margin: 10px 20px 10px 20px;
+  border-radius: 10px;
 }
 
-.profile .name {
+.name_ {
   font-weight: bold;
-  font-size: 1.7rem;
-  margin: 0.5rem 0;
+  font-size: 1.5rem;
 }
 
-.profile .ul {
-  display: flex;
-  flex-direction: column;
-}
-
-.profile ul li {
+.profile_ ul li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 15px;
 }
 
-.profile p {
+.profile_ p {
   margin: 0.3rem 0;
 }
 
@@ -82,8 +78,7 @@
 }
 
 .footer {
-  margin-top: 50px;
-  height: 70px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }

@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Categorylist from "../components/Categorylist/Categorylist";
+import Header_nothing from "../components/Header/Header_nothing"
+import "./H_category.css";
 
 
 function H_category(){
@@ -17,17 +19,20 @@ function H_category(){
     }, []);
 
     return (
-      <div>
-          {
-              Category.map(
-                t => {
-                    return (
-                      <Categorylist Key={t.id} location={t.context} />
+        <div>
+            <Header_nothing />
+            <div>
+                {
+                    Category.map(
+                        t => {
+                            return (
+                                <Categorylist Key={t.id} location={t.context} />
+                            )
+                        }
                     )
                 }
-              )
-          }
-      </div>
+            </div>
+        </div>
     );
 };
 

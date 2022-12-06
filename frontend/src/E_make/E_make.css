@@ -1,6 +1,6 @@
-.Errandmake{
+.Errandmake_ {
     position: relative;
-    margin: 20px 10px 10px 10px;
+    margin: 30px 30px 30px 30px;
     background-color: white;
     overflow: hidden;
     z-index: 1;
@@ -9,21 +9,29 @@
 }
 
 input[type="text"] {
-    font: 8px/8px 'Muli', sans-serif;
+    font: 8px/8px "Muli", sans-serif;
     color: #333;
     width: 100%;
     box-sizing: border-box;
     letter-spacing: 1px;
-    background-color:#dddddd;
+    background-color: #dddddd;
 }
 
 :focus {
     outline: none;
 }
 
-.col-3 {
+.col-3_ {
     padding-top: -15px;
-    width: auto;
+    width: 50%;
+    margin: 20px;
+    margin-top: 5px;
+    position: relative;
+}
+
+.col-4_ {
+    padding-top: -15px;
+    width: 100%;
     margin: 20px;
     margin-top: 5px;
     position: relative;
@@ -38,33 +46,36 @@ input[type="text"] {
 }
 
 .effect-1 {
-    width: 280px;
+    width: 100%;
     padding: 7px;
     border-bottom: 1px solid #ccc;
     border-radius: 8px;
+    margin-left: -20px;
+    margin-top: 10px;
 }
 
-.effect-1~.focus-border {
+.effect-1 ~ .focus-border {
     position: absolute;
     bottom: 0;
-    left: 0;
+    margin-left: -20px;
     width: 0;
     height: 2px;
+    margin-left: -20px;
     background-color: #282b58;
     transition: 0.4s;
 }
 
-.effect-1:focus~.focus-border {
+.effect-1:focus ~ .focus-border {
     width: 100%;
     transition: 0.4s;
 }
 
-.main {
-    margin-bottom:10px;
+.main_ {
+    margin-bottom: 0px;
+    font-size: 14px;
 }
 
-.textarea {
-    margin-left: 20px;
+.textarea_ {
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: #dddddd;
@@ -75,40 +86,43 @@ input[type="text"] {
     outline: none;
     font-family: "Heebo", sans-serif;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 1.4;
-    width: 280px;
-    height: 100px;
+    font-size: 13px;
+    line-height: 1.2;
+    width: 100%;
+    height: 120px;
     transition: all 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.textarea:hover {
+.textarea_:hover {
     cursor: pointer;
     background-color: #eeeeee;
 }
 
-.textarea:focus {
+.textarea_:focus {
     cursor: text;
     color: #333333;
     background-color: white;
     border-color: #333333;
 }
 
-.container {
-    margin-top:20px;
+.container_ {
+    margin-top: 20px;
     padding: 0px;
 }
 
-
-.selectbox {
+.selectbox_ {
+    width: 50%;
+    height: 40px;
+    margin-left: -0px;
+    margin-top: 10px;
     border-radius: 8px;
     border-color: #182b58;
 }
 
-.button_row{
+.button_row {
     display: flex;
     justify-content: center;
 }
@@ -142,8 +156,7 @@ input[type="text"] {
 }
 
 .footer {
-    margin-top: 50px;
-    height: 70px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }

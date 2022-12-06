@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 4rem;
+  margin: 1rem;
   font-weight: 500;
 }
 .container p {
@@ -20,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   background: var(--color-light-grey);
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 10px;
   font-size: 23px;
 }
@@ -64,7 +64,7 @@
 }
 
 .footer {
-  margin-top: 50px;
+  margin-top: 0px;
   height: 70px;
   display: flex;
   justify-content: center;

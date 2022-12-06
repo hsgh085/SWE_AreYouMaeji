@@ -19,20 +19,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 10px;
+  margin: 10px 0px;
 }
 
 .profile p {
-  margin: 0.2rem 0;
+  margin: 0rem 0;
 }
 
 .list {
   display: flex;
   align-items: center;
-  margin: 20px 9px;
+  margin: 15px 8px;
   border-radius: 5px;
   background-color: white;
-  padding: 3rem;
+  padding: 2.3rem;
   box-shadow: 0 0 4px var(--color-grey), 0 2px 4px var(--color-grey);
 }
 
@@ -51,7 +51,7 @@
 .list span {
   color: var(--color-blue);
   flex: 1 1 0%;
-  font-size: 1.4rem;
+  font-size: 1.23rem;
   font-weight: 450;
 }
 
@@ -62,8 +62,8 @@
 }
 
 .footer {
-  margin-top: 50px;
-  height: 70px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
