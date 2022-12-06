@@ -7,7 +7,7 @@ import H_product from "../components/H_product/H_product";
 
 function Home() {
     let {query} = useParams();
-    useEffect(() => {s
+    useEffect(() => {
         if (localStorage.getItem("loop") != null){
             window.clearInterval(Number(localStorage.getItem("loop")))
         }
