@@ -62,7 +62,7 @@ public class Post implements Serializable {
                 int fee, int cost, String createTime, int state
                 ) {
         this.client = client;
-        this.helper = new Member();
+        this.helper = null;
         this.product = product;
         this.destination = destination;
         this.contents = contents;
