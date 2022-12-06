@@ -27,8 +27,7 @@ public class PostResponseDto {
         this.postId = post.getPostId();
         this.client_phone = post.getClient().getPhone_number();
         this.client_nick = post.getClient().getNickname();
-        this.helper_phone = post.getHelper().getPhone_number();
-        this.helper_nick = post.getHelper().getNickname();
+        this.client_email = post.getClient().getEmail();
         this.contents = post.getContents();
         this.destination = post.getDestination();
         this.category = post.getCategory().getContext();
@@ -36,7 +35,13 @@ public class PostResponseDto {
         this.cost = post.getCost();
         this.product = post.getProduct();
         this.state = post.getState();
-        this.client_email = post.getClient().getEmail();
+        if (post.getHelper() != null) {
+            this.helper_phone = post.getHelper().getPhone_number();
+            this.helper_nick = post.getHelper().getNickname();
+        } else {
+            this.helper_phone = null;
+            this.helper_nick = null;
+        }
     }
 
 }

@@ -8,25 +8,44 @@ import E_start from "./E_start/E_start";
 import E_end from "./E_end/E_end";
 
 function InterChange() {
+    const [loopID, setLoop] = useState(0);
     const [state, setState] = useState();
     let {id} = useParams();
     useEffect(() => {
+        getState()
+        const loop = setInterval(() => {
+            const curr = state
+            getState()
+            if (curr != state){
+                window.alert("test")
+                console.log("test")
+                window.location.reload()
+            }
+        }, 3000)
+        setLoop(loop)
+    }, []);
+
+    function getState(){
         if (id) {
             let model = {
-                method: "GET", headers: {
-                    Authorization: localStorage.getItem("email"), 'Content-Type': 'application/json',
+                method: "GET",
+                headers: {
+                    Authorization: localStorage.getItem("email"),
+                    'Content-Type': 'application/json',
                 },
             };
-            fetch(`/api/posts/` + id, model)
+            fetch(`/api/posts/state/` + id, model)
                 .then((res) => res.json())
                 .then((res) => {
-                    console.log(res);
                     setState(res.state);
-                });
+                }).catch(()=>{
+                    clearInterval(loopID)
+            });
 
         }
-    }, []);
-    return (() => {
+    }
+
+    function switchPost() {
         switch (state) {
             case 0:
                 return <E_start/>;
@@ -42,13 +61,21 @@ function InterChange() {
             case 7:
                 window.alert("이미 완료된 거래입니다!");
                 window.location.replace("/Home");
-                break;
+                return;
             case 8:
                 window.alert("이미 취소된 거래입니다!");
                 window.location.replace("/Home");
-                break;
+                return;
         }
-    })
+    }
+
+    return (
+        <>
+            {
+                switchPost()
+            }
+        </>
+    )
 }
 
 export default InterChange;

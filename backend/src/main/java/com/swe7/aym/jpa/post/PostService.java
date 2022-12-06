@@ -25,11 +25,9 @@ public class PostService {
 
     public Long save(PostSaveDto requestDto) {
         MemberDto client = membersService.findByEmail(requestDto.getClient_email());
-        MemberDto helper = membersService.findByEmail(requestDto.getClient_email());
 
         Post res = Post.builder()
                 .client(client.toEntity())
-                .helper(helper.toEntity())
                 .product(requestDto.getProduct())
                 .contents(requestDto.getContents())
                 .destination(requestDto.getDestination())
@@ -96,6 +94,12 @@ public class PostService {
         Post entity = postRepository.findById(target_id)
                 .orElseThrow(() -> new IllegalArgumentException("게시글 조회 : 잘못된 아이디"));
         return new PostResponseDto(entity);
+    }
+
+    public PostStateDto findByIdForState(Long target_id) {
+        Post entity = postRepository.findById(target_id)
+                .orElseThrow(() -> new IllegalArgumentException("게시글 조회 : 잘못된 아이디"));
+        return new PostStateDto(entity);
     }
 
     public List<PostDto> findByState(int target_state) {

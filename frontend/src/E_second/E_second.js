@@ -6,7 +6,7 @@ import Header_do from '../components/Header/Header_do';
 
 
 function E_second() {
-    let isEnd = false;
+    const [isEnd, setBool] = useState(false);
     const [post, setPost] = useState([]);
     let {id} = useParams();
 
@@ -31,8 +31,8 @@ function E_second() {
             },
         };
         fetch(`/api/posts/` + id + '/end', model)
-            .then((res) => res.json());
-        isEnd = true
+            .then(() => setBool(true));
+
     }
 
     return (
@@ -77,7 +77,7 @@ function E_second() {
                             <div className="button">대기중</div>
                         )
                         : (
-                            <Link to={"/E_end/" + id} onClick={handleEnd}>
+                            <Link to={"/E_Post/" + id} onClick={handleEnd}>
                                 <div className="button">완료</div>
                             </Link>
                         )

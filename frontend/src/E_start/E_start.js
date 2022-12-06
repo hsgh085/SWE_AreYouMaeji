@@ -6,8 +6,8 @@ import Header_do from "../components/Header/Header_do";
 import {Link} from "react-router-dom";
 
 function E_start() {
-    let isMyPost = false;
-    const [post, setPost] = useState();
+    const [isMyPost, setBool] = useState(false);
+    const [post, setPost] = useState([]);
     let {id} = useParams();
 
     useEffect(() => {
@@ -22,11 +22,15 @@ function E_start() {
                 Authorization: localStorage.getItem("email")
             }
         };
-        fetch(`/api/posts`, model)
+        fetch(`/api/posts/` + id, model)
             .then((res) => res.json())
-            .then((res) => setPost(res));
-        if (email == post.client_email)
-            isMyPost = true
+            .then((res) => {
+                if (res.client_email == localStorage.getItem("email")){
+                    setBool(true);
+                }
+                setPost(res)
+            });
+
     }, []);
 
     function handlePostMatched() {
@@ -42,7 +46,8 @@ function E_start() {
                 window.alert("심부름이 수락되었습니다.");
             });
     }
-    function handlePostRemove(){
+
+    function handlePostRemove() {
         let model = {
             method: "DELETE",
             headers: {

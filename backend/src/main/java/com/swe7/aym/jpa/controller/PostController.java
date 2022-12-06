@@ -57,6 +57,10 @@ public class PostController {
     public Long updateMatched(@PathVariable Long id, @RequestHeader(value="Authorization") String email) {
         return postService.updateHelper(id, email);
     }
+    @GetMapping("/state/{id}")
+    public PostStateDto findByIdForState(@PathVariable Long id){
+        return postService.findByIdForState(id);
+    }
     @PutMapping("/{id}/ok")
     public void updateFirst(@PathVariable Long id) {
         postService.updateFirst(id);

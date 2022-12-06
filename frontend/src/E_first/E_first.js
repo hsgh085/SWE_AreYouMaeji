@@ -6,7 +6,7 @@ import {Link, useParams} from 'react-router-dom';
 
 
 function E_first() {
-    let isOk = false;
+    const [isOk, setBool] = useState(false);
     const [post, setPost] = useState([]);
     let {id} = useParams();
 
@@ -31,8 +31,7 @@ function E_first() {
             },
         };
         fetch(`/api/posts/` + id + '/ok', model)
-            .then((res) => res.json());
-        isOk = true
+            .then(() => setBool(true));
     }
 
     return (<div>
