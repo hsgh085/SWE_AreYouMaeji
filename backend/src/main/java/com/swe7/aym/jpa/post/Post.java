@@ -78,15 +78,13 @@ public class Post implements Serializable {
     public void updateEnd(int client_star, int helper_star) {
         this.client_star = client_star;
         this.helper_star = helper_star;
-        this.state = 2;
     }
 
     public void updateHelper(Member helper) {
         this.helper = helper;
-        this.state = 1;
     }
 
-    public void updateCancel() {
-        this.state = 3;
+    public void updateState(int state) {
+        this.state = state;
     }
 }

@@ -52,11 +52,11 @@ function App() {
           <Route path="/Home/:query" element={<Home />} />
           <Route path="/H_category" element={<H_category />} />
           <Route path="/E_make" element={<E_make />} />
-          <Route path="/E_start/:id" element={<E_start />} />
-          <Route path="/E_first/:id" element={<E_first />} />
-          <Route path="/E_second/:id" element={<E_second />} />
-          <Route path="/E_test/:id" element={<InterChange/>} />
-          <Route path="/E_end/:id" element={<E_end />} />
+          {/*<Route path="/E_start/:id" element={<E_start />} />*/}
+          {/*<Route path="/E_first/:id" element={<E_first />} />*/}
+          {/*<Route path="/E_second/:id" element={<E_second />} />*/}
+          <Route path="/E_Post/:id" element={<InterChange/>} />
+          {/*<Route path="/E_end/:id" element={<E_end />} />*/}
           <Route path="/H_mypage" element={<H_mypage />} />
           <Route path="/M_ask" element = {<M_ask />} />
           <Route path="/M_cancel" element = {<M_cancel />} />

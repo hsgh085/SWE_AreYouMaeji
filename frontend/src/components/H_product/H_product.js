@@ -39,7 +39,7 @@ const H_product = (props) => {
           p => {
             return (
               <div className="product" key={p.postId} onClick={() => {
-                navigate("/E_start/" + p.postId);
+                navigate("/E_Post/" + p.postId);
               }}>
                 <div className="product_info">
                   <p className='product_title'>{p.product}</p>

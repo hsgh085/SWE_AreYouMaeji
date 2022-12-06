@@ -20,7 +20,7 @@ export default function E_end() {
         'Content-Type': 'application/json',
       },
     };
-    fetch("/api/posts/" + id + "/end", model)
+    fetch("/api/posts/" + id + "/star", model)
       .then(() => {
         window.alert("평가가 완료되었습니다.")
       })
@@ -36,7 +36,7 @@ export default function E_end() {
         <p>거래 상대의 별점을 매겨주세요!</p>
       </div>
       <div className="button_row">
-        <Link to="/home" onClick={sendRate}>
+        <Link to="/Home" onClick={sendRate}>
           <BtnSubmit>완료</BtnSubmit>
         </Link>
       </div>

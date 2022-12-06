@@ -44,11 +44,11 @@ public class PostService {
         return postRepository.save(res).getPostId();
     }
 
-    public Long updateEnd(Long id, PostEndDto postEndDto, String email) {
+    public Long updateStar(Long id, PostEndDto postEndDto, String email) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다!"));
-        int client_star = 0;
-        int helper_star = 0;
+        int client_star = post.getClient_star();
+        int helper_star = post.getHelper_star();
         if (post.getClient().getEmail().equals(email)){
             client_star = postEndDto.getStar();
         }
@@ -56,7 +56,31 @@ public class PostService {
             helper_star = postEndDto.getStar();
         }
         post.updateEnd( client_star, helper_star);
+        if (post.getClient_star() != 0 && post.getHelper_star() != 0)
+            post.updateState(7);
+        else
+            post.updateState(6);
         return id;
+    }
+
+    public void updateFirst(Long id){
+        Post post = postRepository.findById(id).get();
+        if (post.getState() == 1){
+            post.updateState(2);
+        }
+        else {
+            post.updateState(3);
+        }
+    }
+
+    public void updateSecond(Long id){
+        Post post = postRepository.findById(id).get();
+        if (post.getState() == 3){
+            post.updateState(4);
+        }
+        else {
+            post.updateState(5);
+        }
     }
 
     public Long updateHelper(Long id, String email) {
@@ -64,6 +88,7 @@ public class PostService {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다!"));
         Member helper = membersService.findByEmail(email).toEntity();
         post.updateHelper(helper);
+        post.updateState(1);
         return id;
     }
 
@@ -112,7 +137,7 @@ public class PostService {
 
     public Long updateCancel(Long id) {
         Post post = postRepository.findById(id).get();
-        post.updateCancel();
+        post.updateState(8);
         return post.getPostId();
     }
 
@@ -135,5 +160,9 @@ public class PostService {
                 .map(PostSimpleDto::new)
                 .collect(Collectors.toList()));
         return res;
+    }
+
+    public void deletePost(Long id) {
+        postRepository.deleteById(id);
     }
 }

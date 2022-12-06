@@ -10,6 +10,7 @@ public class PostResponseDto {
 
     private Long postId;
     private String client_phone;
+    private String client_email;
     private String client_nick;
     private String helper_phone;
     private String helper_nick;
@@ -35,6 +36,7 @@ public class PostResponseDto {
         this.cost = post.getCost();
         this.product = post.getProduct();
         this.state = post.getState();
+        this.client_email = post.getClient().getEmail();
     }
 
 }

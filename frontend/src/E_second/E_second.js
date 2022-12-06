@@ -6,6 +6,7 @@ import Header_do from '../components/Header/Header_do';
 
 
 function E_second() {
+    let isEnd = false;
     const [post, setPost] = useState([]);
     let {id} = useParams();
 
@@ -21,6 +22,19 @@ function E_second() {
             .then((res) => res.json())
             .then((res) => setPost(res));
     }, []);
+
+    function handleEnd(){
+        let model = {
+            method: "PUT",
+            headers: {
+                Authorization: localStorage.getItem("email"),
+            },
+        };
+        fetch(`/api/posts/` + id + '/end', model)
+            .then((res) => res.json());
+        isEnd = true
+    }
+
     return (
         <div>
             <Header_do/>
@@ -57,9 +71,17 @@ function E_second() {
                 <Link to="/home">
                     <div className="button">취소</div>
                 </Link>
-                <Link to={"/E_end/" + id}>
-                    <div className="button">완료</div>
-                </Link>
+                {
+                    isEnd
+                        ? (
+                            <div className="button">대기중</div>
+                        )
+                        : (
+                            <Link to={"/E_end/" + id} onClick={handleEnd}>
+                                <div className="button">완료</div>
+                            </Link>
+                        )
+                }
             </div>
             <div className="footer">&copy;{new Date().getFullYear()} Errand App</div>
         </div>

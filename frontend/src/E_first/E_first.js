@@ -6,6 +6,7 @@ import {Link, useParams} from 'react-router-dom';
 
 
 function E_first() {
+    let isOk = false;
     const [post, setPost] = useState([]);
     let {id} = useParams();
 
@@ -22,15 +23,16 @@ function E_first() {
             .then((res) => setPost(res));
     }, []);
 
-    function updateState() {
+    function updateOk() {
         let model = {
             method: "PUT",
             headers: {
                 Authorization: localStorage.getItem("email"),
             },
         };
-        fetch(`/api/posts/` + id + '/matched', model)
+        fetch(`/api/posts/` + id + '/ok', model)
             .then((res) => res.json());
+        isOk = true
     }
 
     return (<div>
@@ -65,12 +67,20 @@ function E_first() {
                 <E_product/>
             </div>
             <div className="button_row">
-                <Link to="/home">
+                <Link to="/Home">
                     <div className="button">거절</div>
                 </Link>
-                <Link to={"/E_second/" + id} onClick={updateState}>
-                    <div className="button">진행</div>
-                </Link>
+                {
+                    isOk
+                        ? (
+                            <div className="button">대기중</div>
+                        )
+                        : (
+                            <Link to={"/E_Post/" + id} onClick={updateOk}>
+                                <div className="button">진행</div>
+                            </Link>
+                        )
+                }
             </div>
             <div className="footer">&copy;{new Date().getFullYear()} Errand App</div>
         </div>
