@@ -22,7 +22,7 @@ export default function Rate({ setRate }) {
         return (
           <FaStar
             key={idx}
-            size="50"
+            size="70"
             onClick={() => {
               handleStarClick(el);
             }}

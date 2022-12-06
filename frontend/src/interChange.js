@@ -8,7 +8,6 @@ import E_start from "./E_start/E_start";
 import E_end from "./E_end/E_end";
 
 function InterChange() {
-    const [loopID, setLoop] = useState(0);
     const [state, setState] = useState();
     let {id} = useParams();
     useEffect(() => {
@@ -16,13 +15,17 @@ function InterChange() {
         const loop = setInterval(() => {
             const curr = state
             getState()
+            console.log("test")
             if (curr != state){
-                window.alert("test")
-                console.log("test")
-                window.location.reload()
+                if (window.alert("testtt")){
+                    window.location.reload()
+                }
+            }
+            if (state >= 6){
+                clearInterval(Number(localStorage.getItem("loop")))
             }
         }, 3000)
-        setLoop(loop)
+        localStorage.setItem("loop", loop.toString());
     }, []);
 
     function getState(){
@@ -38,8 +41,9 @@ function InterChange() {
                 .then((res) => res.json())
                 .then((res) => {
                     setState(res.state);
-                }).catch(()=>{
-                    clearInterval(loopID)
+                })
+                .catch(()=>{
+                    clearInterval(Number(localStorage.getItem("loop")))
             });
 
         }
