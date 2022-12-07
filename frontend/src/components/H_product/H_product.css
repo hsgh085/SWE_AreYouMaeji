@@ -1,13 +1,13 @@
 .product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 30px;
   padding: 20px;
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  display: flex;
 }
 
 .product:hover {
@@ -15,70 +15,36 @@
   transform: translateY(-2px);
 }
 
-.product_rating {
-  display: flex;
-}
-
-.product > img {
-  /* ">" product js 안에 img라는 하위 태그를 의미 */
-  max-height: 50px;
-  width: 50%;
-  object-fit: contain;
-  margin-bottom: 15px;
-}
-
-.product_price {
-  margin-top: 50px;
-  position: relative;
-  top: -20px;
-}
-
 .product_title {
-  position: relative;
-  top: 0px;
-  left: 47%;
   font-size: 20px;
   font-weight: bolder;
 }
 
+.product_price {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
 .price_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #182b58;
   border-radius: 5px;
   color: #f3f3f3;
   width: 100px;
-  height: 40px;
+  height: 30px;
   font-size: 15px;
-  position: relative;
-  top: 10px;
-  left: 10px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  float: left;
-}
-
-.button1 {
-  position: relative;
-  bottom: -17px;
-  left: 170px;
-  color: #fff;
-  background: #efc45c;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  transition: 0.3s;
+  margin-right: 10px;
 }
 
 .price {
-  font-size: 25px;
-  text-align: center;
-  width: 150px;
-  height: 40px;
   font-size: 15px;
-  position: relative;
-  top: 10px;
-  left: -15px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
+}
+
+.forward {
+  color: var(--color-dark-grey);
+  width: 40px;
+  height: 40px;
 }

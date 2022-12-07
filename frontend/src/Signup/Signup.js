@@ -36,14 +36,14 @@ function Signup() {
             {localStorage.getItem("email")}
           </h1>
           <h2 className="form_signup">전화번호</h2>
-          <div class="input-area">
+          <div class="input-area_">
             <input name="phone_number" type="text" required />
             <span htmlFor="input" className="placeholder">
               전화번호를 입력해주세요
             </span>
           </div>
           <h2 className="form_signup">닉네임</h2>
-          <div class="input-area">
+          <div class="input-area_">
             <input name="nickname" type="text" required />
             <span htmlFor="input" className="placeholder">
               닉네임을 입력해주세요

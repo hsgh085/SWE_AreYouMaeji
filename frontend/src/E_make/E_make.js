@@ -39,14 +39,14 @@ function E_make() {
           })
     };
 
-    function testFunc() {
+    function handleChange() {
         data = new FormData(form.current);
     }
 
     return (
         <div>
             <div className="Errandmake_">
-                <form onSubmit={handleSavePost} onChange={testFunc} ref={form}>
+                <form onSubmit={handleSavePost} onChange={handleChange} ref={form}>
                     <div className="container_">
                         <h3 className="main_">상품명</h3>
                         <div className="col-4_">

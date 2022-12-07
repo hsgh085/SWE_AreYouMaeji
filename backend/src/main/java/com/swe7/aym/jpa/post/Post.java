@@ -57,12 +57,12 @@ public class Post implements Serializable {
     private int state;
 
     @Builder
-    public Post(Member client, Member helper, String product, String destination, String contents,
+    public Post(Member client, String product, String destination, String contents,
                 Category category, int client_star, int helper_star,
                 int fee, int cost, String createTime, int state
                 ) {
         this.client = client;
-        this.helper = helper;
+        this.helper = null;
         this.product = product;
         this.destination = destination;
         this.contents = contents;
@@ -78,15 +78,13 @@ public class Post implements Serializable {
     public void updateEnd(int client_star, int helper_star) {
         this.client_star = client_star;
         this.helper_star = helper_star;
-        this.state = 2;
     }
 
     public void updateHelper(Member helper) {
         this.helper = helper;
-        this.state = 1;
     }
 
-    public void updateCancel() {
-        this.state = 3;
+    public void updateState(int state) {
+        this.state = state;
     }
 }

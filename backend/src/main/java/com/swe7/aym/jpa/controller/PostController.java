@@ -21,6 +21,10 @@ public class PostController {
     public PostResponseDto findById(@PathVariable Long id){
         return postService.findById(id);
     }
+    @DeleteMapping("/{id}")
+    public void deletePost(@PathVariable Long id){
+        postService.deletePost(id);
+    }
     @GetMapping("/cancel")
     public List<PostSimpleDto> findCancelled(@RequestHeader(value="Authorization") String email){
         return postService.findByEmailAndCancelled(email);
@@ -45,13 +49,25 @@ public class PostController {
     public List<PostDto> findByCategory(@PathVariable String category){
         return postService.findByCategory(category);
     }
-    @PutMapping("/{id}/end")
-    public Long updateEnd(@PathVariable Long id, @RequestBody PostEndDto postEndDto, @RequestHeader(value="Authorization") String email) {
-        return postService.updateEnd(id, postEndDto, email);
+    @PutMapping("/{id}/star")
+    public Long updateStar(@PathVariable Long id, @RequestBody PostEndDto postEndDto, @RequestHeader(value="Authorization") String email) {
+        return postService.updateStar(id, postEndDto, email);
     }
     @PutMapping("/{id}/matched")
     public Long updateMatched(@PathVariable Long id, @RequestHeader(value="Authorization") String email) {
         return postService.updateHelper(id, email);
+    }
+    @GetMapping("/state/{id}")
+    public PostStateDto findByIdForState(@PathVariable Long id){
+        return postService.findByIdForState(id);
+    }
+    @PutMapping("/{id}/ok")
+    public void updateFirst(@PathVariable Long id) {
+        postService.updateFirst(id);
+    }
+    @PutMapping("/{id}/end")
+    public void updateSecond(@PathVariable Long id) {
+        postService.updateSecond(id);
     }
     @PutMapping("/{id}/cancelled")
     public Long updateCancel(@PathVariable Long id) {

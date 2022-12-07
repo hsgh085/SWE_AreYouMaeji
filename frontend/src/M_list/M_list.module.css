@@ -4,9 +4,9 @@
     font-size: 24px;
     font-weight: bold;
     margin: 20px;
-  }
-  
-  .list {
+}
+
+.list {
     flex-direction: column;
     align-items: center;
     margin: 10px;
@@ -16,33 +16,33 @@
     z-index: 1;
     border-radius: 20px;
     box-shadow: 0 4px 16px var(--color-dark-grey);
-  }
-  
-  .productName {
+}
+
+.productName {
     font-size: 19px;
     font-weight: bold;
     margin-bottom: 10px;
-  }
-  
-  .content {
+}
+
+.content {
     display: flex;
     flex-direction: column;
     font-size: 14px;
-  }
-  
-  .text {
+}
+
+.text {
     display: flex;
     align-items: center;
     margin-top: 3px;
-  }
-  
-  .role {
+}
+
+.role {
     background: var(--color-grey);
     padding: 5px;
     border-radius: 5px;
     margin-right: 5px;
-  }
-  
-  p {
+}
+
+p {
     margin: 0;
-  }
+}

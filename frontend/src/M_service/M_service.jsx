@@ -1,7 +1,6 @@
 import React from "react";
-//import Header from "../../component/Header/Header";
-import styles from "./M_service.module.css";
 import Header_nothing from "../components/Header/Header_nothing"
+import styles from "./M_service.module.css";
 
 export default function M_service() {
   return (

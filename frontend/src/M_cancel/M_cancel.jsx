@@ -25,7 +25,7 @@ export default function CancelledErrand() {
 
   return (
     <>
-      <Header_nothing />
+        <Header_nothing />
       <p className={styles.title}>취소된 심부름</p>
       <ul>
         {cancelLists.map((list) => (
