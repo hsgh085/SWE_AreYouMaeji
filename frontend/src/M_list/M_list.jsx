@@ -26,7 +26,7 @@ export default function ErrandList() {
             <p className={styles.title}>심부름 내역</p>
             <ul>
                 {errandLists.map((list) => (
-                    <li className={styles.list} key={list.postId}>
+                    <li className={styles.list} key={list.postId} onClick={() => window.location.replace("/E_Post/" + list.postId)}>
                         <p className={styles.productName}>{list.product}</p>
                         <div className={styles.content}>
                             <div className={styles.text}>
