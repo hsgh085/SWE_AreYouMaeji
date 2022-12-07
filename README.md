@@ -11,11 +11,6 @@
 
 # 🗽 프로젝트 소개
 
-### 📠 배포 링크
-
-[Are you Maeji?](https://keyleeu.github.io/errand_me4n_2022-10/)
-
-
 ### 👉 프로젝트 시작 계기
 
 - 본 프로젝트는 연세대학교 미래캠퍼스를 대상으로 온 디맨드 경제 활성화를 통해 필요할 때 원하는 시간에 일시적으로 고용돼 인력수요자가 원하는 노동을 통해 수입을 창출할 수 있는 긱 이코노미 생태계를 구축하여 재학생들의 단기간 노동을 통한 경제적 자립의 확대를 기대한다.
@@ -24,7 +19,6 @@
 
 - 연세대학교 미래캠퍼스에서 재학생의 편리한 학교생활을 위해 (심부름) 웹,앱을 만들어  서로에게 필요한 (정보)를 공유한다. 그 안에는 (심부름)의 메인 페이지 외에도 심부름 거래, 심부름 분류 등 다양한 웹 서비스를 포함한다. 
 
-- 
 
 
 # 👨🏻‍💻 팀원 소개
@@ -46,11 +40,9 @@
 
 
 
-
 # 🔨 기술 스택
 
 ![기술스택](https://i.esdrop.com/d/f/uVJApfFjHN/s18YweheEW.jpg)
-
 
 
 
@@ -58,22 +50,17 @@
 
 ### 📰 **메인 페이지**
 
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/ydVDIPbQhy.jpg" width="300" height="900">
-
+<img src="https://i.esdrop.com/d/f/uVJApfFjHN/7B8nCfpXmF.jpg" width="300" height="800">
 
 ### 🔒 **초기 페이지**
 
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/Ex4ljJAoVS.jpg" width="300" height="900">
-
-### 🔑 **로그인 페이지**
-
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/WfdUWwGlNi.jpg" width="300" height="900">
+<img src="https://i.esdrop.com/d/f/uVJApfFjHN/uEBz4R1jp2.jpg" width="300" height="800">
 
 ### ⌨️ **마이 페이지**
 
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/kiIpE87JGr.jpg" width="300" height="900">
+<img src="https://i.esdrop.com/d/f/uVJApfFjHN/hvGWFeevZa.jpg" width="300" height="800">
 
 ### 🏅 **등록 페이지**
 
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/takzPZjz5K.jpg" width="300" height="900">
+<img src="https://i.esdrop.com/d/f/uVJApfFjHN/H3ZrrK4ydN.jpg" width="300" height="800">
 
