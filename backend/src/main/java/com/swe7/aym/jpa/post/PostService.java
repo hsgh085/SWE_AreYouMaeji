@@ -109,6 +109,20 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
+    public List<PostSimpleDto> findByEmailAndCancelled(String email) {
+        MemberDto member =  membersService.findByEmail(email);
+        List<PostSimpleDto> res = postRepository.findByClientAndState(member.toEntity(), 3)
+                .stream()
+                .map(PostSimpleDto::new)
+                .collect(Collectors.toList());
+        res.addAll(postRepository.findByHelperAndState(member.toEntity(), 3)
+                .stream()
+                .map(PostSimpleDto::new)
+                .collect(Collectors.toList()));
+        return res;
+    }
+
+
     public List<PostSimpleDto> findByRecentWithEmail(String email) {
         int state = 0; // 등록되서 매칭안된 것만
         MemberDto client = membersService.findByEmail(email);
@@ -150,19 +164,6 @@ public class PostService {
         List<PostHistDto> res = postRepository.findByClientOrHelper(member, member).stream()
                 .map(PostHistDto::new)
                 .collect(Collectors.toList());
-        return res;
-    }
-
-    public List<PostSimpleDto> findByEmailAndCancelled(String email) {
-        Member member =  membersService.findByEmail(email).toEntity();
-        List<PostSimpleDto> res = postRepository.findByClientAndState(member, 3)
-                .stream()
-                .map(PostSimpleDto::new)
-                .collect(Collectors.toList());
-        res.addAll(postRepository.findByHelperAndState(member, 3)
-                .stream()
-                .map(PostSimpleDto::new)
-                .collect(Collectors.toList()));
         return res;
     }
 
