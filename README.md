@@ -50,17 +50,17 @@
 
 ### 📰 **메인 페이지**
 
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/7B8nCfpXmF.jpg" width="300" height="800">
+<img src="https://i.esdrop.com/d/f/uVJApfFjHN/7B8nCfpXmF.jpg" width="300" height="700">
 
 ### 🔒 **초기 페이지**
 
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/uEBz4R1jp2.jpg" width="300" height="800">
+<img src="https://i.esdrop.com/d/f/uVJApfFjHN/uEBz4R1jp2.jpg" width="300" height="700">
 
 ### ⌨️ **마이 페이지**
 
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/hvGWFeevZa.jpg" width="300" height="800">
+<img src="https://i.esdrop.com/d/f/uVJApfFjHN/hvGWFeevZa.jpg" width="300" height="700">
 
 ### 🏅 **등록 페이지**
 
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/H3ZrrK4ydN.jpg" width="300" height="800">
+<img src="https://i.esdrop.com/d/f/uVJApfFjHN/5UT1hMEJRq.jpg" width="300" height="700">
 
