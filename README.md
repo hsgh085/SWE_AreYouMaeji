@@ -7,7 +7,6 @@
 - [👨🏻‍💻 팀원 소개](#팀원-소개)
 - [🔨 기술 스택](#기술-스택)
 - [📚 페이지별 기능](#-페이지별-기능)
-- [🌲 프로젝트 트리](#-프로젝트-트리)
 
 
 # 🗽 프로젝트 소개
@@ -80,57 +79,4 @@
 ### 🏅 **등록 페이지**
 
 <img src="https://i.esdrop.com/d/f/uVJApfFjHN/takzPZjz5K.jpg" width="300" height="900">
-
-
-# 🌲 프로젝트 트리
-
-```
-샘플
-|-- assets
-|-- automl
-|-- base
-|   |-- __init__.py
-|   |-- base_data_loader.py
-|   |-- base_model.py
-|   └-- base_trainer.py
-|-- data_loader
-|   └-- data_loaders.py
-|-- logger
-|   |-- __init__.py
-|   |-- logger.py
-|   └-- logger_config.json
-|-- model
-|   |-- loss.py
-|   |-- lr_scheduler.py
-|   |-- metric.py
-|   └-- model.py
-|-- prototype
-|-- tokenizer
-|   |-- special_tokens_map.json
-|   |-- tokenizer_config.json
-|   └-- vocab.txt
-|-- trainer
-|   |-- __init__.py
-|   |-- kd_trainer.py
-|   └-- trainer.py
-|-- config.json
-|-- config_automl_test.json
-|-- kd_config.json
-|-- kd_train.py
-|-- parse_config.py
-|-- pkm_config.json
-|-- requirements.txt
-|-- simple_test.py
-|-- test.py
-|-- test_automl.py
-|-- train.py
-└-- utils
-    |-- __init__.py
-    |-- api_response.py
-    |-- error_handler.py
-    |-- memory.py
-    |-- query.py
-    |-- util.py
-    └-- utils.py
-```
 
