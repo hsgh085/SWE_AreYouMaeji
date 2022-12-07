@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.esdrop.com/d/f/uVJApfFjHN/axPmTkVP1B.gif" width="50%" height="70%" title="px(픽셀) 크기 설정" alt="매지세요?"></p>
+<p align="center"><img src="https://i.esdrop.com/d/f/uVJApfFjHN/XZtVLoP828.gif" width="50%" height="70%" title="px(픽셀) 크기 설정" alt="매지세요?"></p>
 
 
 # 📂목차
