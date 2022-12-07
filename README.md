@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.esdrop.com/d/f/uVJApfFjHN/Z9voVrRkN3.png" width="50%" height="70%" title="px(픽셀) 크기 설정" alt="매지세요?"></p>
+<p align="center"><img src="https://i.esdrop.com/d/f/uVJApfFjHN/XZtVLoP828.gif" width="50%" height="70%" title="px(픽셀) 크기 설정" alt="매지세요?"></p>
 
 
 # 📂목차
@@ -7,15 +7,9 @@
 - [👨🏻‍💻 팀원 소개](#팀원-소개)
 - [🔨 기술 스택](#기술-스택)
 - [📚 페이지별 기능](#-페이지별-기능)
-- [🌲 프로젝트 트리](#-프로젝트-트리)
 
 
 # 🗽 프로젝트 소개
-
-### 📠 배포 링크
-
-[Are you Maeji?](https://keyleeu.github.io/errand_me4n_2022-10/)
-
 
 ### 👉 프로젝트 시작 계기
 
@@ -24,10 +18,6 @@
 ### 👉 프로젝트 내용
 
 - 연세대학교 미래캠퍼스에서 재학생의 편리한 학교생활을 위해 (심부름) 웹,앱을 만들어  서로에게 필요한 (정보)를 공유한다. 그 안에는 (심부름)의 메인 페이지 외에도 심부름 거래, 심부름 분류 등 다양한 웹 서비스를 포함한다. 
-
-### 👉 기술적 내용
-
-- 
 
 
 
@@ -50,11 +40,9 @@
 
 
 
-
 # 🔨 기술 스택
 
 ![기술스택](https://i.esdrop.com/d/f/uVJApfFjHN/s18YweheEW.jpg)
-
 
 
 
@@ -62,75 +50,16 @@
 
 ### 📰 **메인 페이지**
 
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/ydVDIPbQhy.jpg" width="300" height="900">
-
+<img src="https://i.esdrop.com/d/f/uVJApfFjHN/7B8nCfpXmF.jpg" width="300" height="700">
 
 ### 🔒 **초기 페이지**
 
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/Ex4ljJAoVS.jpg" width="300" height="900">
-
-### 🔑 **로그인 페이지**
-
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/WfdUWwGlNi.jpg" width="300" height="900">
+<img src="https://i.esdrop.com/d/f/uVJApfFjHN/uEBz4R1jp2.jpg" width="300" height="700">
 
 ### ⌨️ **마이 페이지**
 
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/kiIpE87JGr.jpg" width="300" height="900">
+<img src="https://i.esdrop.com/d/f/uVJApfFjHN/hvGWFeevZa.jpg" width="300" height="700">
 
 ### 🏅 **등록 페이지**
 
-<img src="https://i.esdrop.com/d/f/uVJApfFjHN/takzPZjz5K.jpg" width="300" height="900">
-
-
-# 🌲 프로젝트 트리
-
-```
-샘플
-|-- assets
-|-- automl
-|-- base
-|   |-- __init__.py
-|   |-- base_data_loader.py
-|   |-- base_model.py
-|   └-- base_trainer.py
-|-- data_loader
-|   └-- data_loaders.py
-|-- logger
-|   |-- __init__.py
-|   |-- logger.py
-|   └-- logger_config.json
-|-- model
-|   |-- loss.py
-|   |-- lr_scheduler.py
-|   |-- metric.py
-|   └-- model.py
-|-- prototype
-|-- tokenizer
-|   |-- special_tokens_map.json
-|   |-- tokenizer_config.json
-|   └-- vocab.txt
-|-- trainer
-|   |-- __init__.py
-|   |-- kd_trainer.py
-|   └-- trainer.py
-|-- config.json
-|-- config_automl_test.json
-|-- kd_config.json
-|-- kd_train.py
-|-- parse_config.py
-|-- pkm_config.json
-|-- requirements.txt
-|-- simple_test.py
-|-- test.py
-|-- test_automl.py
-|-- train.py
-└-- utils
-    |-- __init__.py
-    |-- api_response.py
-    |-- error_handler.py
-    |-- memory.py
-    |-- query.py
-    |-- util.py
-    └-- utils.py
-```
-
+<img src="https://i.esdrop.com/d/f/uVJApfFjHN/5UT1hMEJRq.jpg" width="300" height="700">
