@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2rem;
+}
+.title {
+  margin: 40px 10px 30px 15px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+article {
+  background: white;
+  padding: 100px 20px 50px 18px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 4px var(--color-grey), 0 2px 4px var(--color-grey);
+}
+
+.text {
+  top: -30px;
+  margin: 23px;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+  animation: fadein 1s ease-in-out;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.footer {
+  margin-top: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

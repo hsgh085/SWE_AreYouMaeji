@@ -1,0 +1,99 @@
+.agree_body {
+  border: 25px solid #11234b;
+  background-color: #fff;
+  padding: 250px;
+  margin: auto;
+  margin-bottom: 0px;
+  position: relative;
+}
+
+.agree_header {
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 600;
+  font-size: xx-large;
+}
+
+.agree_form {
+  margin: 90px 10px 65px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 60;
+  box-sizing: content-box;
+}
+
+ul.agree_form-box {
+  border: 2px solid #ddd;
+  background-color: #fff;
+  width: 600px;
+  height: 600px;
+}
+
+.checkBox01 {
+  padding: 2px;
+  font-weight: 600;
+  font-size: medium;
+  color: #888;
+  margin: 8px 20px;
+  text-align: start;
+}
+
+.checkBox02,
+.checkBox03,
+.checkBox04,
+.checkBox05 {
+  position: relative;
+  width: 280px;
+  padding: 26px;
+  font-weight: 600;
+  font-size: medium;
+  color: #888;
+  margin: 0px 10px;
+}
+
+#textarea {
+  position: relative;
+  margin: -9px 30px 30px 50px;
+  height: 70px;
+  width: 500px;
+}
+
+.agreeBtn {
+  margin: 20px 300px -60px 100px;
+  box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
+}
+.disagreeBtn {
+  margin: 20px 0px 45px 210px;
+  box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
+}
+
+button {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  background: #182b58;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
+  transition: 0.3s;
+}
+
+#agreeBtn:focus #disagreeBtn:focus {
+  outline: 0;
+}
+
+#agreeBtn:hover {
+  background: rgba(0, 79, 255, 0.9);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 79, 255, 0.6);
+}
+#disagreeBtn:hover {
+  background: rgba(0, 79, 255, 0.9);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 79, 255, 0.6);
+}

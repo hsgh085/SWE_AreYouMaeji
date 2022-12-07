@@ -1,0 +1,32 @@
+.Ct_title {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.Ct {
+    margin-top: 30px;
+    padding: 50px;
+}
+
+.Ct1 {
+    background-color: white;
+    border-radius: 15px;
+    flex-direction: column;
+    box-shadow: 0 0 5px var(--color-grey), 0 2px 5px var(--color-grey);
+    margin: 20px;
+    height: 35px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+}
+
+.Ct1:hover {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+}

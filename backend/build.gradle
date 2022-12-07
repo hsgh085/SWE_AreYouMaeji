@@ -20,13 +20,29 @@ repositories {
 }
 
 dependencies {
+	//SPRING
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'junit:junit:4.13.2'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	//LOMBOK
     compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//JPA
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	//TEST MODULE
+//	testImplementation 'junit:junit:4.13.2'
+//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	testImplementation 'org.testcontainers:testcontainers:1.17.4'
+//	testImplementation 'org.testcontainers:junit-jupiter:1.17.4'
+//	testImplementation 'org.testcontainers:mariadb:1.17.4'
+	//JSON PARSER
+	implementation 'com.google.code.gson:gson:2.10'
+	//SWAGGER
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+	//REDIS
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.session:spring-session-data-redis:2.7.0'
 }
 
 tasks.named('test') {

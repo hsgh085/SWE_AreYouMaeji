@@ -1,0 +1,82 @@
+.home {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1500px;
+}
+
+.home_row {
+  z-index: 1;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.home_image {
+  width: 10%;
+  z-index: -1;
+  margin-bottom: 50px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 50px;
+  box-sizing: border-box;
+  z-index: 299;
+}
+
+.nav__list {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 60px;
+}
+
+.nav__link {
+  position: relative;
+  color: ivory;
+}
+
+.nav__circle {
+  position: absolute;
+  left: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px -3px #f1e2a8;
+  z-index: 291;
+}
+
+.badge {
+  background-color: #ebcb47;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 100;
+  z-index: 1;
+}
+.badge:hover {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.pencil {
+  width: 50px;
+  height: 50px;
+}
+.pencil {
+  font-size: 5em;
+  animation: motion 0.4s linear 0s infinite alternate;
+}
+@keyframes motion {
+  from {
+    margin-top: 0px;
+  }
+  to {
+    margin-top: 10px;
+  }
+}

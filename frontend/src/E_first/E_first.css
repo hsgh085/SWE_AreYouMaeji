@@ -1,0 +1,84 @@
+.profile_ {
+  background-color: white;
+  box-shadow: 0 0 4px var(--color-grey), 0 2px 4px var(--color-grey);
+  padding: 24px;
+  margin: 10px 20px 10px 20px;
+  border-radius: 10px;
+}
+
+.name_ {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.profile_ ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+}
+
+.profile_ p {
+  margin: 0.3rem 0;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 0 4px var(--color-grey), 0 2px 4px var(--color-grey);
+}
+
+.list:hover {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  color: var(--color-blue);
+  margin-right: 1rem;
+}
+
+.list span {
+  color: var(--color-blue);
+  flex: 1 1 0%;
+  font-size: 1.2rem;
+}
+
+.forward {
+  color: var(--color-grey);
+  width: 30px;
+  height: 30px;
+}
+
+.button {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  background: #182b58;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
+  transition: 0.3s;
+}
+
+.button:focus {
+  outline: 0;
+}
+
+.button:hover {
+  background: rgba(0, 79, 255, 0.9);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 79, 255, 0.6);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

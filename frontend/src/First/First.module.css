@@ -1,0 +1,38 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top:80px;
+}
+
+.logo {
+  height: 350px;
+}
+
+.kakao{
+  width: 350px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.boxL{
+  width:300px;
+}
+
+.imgL{
+  width: 300px;
+  position: relative;
+}
+
+.boxQ{
+  width:300px;
+  position: absolute;
+  top:0px;
+}
+
+.imgQ{
+  width: 300px;
+  position: absolute;
+  top:80px;
+}
