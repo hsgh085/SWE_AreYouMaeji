@@ -111,11 +111,11 @@ public class PostService {
 
     public List<PostSimpleDto> findByEmailAndCancelled(String email) {
         MemberDto member =  membersService.findByEmail(email);
-        List<PostSimpleDto> res = postRepository.findByClientAndState(member.toEntity(), 3)
+        List<PostSimpleDto> res = postRepository.findByClientAndState(member.toEntity(), 8)
                 .stream()
                 .map(PostSimpleDto::new)
                 .collect(Collectors.toList());
-        res.addAll(postRepository.findByHelperAndState(member.toEntity(), 3)
+        res.addAll(postRepository.findByHelperAndState(member.toEntity(), 8)
                 .stream()
                 .map(PostSimpleDto::new)
                 .collect(Collectors.toList()));

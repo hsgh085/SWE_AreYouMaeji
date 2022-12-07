@@ -3,6 +3,7 @@ import './E_first.css'
 import E_product from "../components/E_product/E_product"
 import Header_do from '../components/Header/Header_do';
 import {Link, useParams} from 'react-router-dom';
+import {BsStarFill} from "react-icons/bs";
 
 
 function E_first() {
