@@ -8,6 +8,7 @@ import {Link, useParams} from 'react-router-dom';
 function E_first() {
     const [isOk, setBool] = useState(false);
     const [post, setPost] = useState([]);
+    const [rate, setRate] = useState(1);
     let {id} = useParams();
 
     useEffect(() => {
@@ -21,6 +22,21 @@ function E_first() {
         fetch(`/api/posts/` + id, model)
             .then((res) => res.json())
             .then((res) => setPost(res));
+        let model2 = {
+            method: "GET",
+            headers: {
+                Authorization: localStorage.getItem("email"),
+                'Content-Type': 'application/json',
+            },
+        };
+        fetch("/api/member/stars", model2)
+            .then((res) => res.json())
+            .then((data) => {
+                if (data == 0) data = 1;
+                setRate(data);
+                console.log(data);
+                console.log("별점 데이터 받아옴");
+            });
     }, []);
 
     function updateOk() {
@@ -46,7 +62,18 @@ function E_first() {
                     </li>
                     <li>
                         <p>평점</p>
-                        {/*todo*/}
+                        <div className="star">
+                            {Array(rate)
+                                .fill(0)
+                                .map((el, i) => (
+                                    <BsStarFill key={i} size="25" color="#EFC45C"/>
+                                ))}
+                            {Array(5 - rate)
+                                .fill(0)
+                                .map((el, i) => (
+                                    <BsStarFill key={i} size="25" color="#0A1931"/>
+                                ))}
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -59,7 +86,18 @@ function E_first() {
                     </li>
                     <li>
                         <p>평점</p>
-                        {/*todo*/}
+                        <div className="star">
+                            {Array(rate)
+                                .fill(0)
+                                .map((el, i) => (
+                                    <BsStarFill key={i} size="25" color="#EFC45C"/>
+                                ))}
+                            {Array(5 - rate)
+                                .fill(0)
+                                .map((el, i) => (
+                                    <BsStarFill key={i} size="25" color="#0A1931"/>
+                                ))}
+                        </div>
                     </li>
                 </ul>
             </div>

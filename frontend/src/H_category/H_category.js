@@ -21,12 +21,15 @@ function H_category(){
     return (
         <div>
             <Header_nothing />
-            <div>
+            <p className="Ct_title">카테고리</p>
+            <div className="Ct">
                 {
                     Category.map(
                         t => {
                             return (
-                                <Categorylist Key={t.id} location={t.context} />
+                                <div className="Ct1">
+                                    <Categorylist Key={t.id} location={t.context} />
+                                </div>
                             )
                         }
                     )

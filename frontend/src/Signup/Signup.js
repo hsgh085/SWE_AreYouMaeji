@@ -20,61 +20,61 @@ function Signup() {
       return;
     }
     fetch(`/api/member`, model)
-      .then((res) => res.json())
-      .then((res) => {
-        window.alert("회원가입 성공!");
-        window.location.replace("/Home");
-      });
+        .then((res) => res.json())
+        .then((res) => {
+          window.alert("회원가입 성공!");
+          window.location.replace("/Home");
+        });
   }
 
   return (
-    <form onSubmit={handleSaveMember} method="post" id="formTable">
-      <div className="back">
-        <h1 className="form_sign-up">회원가입</h1>
-        <div className="containersign">
-          <h1 className="form_signup" name="email">
-            {localStorage.getItem("email")}
-          </h1>
-          <h2 className="form_signup">전화번호</h2>
-          <div class="input-area">
-            <input name="phone_number" type="text" required />
-            <span htmlFor="input" className="placeholder">
+      <form onSubmit={handleSaveMember} method="post" id="formTable">
+        <div className="back">
+          <h1 className="form_sign-up">회원가입</h1>
+          <div className="containersign">
+            <h1 className="form_signup" name="email">
+              {localStorage.getItem("email")}
+            </h1>
+            <h2 className="form_signup">전화번호</h2>
+            <div class="input-area_">
+              <input name="phone_number" type="text" required />
+              <span htmlFor="input" className="placeholder">
               전화번호를 입력해주세요
             </span>
-          </div>
-          <h2 className="form_signup">닉네임</h2>
-          <div class="input-area">
-            <input name="nickname" type="text" required />
-            <span htmlFor="input" className="placeholder">
+            </div>
+            <h2 className="form_signup">닉네임</h2>
+            <div class="input-area_">
+              <input name="nickname" type="text" required />
+              <span htmlFor="input" className="placeholder">
               닉네임을 입력해주세요
             </span>
-          </div>
-          <h2 className="form_signup">성별</h2>
-          <div className="wrapper">
+            </div>
+            <h2 className="form_signup">성별</h2>
+            <div className="wrapper">
+              <input
+                  type="radio"
+                  name="gender"
+                  id="option-1"
+                  value="1"
+                  defaultChecked
+              ></input>
+              <input type="radio" name="gender" id="option-2" value="2"></input>
+              <label htmlFor="option-1" className="option option-1">
+                <span>남자</span>
+              </label>
+              <label htmlFor="option-2" className="option option-2">
+                <span>여자</span>
+              </label>
+            </div>
             <input
-              type="radio"
-              name="gender"
-              id="option-1"
-              value="1"
-              defaultChecked
-            ></input>
-            <input type="radio" name="gender" id="option-2" value="2"></input>
-            <label htmlFor="option-1" className="option option-1">
-              <span>남자</span>
-            </label>
-            <label htmlFor="option-2" className="option option-2">
-              <span>여자</span>
-            </label>
+                type="image"
+                className="kakao_logo_signup"
+                src="https://i.esdrop.com/d/f/uVJApfFjHN/9Lm456HH7s.png"
+                alt=""
+            />
           </div>
-          <input
-            type="image"
-            className="kakao_logo_signup"
-            src="https://i.esdrop.com/d/f/uVJApfFjHN/9Lm456HH7s.png"
-            alt=""
-          />
         </div>
-      </div>
-    </form>
+      </form>
   );
 }
 

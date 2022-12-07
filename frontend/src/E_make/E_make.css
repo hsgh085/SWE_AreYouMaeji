@@ -57,10 +57,9 @@ input[type="text"] {
 .effect-1 ~ .focus-border {
     position: absolute;
     bottom: 0;
-    margin-left: -20px;
+    margin-left: -100%;
     width: 0;
     height: 2px;
-    margin-left: -20px;
     background-color: #282b58;
     transition: 0.4s;
 }

@@ -3,11 +3,12 @@ import './E_second.css'
 import E_product from "../components/E_product/E_product";
 import {Link, useParams} from 'react-router-dom';
 import Header_do from '../components/Header/Header_do';
-
+import {BsStarFill} from "react-icons/bs";
 
 function E_second() {
     const [isEnd, setBool] = useState(false);
     const [post, setPost] = useState([]);
+    const [rate, setRate] = useState(1);
     let {id} = useParams();
 
     useEffect(() => {
@@ -21,9 +22,24 @@ function E_second() {
         fetch(`/api/posts/` + id, model)
             .then((res) => res.json())
             .then((res) => setPost(res));
+        let model2 = {
+            method: "GET",
+            headers: {
+                Authorization: localStorage.getItem("email"),
+                'Content-Type': 'application/json',
+            },
+        };
+        fetch("/api/member/stars", model2)
+            .then((res) => res.json())
+            .then((data) => {
+                if (data == 0) data = 1;
+                setRate(data);
+                console.log(data);
+                console.log("별점 데이터 받아옴");
+            });
     }, []);
 
-    function handleEnd(){
+    function handleEnd() {
         let model = {
             method: "PUT",
             headers: {
@@ -35,7 +51,7 @@ function E_second() {
 
     }
 
-    function handleCancel(){
+    function handleCancel() {
         let model = {
             method: "PUT",
             headers: {
@@ -57,7 +73,18 @@ function E_second() {
                     </li>
                     <li>
                         <p>평점</p>
-                        {/*todo*/}
+                        <div className="star">
+                            {Array(rate)
+                                .fill(0)
+                                .map((el, i) => (
+                                    <BsStarFill key={i} size="25" color="#EFC45C"/>
+                                ))}
+                            {Array(5 - rate)
+                                .fill(0)
+                                .map((el, i) => (
+                                    <BsStarFill key={i} size="25" color="#0A1931"/>
+                                ))}
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -70,7 +97,18 @@ function E_second() {
                     </li>
                     <li>
                         <p>평점</p>
-                        {/*todo*/}
+                        <div className="star">
+                            {Array(rate)
+                                .fill(0)
+                                .map((el, i) => (
+                                    <BsStarFill key={i} size="25" color="#EFC45C"/>
+                                ))}
+                            {Array(5 - rate)
+                                .fill(0)
+                                .map((el, i) => (
+                                    <BsStarFill key={i} size="25" color="#0A1931"/>
+                                ))}
+                        </div>
                     </li>
                 </ul>
             </div>

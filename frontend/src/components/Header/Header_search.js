@@ -2,15 +2,14 @@ import React, {useRef} from "react";
 import "./Header_search.css";
 import { Link } from "react-router-dom";
 import { TiEquals } from "react-icons/ti";
-import { SlUser } from "react-icons/sl";
-import { BsSearch } from "react-icons/bs";
+import { BsFillPersonFill } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
 
 function Header() {
     const searchBar = useRef();
     function handleSearch(event){
         event.preventDefault();
-        window.location.replace("/Home/" + searchBar.current.value)
+        window.location.replace("/home/" + searchBar.current.value)
     }
     return (
         <div className="header">
@@ -33,7 +32,7 @@ function Header() {
             <div className="header_nav">
                 <Link to="/H_mypage">
                     <div className="header_option">
-                        <SlUser className="header_optionLineTwo" />
+                        <BsFillPersonFill className="header_optionLineTwo" />
                     </div>
                 </Link>
                 <Link to="/H_category">
