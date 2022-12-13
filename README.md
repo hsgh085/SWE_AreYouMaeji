@@ -23,10 +23,10 @@
 
 # 👨🏻‍💻 팀원 소개
 
-|이재원|이민혁|배재익|강지호|유희선|고명석|
+|이재원|이민혁|배재익|유희선|고명석|
 |---|---|---|---|---|---|
-|[jwinvade](https://github.com/jwinvade)|[me4n](https://github.com/keyleeu)|[Jaeik Bae](https://github.com/0308bae)|[깃이름](깃주소)|[hsgh085](https://github.com/hsgh085)|[mgskko](https://github.com/mgskko)|
-|Web Frontend|Web Backend|Web Backend|Web Backend|Web Frontend|Web Frontend|
+|[jwinvade](https://github.com/jwinvade)|[me4n](https://github.com/keyleeu)|[Jaeik Bae](https://github.com/0308bae)|[hsgh085](https://github.com/hsgh085)|[mgskko](https://github.com/mgskko)|
+|Web Frontend|Web Backend|Web Backend|Web Frontend|Web Frontend|
 
 
 |**팀원**|**역할**|**책임**|
@@ -34,7 +34,6 @@
 |[이재원](https://github.com/jwinvade)|PM,PL, 산출물 관리| - 프로젝트의 전반적인 계획 및 실행 <br> - 프로젝트 산출물 관리|
 |[이민혁](https://github.com/keyleeu)|서버 개발, 테스팅 담당자|- 서버 개발 <br> - 테스트 기간동안 오류 관리|
 |[배재익](https://github.com/0308bae)|서버 개발, 개발 환경 담당자 |- 개발 환경의 안전성 관리 및 개발 환경 설계 <br>  - 서버 개발|
-|강지호|서버 개발, UI/UX 개발|- 서버 개발 <br> - UI 개발|
 |[유희선](https://github.com/hsgh085)|UI/UX 개발, 품질 보증 담당자|- 프로그램의 품질이 일정 수준 이상을 유지할 수 있도록 관리 <br> -UI/UX 개발|
 |[고명석](https://github.com/mgskko)|UI/UX 개발, 분석 및 설계자|- 프로젝트의 전반적인 계획 및 실행요구사항에 맞게 프로그램 설계 <br> - UI/UX 개발|
 
