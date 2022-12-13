@@ -24,7 +24,7 @@
 # 👨🏻‍💻 팀원 소개
 
 |이재원|이민혁|배재익|유희선|고명석|
-|---|---|---|---|---|---|
+|---|---|---|---|---|
 |[jwinvade](https://github.com/jwinvade)|[me4n](https://github.com/keyleeu)|[Jaeik Bae](https://github.com/0308bae)|[hsgh085](https://github.com/hsgh085)|[mgskko](https://github.com/mgskko)|
 |Web Frontend|Web Backend|Web Backend|Web Frontend|Web Frontend|
 
